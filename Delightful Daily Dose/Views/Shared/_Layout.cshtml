@@ -3,15 +3,29 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Delightful_Daily_Dose</title>
+    <title>@ViewData["Title"] - Delightful Daily Dose</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <script type="text/javascript" src="js/site.js" defer asp-append-version="true"></script>
 </head>
 <body>
     <header>
+        <nav class="navbar adbar">
+            <div class="container">
+                <div id="date-and-name">
+                    <text id="datetime" class="nav-link">@DateTime.Now.ToString("yyyy-MM-dd, dddd")</text>
+                    <text class="nav-link" id="nameday"></text>
+                </div>
+                <div id="weather-and-exchange">
+                    <text class="nav-link" id="weather">Budapest<img width="25" id="weather-icon"></text>
+                    <text class="nav-link" id="EUR"></text>
+                    <text class="nav-link" id="USD"></text>
+                </div>
+            </div>
+        </nav>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Delightful_Daily_Dose</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Delightful Daily Dose</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -19,13 +33,11 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" id="menu">Menu</a>
                         </li>
                     </ul>
                 </div>
+                <div id="sidebar"></div>
             </div>
         </nav>
     </header>
@@ -37,7 +49,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - Delightful_Daily_Dose - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2022 - Delightful Daily Dose - <a asp-area="" asp-controller="Home" asp-action="Credits">Credits</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
