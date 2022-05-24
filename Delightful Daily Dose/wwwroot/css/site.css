@@ -71,7 +71,7 @@ body {
 }
 
 .navbar {
-    background-color: #021a5e!important;
+    background-color: #0E67B4 !important;
 }
 
 .navbar-brand, .nav-link {
@@ -79,7 +79,7 @@ body {
 }
 
 .adbar {
-    background-color: #002540 !important;
+    background-color: #050859 !important;
 }
 
 #date-and-name, #weather-and-exchange {
@@ -92,6 +92,24 @@ body {
     float: left; /* add this */
 }
 
-#USD, #EUR, #weather, #nameday {
+#USD, #EUR, #weather, #nameday, #sitename, #menudiv {
     float: left;
+}
+
+#logo {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.container {
+    flex-wrap: unset !important;
+}
+
+#weather {
+    margin-left: 100px;
+}
+
+#sitename {
+    margin-left: -50px;
 }

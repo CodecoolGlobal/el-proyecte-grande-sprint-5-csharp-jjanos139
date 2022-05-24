@@ -48,7 +48,7 @@ function loadExchangeRate(from) {
     window.fetch(`Home/GetExchangeRate?from=${from}`).then((response) => {
         response.json().then((data) => {
             let exchange = document.getElementById(from);
-            exchange.innerHTML = `${from}&#8594;HUF ` + data["result"].toFixed(2);
+            exchange.innerHTML = `${from} ` + data["result"].toFixed(2);
         });
     });
 }
