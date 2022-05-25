@@ -96,7 +96,7 @@ body {
     float: left;
 }
 
-#logo {
+#logo, #sitename {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
@@ -112,4 +112,23 @@ body {
 
 #sitename {
     margin-left: -50px;
+}
+
+#sidebar {
+    position: absolute;
+    z-index: 999;
+    background-color: black;
+    width: 200px;
+    height: 100%;
+    color: white;
+}
+
+.backdrop {
+    background-color: rgba(0,0,0,.8);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 200px;
+    cursor: pointer;
 }

@@ -53,43 +53,31 @@ function loadExchangeRate(from) {
     });
 }
 
-loadNameDay();
-loadWeather();
-loadExchangeRate("EUR");
-loadExchangeRate("USD");
+//loadNameDay();
+//loadWeather();
+//loadExchangeRate("EUR");
+//loadExchangeRate("USD");
 
-const menuButton = document.getElementById("menu");
-menuButton.addEventListener("click", expandMenu());
-const sideBar = document.getElementById("sidebar");
-const collapseMenuButton = document.getElementById("collapse-menu");
-collapseMenuButton.addEventListener("click", collapseMenu());
+function runSite() {
+    const menuButton = document.getElementById("menu");
+    menuButton.addEventListener("click", expandMenu);
+    const backdrop = document.getElementById("backdrop");
+    backdrop.addEventListener("click", collapseMenu);
+}
+
+runSite();
 
 function expandMenu() {
-    sideBar.innerHTML = `
-    <div id="collapse-menu">X</div>
-    <div id="side-menu">
-        <div id="style">Sötét Mód</div>
-        <ul id="main-menu">
-            <p>Menü</p>
-            <li id="fresh">Legfrissebb</li>
-            <li id="most-viewed">Legnézettebb</li>
-        </ul>
-        <ul id="categories">
-            <p>Kategóriák</p>
-            <li id="domestic">Belföld</li>
-            <li id="foreign">Külföld</li>
-            <li id="sport">Sport</li>
-            <li id="culinary">Gasztró</li>
-            <li id="gaming">Gaming</li>
-            <li id="cinema">Mozi</li>
-            <li id="tv">TV</li>
-            <li id="techworld">Techvilág</li>
-            <li id="business">Tőzsde</li>
-        </ul>
-    </div>
-`
+    const sideBar = document.getElementById("sidebar");
+    const backdrop = document.getElementById("backdrop");
+    sideBar.removeAttribute("hidden");
+    backdrop.classList.add("backdrop");
+
 }
 
 function collapseMenu() {
-    sideBar.innerHTML = "";
+    const sideBar = document.getElementById("sidebar");
+    const backdrop = document.getElementById("backdrop");
+    sideBar.setAttribute("hidden", "hidden");
+    backdrop.classList.remove("backdrop");
 }

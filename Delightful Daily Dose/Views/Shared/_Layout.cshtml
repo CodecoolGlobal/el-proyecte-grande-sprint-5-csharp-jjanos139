@@ -9,37 +9,59 @@
     <script type="text/javascript" src="js/site.js" defer asp-append-version="true"></script>
 </head>
 <body>
-    <header>
-        <nav class="navbar adbar">
-            <div class="container">
-                <div id="date-and-name">
-                    <text id="datetime" class="nav-link">@DateTime.Now.ToString("yyyy-MM-dd, dddd")</text>
-                    <text class="nav-link" id="nameday"></text>
-                </div>
-                <div id="logo">
-                    <img width="50" src="img/Delightful Daily Dose-logo.png"/>
-                </div>
-                <div id="weather-and-exchange">
-                    <text class="nav-link" id="weather">Budapest<img width="25" id="weather-icon"></text>
-                    <text class="nav-link" id="EUR"></text>
-                    <text class="nav-link" id="USD"></text>
-                </div>
+<header>
+    <div id="sidebar" hidden="hidden">
+        <div id="backdrop">X</div>
+        <div id="side-menu">
+            <div id="style">Sötét Mód</div>
+            <ul id="main-menu">
+                <p>Menü</p>
+                <li id="fresh">Legfrissebb</li>
+                <li id="most-viewed">Legnézettebb</li>
+            </ul>
+            <ul id="categories">
+                <p>Kategóriák</p>
+                <li id="domestic"><a asp-action="Index" asp-controller="Domestic">Belföld</a></li>
+                <li id="foreign">Külföld</li>
+                <li id="sport">Sport</li>
+                <li id="culinary">Gasztró</li>
+                <li id="gaming">Gaming</li>
+                <li id="cinema">Mozi</li>
+                <li id="tv">TV</li>
+                <li id="techworld">Techvilág</li>
+                <li id="business">Tőzsde</li>
+            </ul>
+        </div>
+    </div>
+    <nav class="navbar adbar">
+        <div class="container">
+            <div id="date-and-name">
+                <text id="datetime" class="nav-link">@DateTime.Now.ToString("yyyy-MM-dd, dddd")</text>
+                <text class="nav-link" id="nameday"></text>
             </div>
-        </nav>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div id="menudiv">
-                    <a class="nav-link" id="menu">Menu</a>
-                </div>
-                <a id="sitename" class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img width="150" src="img/Delightful Daily Dose-name.png"/></a>
-                <div id="sidebar"></div>
+            <div id="logo">
+                <img width="50" src="img/Delightful Daily Dose-logo.png"/>
             </div>
-        </nav>
-    </header>
+            <div id="weather-and-exchange">
+                <text class="nav-link" id="weather">Budapest<img width="25" id="weather-icon"></text>
+                <text class="nav-link" id="EUR"></text>
+                <text class="nav-link" id="USD"></text>
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="menudiv">
+                <a class="nav-link" id="menu">Menu</a>
+            </div>
+            <a id="sitename" class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img width="150" src="img/Delightful Daily Dose-name.png"/></a>
+        </div>
+    </nav>
+</header>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
