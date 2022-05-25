@@ -13,7 +13,8 @@ namespace Delightful_Daily_Dose.Controllers
         public async Task<IActionResult> Index()
         {
             List<News> news = await APIHelper.GetNews(ApiUrl);
-            return View(news);
+            ViewData["Title"] = "Entertainment";
+            return View("News", news);
         }
     }
 }
