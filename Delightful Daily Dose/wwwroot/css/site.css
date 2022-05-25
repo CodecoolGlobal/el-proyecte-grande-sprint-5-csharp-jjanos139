@@ -99,7 +99,7 @@ body {
     float: left;
 }
 
-#logo, #sitename {
+#logo {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
@@ -107,6 +107,7 @@ body {
 
 .container {
     flex-wrap: unset !important;
+    justify-content: center !important;
 }
 
 #weather {
@@ -114,7 +115,8 @@ body {
 }
 
 #sitename {
-    margin-left: -50px;
+    margin-right: auto;
+    margin-left: -75px;
 }
 
 #sidebar {
@@ -134,6 +136,11 @@ body {
     top: 0;
     left: 200px;
     cursor: pointer;
+}
+
+#menudiv {
+    margin-right: auto;
+}
 }
 
 #title {
