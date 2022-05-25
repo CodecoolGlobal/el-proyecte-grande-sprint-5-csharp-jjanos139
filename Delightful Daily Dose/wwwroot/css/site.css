@@ -138,3 +138,6 @@ body {
 #menudiv {
     margin-right: auto;
 }
+#menu {
+    cursor: pointer;
+}
