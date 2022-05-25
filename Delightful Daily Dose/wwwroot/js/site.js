@@ -11,7 +11,7 @@ function loadWeather() {
     window.fetch(`Home/GetWeather`).then((response) => {
         response.json().then((data) => {
             let weather = document.getElementById("weather");
-            weather.innerHTML += data["main"]["temp"].toFixed(0) + "&#8451;";
+            weather.innerHTML = `Budapest <img width="25" id="weather-icon">` + data["main"]["temp"].toFixed(0) + "&#8451;";
             let weatherIcon = document.getElementById("weather-icon");
             // broken clouds
             if (data["weather"][0]["icon"] === "04d")
@@ -53,16 +53,17 @@ function loadExchangeRate(from) {
     });
 }
 
-//loadNameDay();
-//loadWeather();
-//loadExchangeRate("EUR");
-//loadExchangeRate("USD");
+
 
 function runSite() {
     const menuButton = document.getElementById("menu");
     menuButton.addEventListener("click", expandMenu);
     const backdrop = document.getElementById("backdrop");
     backdrop.addEventListener("click", collapseMenu);
+    loadNameDay();
+    loadWeather();
+    loadExchangeRate("EUR");
+    loadExchangeRate("USD");
 }
 
 runSite();
