@@ -13,6 +13,8 @@ namespace Delightful_Daily_Dose.Controllers
 {
     public class HomeController : Controller
     {
+        private const string ApiUrl = "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=hu";
+
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -20,6 +22,11 @@ namespace Delightful_Daily_Dose.Controllers
             _logger = logger;
         }
 
+        public async Task<IActionResult> Index()
+        {
+            List<News> news = await APIHelper.GetNews(ApiUrl);
+            return View("News", news);
+        }
         public async Task<string> GetNameDay()
         {
             string apiUrl = $"https://api.nevnapok.eu/ma";
@@ -37,11 +44,6 @@ namespace Delightful_Daily_Dose.Controllers
             string apiUrl =
                 $"https://api.apilayer.com/exchangerates_data/convert?to=HUF&from={from}&amount=1&apikey=JS7qpwEXHPVbtntwU7H69R1jHnAHj7AA";
             return await APIHelper.GetApi(apiUrl);
-        }
-
-        public IActionResult Index()
-        {
-            return View();
         }
 
         public IActionResult Credits()
