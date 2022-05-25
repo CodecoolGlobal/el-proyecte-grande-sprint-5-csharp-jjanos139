@@ -9,11 +9,11 @@ namespace Delightful_Daily_Dose.Controllers
     public class TechWorldController : Controller
     {
         private const string ApiUrl = "https://newsdata.io/api/1/news?apikey=pub_7682df2f939752b8d025143691aa2d432601&country=hu&category=science,technology";
-        //"https://api.nevnapok.eu/ma"
         public async Task<IActionResult> Index()
         {
             List<News> news = await APIHelper.GetNews(ApiUrl);
-            return View(news);
+            ViewData["Title"] = "Tech World";
+            return View("News", news);
         }
     }
 }
