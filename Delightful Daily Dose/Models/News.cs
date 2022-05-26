@@ -1,5 +1,4 @@
-﻿#nullable enable
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Delightful_Daily_Dose.Models;
 
@@ -20,20 +19,4 @@ public class News
     public string? Language { get; set; }
 
     public News(){}
-    public News(string? title, string? link, string? sourceId, List<string>? keywords, List<string>? creator, string? imageUrl, string? videoUrl, string? description, string? pubDate, string? content, List<string>? country, List<string>? category, string? language)
-    {
-        Title = title;
-        Link = link;
-        SourceId = sourceId;
-        Keywords = keywords;
-        Creator = creator;
-        ImageUrl = imageUrl;
-        VideoUrl = videoUrl;
-        Description = description;
-        PubDate = pubDate;
-        Content = content;
-        Country = country;
-        Category = category;
-        Language = language;
-    }
 }
