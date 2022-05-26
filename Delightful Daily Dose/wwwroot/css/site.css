@@ -136,3 +136,30 @@ body {
 #menu {
     cursor: pointer;
 }
+
+#dogdiv, #naturediv, #jokediv {
+    position: absolute;
+    z-index: 998;
+    right: 10px;
+}
+
+#dogdiv {
+    top: 400px;
+}
+
+#naturediv {
+    top: 180px;
+}
+
+#jokediv {
+    top: 130px;
+}
+
+#photo, #nature-photo {
+    max-height: 300px;
+    max-width: 300px;
+}
+
+#body {
+    width: 90%;
+}
