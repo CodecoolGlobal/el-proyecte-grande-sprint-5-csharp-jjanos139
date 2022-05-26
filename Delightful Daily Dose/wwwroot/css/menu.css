@@ -1,9 +1,4 @@
-﻿body {
-    overflow-x: hidden;
-    background-color: #CFD8DC;
-}
-
-.nav .open > a,
+﻿.nav .open > a,
 .nav .open > a:hover,
 .nav .open > a:focus {
     background-color: transparent;
@@ -329,6 +324,9 @@ a[href*="#followus"]::before {
         -webkit-transition: all .35s ease-in-out;
     }
 
+.button-dark {
+    background-color: #101012 !important;
+}
 /*-------------------------------*/
 /*            Overlay            */
 /*-------------------------------*/
