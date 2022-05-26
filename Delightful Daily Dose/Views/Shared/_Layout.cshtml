@@ -16,16 +16,16 @@
         <div id="naturediv">
             <h5 class="text-center">A soul calmer</h5>
             <div class="photo-outer-div">
-                <img id="nature-photo" />
+                <img id="nature-photo" class="photo-light"/>
             </div>
         </div>
         <div id="dogdiv">
             <h5 class="text-center">A true friend</h5>
             <div class="photo-outer-div">
-                <img id="photo" />
+                <img id="photo" class="photo-light"/>
             </div>
         </div>
-        <nav class="navbar adbar">
+        <nav id="topbar" class="navbar topbar">
             <div class="container">
                 <div id="date-and-name">
                     <text id="datetime" class="nav-link">@DateTime.Now.ToString("yyyy-MM-dd, dddd")</text>
@@ -41,14 +41,14 @@
                 </div>
             </div>
         </nav>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav id="lowerbar" class="navbar lowerbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <div id="menudiv">
                     <a class="nav-link" id="menu">Menu</a>
                     <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
-                        <span class="hamb-top"></span>
-                        <span class="hamb-middle"></span>
-                        <span class="hamb-bottom"></span>
+                        <span class="hamb-top close-button"></span>
+                        <span class="hamb-middle close-button"></span>
+                        <span class="hamb-bottom close-button"></span>
                     </button>
                 </div>
                 <a id="sitename" class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img width="150" src="img/Delightful Daily Dose-name.png" /></a>
@@ -62,7 +62,7 @@
             <ul class="nav sidebar-nav">
                 <div class="sidebar-header">
                     <div class="sidebar-brand">
-                        <a href="#">Sötét Mód</a>
+                        <text id="color-scheme">Sötét Mód</text>
                     </div>
                 </div>
                 <li><a asp-action="Index" asp-controller="Fresh"><i id="fresh" class="fa fa-solid fa-fire"></i> Legfrissebb</a></li>

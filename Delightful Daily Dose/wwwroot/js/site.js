@@ -61,6 +61,7 @@ function runSite() {
     loadDogPhoto();
     loadNaturePhoto();
     loadJoke();
+    changeMode();
 }
 
 runSite();
@@ -93,5 +94,75 @@ function loadJoke() {
                 joke.innerHTML = data["contents"]["jokes"][0]["joke"]["title"];
             });
         });
+    });
+}
+
+function changeMode() {
+    const modeButton = document.getElementById("color-scheme");
+    const topbar = document.getElementById("topbar");
+    const lowerbar = document.getElementById("lowerbar");
+    const aAndh5Tags = document.querySelectorAll("h5, a");
+    const h6Tags = document.querySelectorAll("h6");
+    const sitename = document.getElementById("sitename");
+    const logo = document.getElementById("logo");
+    const photoInner = document.getElementsByClassName("photo-light");
+    const photoOuter = document.getElementsByClassName("photo-outer-div");
+    const closeButtonElements = document.getElementsByClassName("close-button");
+    let color = true;
+    modeButton.addEventListener("click", () => {
+        var tag;
+        var item;
+        var frame;
+        var element;
+        if (color) {
+            modeButton.innerHTML = "Világos Mód";
+            topbar.classList.remove("topbar");
+            topbar.classList.add("topbar-dark");
+            lowerbar.classList.remove("lowerbar");
+            lowerbar.classList.add("lowerbar-dark");
+            logo.firstElementChild.src = "img/Delightful Daily Dose-logo-dark.png";
+            sitename.firstElementChild.src = "img/Delightful Daily Dose-name-dark.png";
+            document.body.classList.add("body-dark");
+            for (element of closeButtonElements) {
+                element.classList.add("button-dark");
+            }
+            for (frame of photoInner) {
+                frame.classList.add("photo-dark");
+            }
+            for (item of photoOuter) {
+                item.classList.add("photo-outer-div-dark");
+            }
+            for (tag of aAndh5Tags) {
+                tag.classList.add("h5-dark");
+            }
+            for (tag of h6Tags) {
+                tag.classList.add("h6-dark");
+            }
+        } else {
+            modeButton.innerHTML = "Sötét Mód";
+            topbar.classList.remove("topbar-dark");
+            topbar.classList.add("topbar");
+            lowerbar.classList.remove("lowerbar-dark");
+            lowerbar.classList.add("lowerbar");
+            logo.firstElementChild.src = "img/Delightful Daily Dose-logo.png";
+            sitename.firstElementChild.src = "img/Delightful Daily Dose-name.png";
+            document.body.classList.remove("body-dark");
+            for (element of closeButtonElements) {
+                element.classList.remove("button-dark");
+            }
+            for (frame of photoInner) {
+                frame.classList.remove("photo-dark");
+            }
+            for (item of photoOuter) {
+                item.classList.remove("photo-outer-div-dark");
+            }
+            for (tag of aAndh5Tags) {
+                tag.classList.remove("h5-dark");
+            }
+            for (tag of h6Tags) {
+                tag.classList.remove("h6-dark");
+            }
+        }
+        color = !color;
     });
 }

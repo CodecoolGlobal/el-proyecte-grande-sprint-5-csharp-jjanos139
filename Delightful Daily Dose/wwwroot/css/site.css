@@ -12,6 +12,14 @@ a {
     color: #0366d6;
 }
 
+.h5-dark {
+    color: #d9e4f0;
+}
+
+.h6-dark {
+    color: #aab0b7;
+}
+
 .btn-primary {
     color: #fff;
     background-color: #1b6ec2;
@@ -63,6 +71,8 @@ html {
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
+    overflow-x: hidden;
+    background-color: #CFD8DC;
 }
 
 .footer {
@@ -73,16 +83,28 @@ body {
     line-height: 60px; /* Vertically center the text there */
 }
 
-.navbar {
+.body-dark {
+    background-color: rgb(79, 74, 74)!important;
+}
+
+.lowerbar {
     background-color: #0E67B4 !important;
+}
+
+.lowerbar-dark {
+    background-color: #575c61 !important;
 }
 
 .navbar-brand, .nav-link {
     color: aliceblue !important;
 }
 
-.adbar {
+.topbar {
     background-color: #050859 !important;
+}
+
+.topbar-dark {
+    background-color: #101012 !important;
 }
 
 #date-and-name, #weather-and-exchange {
@@ -90,12 +112,16 @@ body {
     overflow: hidden; /* add this to contain floated children */
 }
 
-#datetime {
+#datetime, #weather {
     display: inline-block;
     float: left; /* add this */
 }
 
-#USD, #EUR, #weather, #nameday, #sitename, #menudiv {
+#weather {
+    min-width: 150px;
+}
+
+#USD, #EUR, #nameday, #sitename, #menudiv {
     float: left;
 }
 
@@ -150,13 +176,59 @@ body {
 #photo, #nature-photo {
     max-height: 300px;
     max-width: 300px;
+}
+
+.photo-light {
     border: 5px solid bisque;
 }
 
+.photo-dark{
+    border: 5px solid rgb(228, 226, 224)!important;
+}
+
 #body {
-    width: 90%;
+    width: 85%;
+    text-align: justify;
 }
 
 .photo-outer-div {
     border: 5px solid brown;
+}
+
+.photo-outer-div-dark {
+    border: 5px solid #575c61 !important;
+}
+
+#color-scheme {
+    color: #ddd;
+}
+
+@media screen and (max-width: 1450px) {
+    #naturediv, #dogdiv, #USD, #EUR {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 332px) {
+    #sitename {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    #nameday {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    #date-and-name {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    #weather {
+        display: none !important;
+    }
 }
