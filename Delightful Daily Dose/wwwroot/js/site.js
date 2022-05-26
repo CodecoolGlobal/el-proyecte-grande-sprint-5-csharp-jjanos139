@@ -53,12 +53,7 @@ function loadExchangeRate(from) {
     });
 }
 
-
 function runSite() {
-    const menuButton = document.getElementById("menu");
-    menuButton.addEventListener("click", expandMenu);
-    const backdrop = document.getElementById("backdrop");
-    backdrop.addEventListener("click", collapseMenu);
     loadNameDay();
     loadWeather();
     loadExchangeRate("EUR");
@@ -69,21 +64,6 @@ function runSite() {
 }
 
 runSite();
-
-function expandMenu() {
-    const sideBar = document.getElementById("sidebar");
-    const backdrop = document.getElementById("backdrop");
-    sideBar.removeAttribute("hidden");
-    backdrop.classList.add("backdrop");
-
-}
-
-function collapseMenu() {
-    const sideBar = document.getElementById("sidebar");
-    const backdrop = document.getElementById("backdrop");
-    sideBar.setAttribute("hidden", "hidden");
-    backdrop.classList.remove("backdrop");
-}
 
 function loadDogPhoto() {
     window.fetch(`Home/GetDog`).then((response) => {
