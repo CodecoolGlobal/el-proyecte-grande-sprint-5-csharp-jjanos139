@@ -142,33 +142,31 @@ body {
     margin-right: auto;
 }
 
-#menu {
-    cursor: pointer;
-}
-
-#dogdiv, #naturediv, #jokediv {
+#dogdiv, #naturediv {
     position: absolute;
     z-index: 998;
     right: 10px;
 }
 
 #dogdiv {
-    top: 400px;
+    top: 330px;
 }
 
 #naturediv {
-    top: 180px;
-}
+    top: 110px;
 
-#jokediv {
-    top: 130px;
 }
 
 #photo, #nature-photo {
     max-height: 300px;
     max-width: 300px;
+    border: 5px solid bisque;
 }
 
 #body {
     width: 90%;
+}
+
+.photo-outer-div {
+    border: 5px solid brown;
 }
