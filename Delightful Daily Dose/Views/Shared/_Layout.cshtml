@@ -12,49 +12,50 @@
     <script src="https://kit.fontawesome.com/bdd5f96ccc.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<header>
-    <div id="jokediv">
-        <text class="text-center" id="joke"></text>
-    </div>
-    <div id="naturediv">
-        <h5 class="text-center">A soul calmer</h5>
-        <img id="nature-photo"/>
-    </div>
-    <div id="dogdiv">
-        <h5 class="text-center">A true friend</h5>
-        <img id="photo"/>
-    </div>
-    <nav class="navbar adbar">
-        <div class="container">
-            <div id="date-and-name">
-                <text id="datetime" class="nav-link">@DateTime.Now.ToString("yyyy-MM-dd, dddd")</text>
-                <text class="nav-link" id="nameday"></text>
-            </div>
-            <div id="logo">
-                <img width="50" src="img/Delightful Daily Dose-logo.png" />
-            </div>
-            <div id="weather-and-exchange">
-                <text class="nav-link" id="weather"></text>
-                <text class="nav-link" id="EUR"></text>
-                <text class="nav-link" id="USD"></text>
+    <header>
+        <div id="naturediv">
+            <h5 class="text-center">A soul calmer</h5>
+            <div class="photo-outer-div">
+                <img id="nature-photo" />
             </div>
         </div>
-    </nav>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container">
-            <div id="menudiv">
-                <a class="nav-link" id="menu">Menu</a>
-                <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
-                    <span class="hamb-top"></span>
-                    <span class="hamb-middle"></span>
-                    <span class="hamb-bottom"></span>
-                </button>
+        <div id="dogdiv">
+            <h5 class="text-center">A true friend</h5>
+            <div class="photo-outer-div">
+                <img id="photo" />
             </div>
-            <a id="sitename" class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img width="150" src="img/Delightful Daily Dose-name.png" /></a>
         </div>
-    </nav>
-</header>
-@*All about the bass, bout the bass. No menu.*@
+        <nav class="navbar adbar">
+            <div class="container">
+                <div id="date-and-name">
+                    <text id="datetime" class="nav-link">@DateTime.Now.ToString("yyyy-MM-dd, dddd")</text>
+                    <text class="nav-link" id="nameday"></text>
+                </div>
+                <div id="logo">
+                    <img width="50" src="img/Delightful Daily Dose-logo.png" />
+                </div>
+                <div id="weather-and-exchange">
+                    <text class="nav-link" id="weather"></text>
+                    <text class="nav-link" id="EUR"></text>
+                    <text class="nav-link" id="USD"></text>
+                </div>
+            </div>
+        </nav>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <div id="menudiv">
+                    <a class="nav-link" id="menu">Menu</a>
+                    <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
+                        <span class="hamb-top"></span>
+                        <span class="hamb-middle"></span>
+                        <span class="hamb-bottom"></span>
+                    </button>
+                </div>
+                <a id="sitename" class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img width="150" src="img/Delightful Daily Dose-name.png" /></a>
+            </div>
+        </nav>
+    </header>
+    @*All about the bass, bout the bass. No menu.*@
     <div id="wrapper">
         <div class="overlay"></div>
         <nav class="navbar navbar-inverse fixed-top" id="sidebar-wrapper" role="navigation">
@@ -82,10 +83,10 @@
                         <li class="menu-list-item" id="business"><a asp-action="Index" asp-controller="Business"><i class="fa fa-solid fa-briefcase"></i> Gazdaság</a></li>
                     </ul>
                 </li>
-                <li><a href="#followus"><i class="fa fa-brands fa-twitter"></i>Follow us</a></li>
+                <li><a href="#followus"><i class="fa fa-brands fa-twitter"></i> Follow us</a></li>
             </ul>
         </nav>
-    <div id="page-content-wrapper"></div>
+        <div id="page-content-wrapper"></div>
     </div>
     <div class="container">
         <main role="main" class="pb-3">
@@ -96,6 +97,7 @@
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2022 - Delightful Daily Dose - <a asp-area="" asp-controller="Home" asp-action="Credits">Credits</a>
+            - Joke of the day: <text class="text-center" id="joke"></text>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
