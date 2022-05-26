@@ -8,12 +8,14 @@ namespace Delightful_Daily_Dose.Controllers
 {
     public class SportController : Controller
     {
-        private const string ApiUrl = "https://newsdata.io/api/1/news?apikey=pub_7682df2f939752b8d025143691aa2d432601&country=hu&category=sports";
+        private const string ApiUrl = "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=hu&category=sports";
+
         public async Task<IActionResult> Index()
         {
             List<News> news = await APIHelper.GetNews(ApiUrl);
-            return View(news);
+            ViewData["Title"] = "Sport";
+            return View("News", news);
         }
-        
+
     }
 }
