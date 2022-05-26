@@ -88,7 +88,7 @@ body {
 }
 
 #datetime {
-    width: 180px;
+    display: inline-block;
     float: left; /* add this */
 }
 
@@ -113,7 +113,7 @@ body {
 
 #sitename {
     margin-right: auto;
-    margin-left: -75px;
+    margin-left: -100px;
 }
 
 #sidebar {
@@ -125,16 +125,7 @@ body {
     color: white;
 }
 
-.backdrop {
-    background-color: rgba(0,0,0,.8);
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 200px;
-    cursor: pointer;
-}
-
 #menudiv {
     margin-right: auto;
+    display: flex;
 }
