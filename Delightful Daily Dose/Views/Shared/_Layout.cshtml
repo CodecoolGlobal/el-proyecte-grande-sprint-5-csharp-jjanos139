@@ -6,33 +6,13 @@
     <title>@ViewData["Title"] - Delightful Daily Dose</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/menu.css" />
     <script type="text/javascript" src="js/site.js" defer asp-append-version="true"></script>
+    <script type="text/javascript" src="js/menu.js" defer asp-append-version="true"></script>
+    <script src="https://kit.fontawesome.com/bdd5f96ccc.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <header>
-    <div id="sidebar" hidden="hidden">
-        <div id="backdrop">X</div>
-        <div id="side-menu">
-            <div id="style">Sötét Mód</div>
-            <ul id="main-menu">
-                <p>Menü</p>
-                <li id="fresh">Legfrissebb</li>
-                <li id="most-viewed">Legnézettebb</li>
-            </ul>
-            <ul id="categories">
-                <p>Kategóriák</p>
-                <li id="domestic"><a asp-action="Index" asp-controller="Domestic">Belföld</a></li>
-                <li id="foreign">Külföld</li>
-                <li id="sport">Sport</li>
-                <li id="culinary">Gasztró</li>
-                <li id="gaming">Gaming</li>
-                <li id="cinema">Mozi</li>
-                <li id="tv">TV</li>
-                <li id="techworld"><a asp-action="Index" asp-controller="TechWorld">Techvilág</a></li>
-                <li id="business">Tőzsde</li>
-            </ul>
-        </div>
-    </div>
     <nav class="navbar adbar">
         <div class="container">
             <div id="date-and-name">
@@ -40,7 +20,7 @@
                 <text class="nav-link" id="nameday"></text>
             </div>
             <div id="logo">
-                <img width="50" src="img/Delightful Daily Dose-logo.png"/>
+                <img width="50" src="img/Delightful Daily Dose-logo.png" />
             </div>
             <div id="weather-and-exchange">
                 <text class="nav-link" id="weather">Budapest<img width="25" id="weather-icon"></text>
@@ -51,17 +31,51 @@
     </nav>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
             <div id="menudiv">
                 <a class="nav-link" id="menu">Menu</a>
+                <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
+                    <span class="hamb-top"></span>
+                    <span class="hamb-middle"></span>
+                    <span class="hamb-bottom"></span>
+                </button>
             </div>
-            <a id="sitename" class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img width="150" src="img/Delightful Daily Dose-name.png"/></a>
+            <a id="sitename" class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img width="150" src="img/Delightful Daily Dose-name.png" /></a>
         </div>
     </nav>
 </header>
+@*All about the bass, bout the bass. No menu.*@
+    <div id="wrapper">
+        <div class="overlay"></div>
+        <nav class="navbar navbar-inverse fixed-top" id="sidebar-wrapper" role="navigation">
+            <ul class="nav sidebar-nav">
+                <div class="sidebar-header">
+                    <div class="sidebar-brand">
+                        <a href="#">Sötét Mód</a>
+                    </div>
+                </div>
+                <li><a href="#fresh"><i class="fa fa-solid fa-fire"></i> Legfrissebb</a></li>
+                <li><a href="#most-viewed"><i class="fa fa-solid fa-arrow-trend-up"></i> Legnézettebb</a></li>
+                <li class="dropdown">
+                    <a href="#works" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-solid fa-grip-vertical"></i> Kategóriák<span class="caret"></span></a>
+                    <ul class="dropdown-menu animated fadeInLeft" role="menu">
+                        <li class="menu-list-item" id="domestic"><a asp-action="Index" asp-controller="Domestic"><i class="fa fa-solid fa-flag"></i> Belföld</a></li>
+                        <li class="menu-list-item" id="foreign"><i class="fa fa-solid fa-globe"></i> Külföld</li>
+                        <li class="menu-list-item" id="sport"><i class="fa-solid fa-baseball"></i> Sport</li>
+                        <li class="menu-list-item" id="culinary"><i class="fa fa-solid fa-utensils"></i> Gasztronómia</li>
+                        <li class="menu-list-item" id="health"><i class="fa fa-solid fa-heart"></i> Egészség</li>
+                        <li class="menu-list-item" id="politics"><i class="fa fa-solid fa-landmark"></i> Politika</li>
+                        <li class="menu-list-item" id="economics"><i class="fa fa-solid fa-coins"></i> Gazdaság</li>
+                        <li class="menu-list-item" id="entertainment"><i class="fa fa-solid fa-face-smile"></i> Szórakozás</li>
+                        <li class="menu-list-item" id="environment"><i class="fa fa-solid fa-tree"></i> Környezet</li>
+                        <li class="menu-list-item" id="techworld"><a asp-action="Index" asp-controller="TechWorld"><i class="fa fa-solid fa-microchip"></i> Techvilág</a></li>
+                        <li class="menu-list-item" id="business"><i class="fa fa-solid fa-briefcase"></i> Tőzsde</li>
+                    </ul>
+                </li>
+                <li><a href="#followus"><i class="fa fa-brands fa-twitter"></i>Follow us</a></li>
+            </ul>
+        </nav>
+    <div id="page-content-wrapper"></div>
+    </div>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
