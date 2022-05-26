@@ -53,8 +53,6 @@ function loadExchangeRate(from) {
     });
 }
 
-
-
 function runSite() {
     const menuButton = document.getElementById("menu");
     menuButton.addEventListener("click", expandMenu);
