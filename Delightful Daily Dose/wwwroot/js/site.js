@@ -108,6 +108,7 @@ function changeMode() {
     const photoInner = document.getElementsByClassName("photo-light");
     const photoOuter = document.getElementsByClassName("photo-outer-div");
     const closeButtonElements = document.getElementsByClassName("close-button");
+    const jumbotron = document.getElementsByClassName("jumbotron");
     let color = true;
     modeButton.addEventListener("click", () => {
         var tag;
@@ -123,6 +124,9 @@ function changeMode() {
             logo.firstElementChild.src = "img/Delightful Daily Dose-logo-dark.png";
             sitename.firstElementChild.src = "img/Delightful Daily Dose-name-dark.png";
             document.body.classList.add("body-dark");
+            for (element of jumbotron) {
+                element.classList.add("bg-dark");
+            }
             for (element of closeButtonElements) {
                 element.classList.add("button-dark");
             }
@@ -147,6 +151,9 @@ function changeMode() {
             logo.firstElementChild.src = "img/Delightful Daily Dose-logo.png";
             sitename.firstElementChild.src = "img/Delightful Daily Dose-name.png";
             document.body.classList.remove("body-dark");
+            for (element of jumbotron) {
+                element.classList.remove("bg-dark");
+            }
             for (element of closeButtonElements) {
                 element.classList.remove("button-dark");
             }
