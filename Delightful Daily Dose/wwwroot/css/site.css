@@ -133,10 +133,6 @@ body {
     display: flex;
 }
 
-#menu {
-    cursor: pointer;
-}
-
 #dogdiv, #naturediv, #jokediv {
     position: absolute;
     z-index: 998;

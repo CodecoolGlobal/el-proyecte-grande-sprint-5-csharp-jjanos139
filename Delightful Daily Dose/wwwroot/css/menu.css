@@ -1,12 +1,6 @@
 ﻿body {
-    position: relative;
     overflow-x: hidden;
     background-color: #CFD8DC;
-}
-
-body,
-html {
-    height: 100%;
 }
 
 .nav .open > a,
@@ -56,7 +50,6 @@ html {
 
 #page-content-wrapper {
     width: 100%;
-    padding-top: 70px;
 }
 
 #wrapper.toggled #page-content-wrapper {
@@ -67,6 +60,7 @@ html {
 /*-------------------------------*/
 /*     Sidebar nav styles        */
 /*-------------------------------*/
+
 .navbar {
     padding: 0;
 }
@@ -104,7 +98,6 @@ html {
 
         .sidebar-nav li:first-child a {
             color: #fff;
-            background-color: #1a1a1a;
         }
 
         .sidebar-nav li:nth-child(5n+1):before {
@@ -201,66 +194,11 @@ html {
 .dropdown-menu.show {
     top: 0;
 }
-/*Fontawesome icons
-.nav.sidebar-nav li a::before {
-    font-family: "Font Awesome 5 Free";
-    vertical-align: baseline;
-    display: inline-block;
-    padding-right: 5px;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: 900;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-}*/
-
-/*a[href*="#domestic"]::before {
-    content: "\f024" !important;
-}
-
-a[href*="#foreign"]::before {
-    content: "\f0ac" !important;
-}
-
-a[href*="#sport"]::before {
-    content: "\f1e3" !important;
-}
-
-a[href*="#culinary"]::before {
-    content: "\f2e6" !important;
-}
-
-a[href*="#health"]::before {
-    content: "\f004" !important;
-}
-
-a[href*="#politics"]::before {
-    content: "\f66f" !important;
-}
-
-a[href*="#economics"]::before {
-    content: "\f81d" !important;
-}
-
-a[href*="#entertainment"]::before {
-    content: "\e392" !important;
-}
-
-a[href*="#environment"]::before {
-    content: "\f1bb" !important;
-}
-
-a[href*="#techworld"]::before {
-    content: "\f2db" !important;
-}
-
-a[href*="#business"]::before {
-    content: "\e0c8" !important;
-}*/
 
 a[href*="#followus"]::before {
     color: #0084b4;
 }
+
 /*-------------------------------*/
 /*       Hamburger-Cross         */
 /*-------------------------------*/
@@ -408,4 +346,16 @@ a[href*="#followus"]::before {
     bottom: 0;
     background-color: rgba(0, 0, 0, .5);
     z-index: 1;
+}
+
+#fresh {
+    margin-right: 6px;
+}
+
+#most-viewed{
+    margin-right: 3px
+}
+
+#category{
+    margin-right: 11px;
 }
