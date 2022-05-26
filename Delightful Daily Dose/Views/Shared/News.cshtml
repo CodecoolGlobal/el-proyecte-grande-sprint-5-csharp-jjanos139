@@ -2,7 +2,7 @@
 	<h1 class="display-4">@ViewData["Title"]</h1>
 	<p></p>
 </div>
-<div>
+<div id="body">
 	@foreach (News news in Model)
 	{
 		<h5><a href="@news.Link" target="_blank">@news.Title</a></h5>

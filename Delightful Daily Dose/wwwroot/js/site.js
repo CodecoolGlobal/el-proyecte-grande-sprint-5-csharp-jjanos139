@@ -54,7 +54,6 @@ function loadExchangeRate(from) {
 }
 
 
-
 function runSite() {
     const menuButton = document.getElementById("menu");
     menuButton.addEventListener("click", expandMenu);
@@ -64,6 +63,9 @@ function runSite() {
     loadWeather();
     loadExchangeRate("EUR");
     loadExchangeRate("USD");
+    loadDogPhoto();
+    loadNaturePhoto();
+    loadJoke();
 }
 
 runSite();
@@ -81,4 +83,35 @@ function collapseMenu() {
     const backdrop = document.getElementById("backdrop");
     sideBar.setAttribute("hidden", "hidden");
     backdrop.classList.remove("backdrop");
+}
+
+function loadDogPhoto() {
+    window.fetch(`Home/GetDog`).then((response) => {
+        response.json().then((data) => {
+            let photo = document.getElementById("photo");
+            photo.src = data["message"];
+        });
+    });
+}
+
+function loadNaturePhoto() {
+    window.fetch(`https://source.unsplash.com/1600x900/?nature`).then((response) => {
+        let photo = document.getElementById("nature-photo");
+            photo.src = response.url;
+    });
+}
+
+function loadJoke() {
+    window.fetch(`Home/GetJoke`).then((response) => {
+        response.json().then((data) => {
+            let joke = document.getElementById("joke");
+            joke.innerHTML = data["contents"]["jokes"][0]["joke"]["title"];
+            joke.addEventListener("mouseover", () => {
+                joke.innerHTML = data["contents"]["jokes"][0]["joke"]["text"];
+            });
+            joke.addEventListener("mouseleave", () => {
+                joke.innerHTML = data["contents"]["jokes"][0]["joke"]["title"];
+            });
+        });
+    });
 }

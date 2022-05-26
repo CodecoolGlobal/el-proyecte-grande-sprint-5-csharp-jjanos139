@@ -27,9 +27,21 @@ namespace Delightful_Daily_Dose.Controllers
             List<News> news = await APIHelper.GetNews(ApiUrl);
             return View("News", news);
         }
+        
+        public async Task<string> GetJoke()
+        {
+            string apiUrl = "https://api.jokes.one/jod?category=animal";
+            return await APIHelper.GetApi(apiUrl);
+        }
+        
+        public async Task<string> GetDog()
+        {
+            string apiUrl = "https://dog.ceo/api/breeds/image/random";
+            return await APIHelper.GetApi(apiUrl);
+        }
         public async Task<string> GetNameDay()
         {
-            string apiUrl = $"https://api.nevnapok.eu/ma";
+            string apiUrl = "https://api.nevnapok.eu/ma";
             return await APIHelper.GetApi(apiUrl);
         }
 
@@ -39,7 +51,7 @@ namespace Delightful_Daily_Dose.Controllers
                 "https://api.openweathermap.org/data/2.5/weather?q=Budapest,hu&units=metric&appid=104d168e3001f454894090545b535f79";
             return await APIHelper.GetApi(apiUrl);
         }
-        public async Task<string> GetExchangeRate(string from )
+        public async Task<string> GetExchangeRate(string from)
         {
             string apiUrl =
                 $"https://api.apilayer.com/exchangerates_data/convert?to=HUF&from={from}&amount=1&apikey=JS7qpwEXHPVbtntwU7H69R1jHnAHj7AA";
