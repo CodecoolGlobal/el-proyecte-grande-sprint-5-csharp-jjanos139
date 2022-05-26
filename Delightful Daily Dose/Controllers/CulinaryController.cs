@@ -6,16 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Delightful_Daily_Dose.Controllers
 {
-    public class SportController : Controller
+    public class CulinaryController : Controller
     {
-        private const string ApiUrl = "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=hu&category=sports";
-
+        private const string ApiUrl = "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=hu&category=food";
         public async Task<IActionResult> Index()
         {
             List<News> news = await APIHelper.GetNews(ApiUrl);
-            ViewData["Title"] = "Sport";
+            ViewData["Title"] = "Culinary";
             return View("News", news);
         }
-
     }
 }

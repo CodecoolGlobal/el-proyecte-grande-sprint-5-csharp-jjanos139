@@ -60,6 +60,7 @@
 /*-------------------------------*/
 /*     Sidebar nav styles        */
 /*-------------------------------*/
+
 .navbar {
     padding: 0;
 }
@@ -197,6 +198,7 @@
 a[href*="#followus"]::before {
     color: #0084b4;
 }
+
 /*-------------------------------*/
 /*       Hamburger-Cross         */
 /*-------------------------------*/
@@ -344,4 +346,16 @@ a[href*="#followus"]::before {
     bottom: 0;
     background-color: rgba(0, 0, 0, .5);
     z-index: 1;
+}
+
+#fresh {
+    margin-right: 6px;
+}
+
+#most-viewed{
+    margin-right: 3px
+}
+
+#category{
+    margin-right: 11px;
 }
