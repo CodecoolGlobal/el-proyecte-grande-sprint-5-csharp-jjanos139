@@ -13,49 +13,51 @@ namespace Delightful_Daily_Dose.Controllers
 {
     public class HomeController : Controller
     {
-        private const string ApiUrl = "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=hu";
+        private const string ApiUrl = "https://newsdata.io/api/1/news?apikey=pub_7682df2f939752b8d025143691aa2d432601&language=hu";
 
         private readonly ILogger<HomeController> _logger;
+        private readonly APIHelper _apiHelper;
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+            _apiHelper = new APIHelper();
         }
 
         public async Task<IActionResult> Index()
         {
-            List<News> news = await APIHelper.GetNews(ApiUrl);
+            List<News> news = await _apiHelper.GetNews(ApiUrl);
             return View("News", news);
         }
         
         public async Task<string> GetJoke()
         {
             string apiUrl = "https://api.jokes.one/jod?category=animal";
-            return await APIHelper.GetApi(apiUrl);
+            return await _apiHelper.GetApi(apiUrl);
         }
         
         public async Task<string> GetDog()
         {
             string apiUrl = "https://dog.ceo/api/breeds/image/random";
-            return await APIHelper.GetApi(apiUrl);
+            return await _apiHelper.GetApi(apiUrl);
         }
         public async Task<string> GetNameDay()
         {
             string apiUrl = "https://api.nevnapok.eu/ma";
-            return await APIHelper.GetApi(apiUrl);
+            return await _apiHelper.GetApi(apiUrl);
         }
 
         public async Task<string> GetWeather()
         {
             string apiUrl =
                 "https://api.openweathermap.org/data/2.5/weather?q=Budapest,hu&units=metric&appid=104d168e3001f454894090545b535f79";
-            return await APIHelper.GetApi(apiUrl);
+            return await _apiHelper.GetApi(apiUrl);
         }
         public async Task<string> GetExchangeRate(string from)
         {
             string apiUrl =
-                $"https://api.apilayer.com/exchangerates_data/convert?to=HUF&from={from}&amount=1&apikey=JS7qpwEXHPVbtntwU7H69R1jHnAHj7AA";
-            return await APIHelper.GetApi(apiUrl);
+                $"https://api.apilayer.com/exchangerates_data/convert?to=HUF&from={from}&amount=1&apikey=ZxQy1ptO3FT3JTkEJiAehi0sSf7UMSwV";
+            return await _apiHelper.GetApi(apiUrl);
         }
 
         public IActionResult Credits()

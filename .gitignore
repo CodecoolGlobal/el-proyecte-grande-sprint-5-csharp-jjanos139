@@ -2,4 +2,5 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
+/delightful-daily-dose-frontend/public/logo512.png
 /.vs/el-proyecte-grande-sprint-1-csharp-bosiTomi/FileContentIndex
