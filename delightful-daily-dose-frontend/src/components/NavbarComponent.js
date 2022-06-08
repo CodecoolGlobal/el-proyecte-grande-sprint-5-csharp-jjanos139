@@ -7,7 +7,7 @@ import SiteLogo from "../images/Delightful Daily Dose-logo.png"
 
 export default function Navbar(props) {
     return (
-        <div id="container">
+        <div className="container">
             {props.elements === "top" ? <DateAndName /> : ""}
             {props.elements === "top" ? <Logo src={SiteLogo} /> : ""}
             {props.elements === "top" ? <WeatherAndExchange /> : ""}
