@@ -65,7 +65,6 @@ export default function Header() {
         loadExchangeRate("USD");
         loadDogPhoto();
         loadNaturePhoto();
-        loadJoke();
     }
 
     runSite();
@@ -86,20 +85,7 @@ export default function Header() {
         });
     }
 
-    function loadJoke() {
-        window.fetch(`Home/GetJoke`).then((response) => {
-            response.json().then((data) => {
-                let joke = document.getElementById("joke");
-                joke.innerHTML = data["contents"]["jokes"][0]["joke"]["title"];
-                joke.addEventListener("mouseover", () => {
-                    joke.innerHTML = data["contents"]["jokes"][0]["joke"]["text"];
-                });
-                joke.addEventListener("mouseleave", () => {
-                    joke.innerHTML = data["contents"]["jokes"][0]["joke"]["title"];
-                });
-            });
-        });
-    }
+    
 
     return (
         <header>

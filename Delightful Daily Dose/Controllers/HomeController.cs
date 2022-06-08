@@ -35,7 +35,6 @@ namespace Delightful_Daily_Dose.Controllers
             //return await APIHelper.GetApi(apiUrl);
 
             return @"{
-                ""response"": {
                     ""success"": {
                         ""total"": 1
                     },
@@ -58,7 +57,6 @@ namespace Delightful_Daily_Dose.Controllers
                             }
                         },
                         ""copyright"": ""2019-20 https://jokes.one""
-                    }
                 }
             }";
         }
