@@ -11,6 +11,7 @@ using Delightful_Daily_Dose.Helpers;
 
 namespace Delightful_Daily_Dose.Controllers
 {
+    //[Route("/weatherforecast/Home")]
     public class HomeController : Controller
     {
         private const string ApiUrl = "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=hu";
