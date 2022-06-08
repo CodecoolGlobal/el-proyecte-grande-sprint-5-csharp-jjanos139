@@ -4,8 +4,8 @@ export default function DateAndName() {
 
     return (
         <div id="date-and-name">
-            <text id="datetime" className="nav-link">{date}</text>
-            <text className="nav-link" id="nameday"></text>
+            <span id="datetime" className="nav-link">{date}</span>
+            <span className="nav-link" id="nameday"></span>
         </div>
     )
 }

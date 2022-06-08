@@ -249,3 +249,7 @@ body {
     display: none !important;
   }
 }
+
+#joke {
+  color: inherit;
+}
