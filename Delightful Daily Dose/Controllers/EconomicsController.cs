@@ -9,15 +9,9 @@ namespace Delightful_Daily_Dose.Controllers
     public class EconomicsController : Controller
     {
         private const string ApiUrl = "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=hu&category=economics";
-        private readonly APIHelper _apiHelper;
-
-        public EconomicsController()
-        {
-            _apiHelper = new APIHelper();
-        }
         public async Task<IActionResult> Index()
         {
-            List<News> news = await _apiHelper.GetNews(ApiUrl);
+            List<News> news = await APIHelper.GetNews(ApiUrl);
             ViewData["Title"] = "Economics";
             return View("News", news);
         }

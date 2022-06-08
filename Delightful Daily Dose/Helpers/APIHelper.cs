@@ -7,9 +7,9 @@ using Newtonsoft.Json;
 
 namespace Delightful_Daily_Dose.Helpers
 {
-    public class APIHelper
+    public static class APIHelper
     {
-        public async Task<string> GetApi(string apiUrl)
+        public static async Task<string> GetApi(string apiUrl)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -28,7 +28,7 @@ namespace Delightful_Daily_Dose.Helpers
             return null;
         }
 
-        public async Task<List<News>> GetNews(string apiUrl)
+        public static async Task<List<News>> GetNews(string apiUrl)
         {
             var data = JsonConvert.DeserializeObject<Result>(await GetApi(apiUrl));
             return data?.Results;
