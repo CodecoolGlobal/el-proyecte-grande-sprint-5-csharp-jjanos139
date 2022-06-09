@@ -11,11 +11,8 @@ using Delightful_Daily_Dose.Helpers;
 
 namespace Delightful_Daily_Dose.Controllers
 {
-    //[Route("/weatherforecast/Home")]
     public class HomeController : Controller
     {
-        private const string ApiUrl = "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=hu";
-
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -25,10 +22,114 @@ namespace Delightful_Daily_Dose.Controllers
 
         public async Task<IActionResult> Index()
         {
+            string ApiUrl = "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=hu";
             List<News> news = await APIHelper.GetNews(ApiUrl);
-            return View("News", news);
+            return Json(news);
         }
-        
+
+        public async Task<IActionResult> Business()
+        {
+            string ApiUrl =
+                "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&country=hu&category=business";
+            List <News> news = await APIHelper.GetNews(ApiUrl);
+            return Json(news);
+        }
+
+        public async Task<IActionResult> Culinary()
+        {
+            string ApiUrl =
+                "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=hu&category=food";
+            List <News> news = await APIHelper.GetNews(ApiUrl);
+            return Json(news);
+        }
+
+        public async Task<IActionResult> Domestic()
+        {
+            string ApiUrl = "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&country=hu";
+            List <News> news = await APIHelper.GetNews(ApiUrl);
+            return Json(news);
+        }
+
+        public async Task<IActionResult> Economics()
+        {
+            string ApiUrl =
+                "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=hu&category=economics";
+            List <News> news = await APIHelper.GetNews(ApiUrl);
+            return Json(news);
+        }
+
+        public async Task<IActionResult> Entertainment()
+        {
+            string ApiUrl =
+                "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=hu&category=entertainment";
+            List <News> news = await APIHelper.GetNews(ApiUrl);
+            return Json(news);
+        }
+
+        public async Task<IActionResult> Environment()
+        {
+            string ApiUrl =
+                "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=hu&category=environment";
+            List <News> news = await APIHelper.GetNews(ApiUrl);
+            return Json(news);
+        }
+
+        public async Task<IActionResult> Foreign()
+        {
+            string ApiUrl =
+                "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&category=world";
+            List <News> news = await APIHelper.GetNews(ApiUrl);
+            return Json(news);
+        }
+
+        public async Task<IActionResult> Fresh()
+        {
+            string ApiUrl =
+                "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&country=hu&category=business,health,politics,top,world";
+            List <News> news = await APIHelper.GetNews(ApiUrl);
+            return Json(news);
+        }
+
+        public async Task<IActionResult> Health()
+        {
+            string ApiUrl =
+                "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=hu&category=health";
+            List <News> news = await APIHelper.GetNews(ApiUrl);
+            return Json(news);
+        }
+
+        public async Task<IActionResult> MostViewed()
+        {
+            string ApiUrl =
+                "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=hu&category=top";
+            List <News> news = await APIHelper.GetNews(ApiUrl);
+            return Json(news);
+        }
+
+        public async Task<IActionResult> Politics()
+        {
+            string ApiUrl =
+                "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=hu&category=politics";
+            List <News> news = await APIHelper.GetNews(ApiUrl);
+            return Json(news);
+        }
+
+        public async Task<IActionResult> Sport()
+        {
+            string ApiUrl =
+                "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=hu&category=sports";
+            List <News> news = await APIHelper.GetNews(ApiUrl);
+            return Json(news);
+        }
+
+        public async Task<IActionResult> TechWorld()
+        {
+            string ApiUrl =
+                "https://newsdata.io/api/1/news?apikey=pub_7682df2f939752b8d025143691aa2d432601&country=hu&category=science,technology";
+            List <News> news = await APIHelper.GetNews(ApiUrl);
+            return Json(news);
+        }
+
         public async Task<string> GetJoke()
         {
             //string apiUrl = "https://api.jokes.one/jod?category=animal";
