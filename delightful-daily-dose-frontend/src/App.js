@@ -36,7 +36,6 @@ export default class App extends Component {
     }
 
     render() {
-        console.log(this.state.news)
         return (
             <>
                 <Header dark={this.state.data} />
