@@ -1,6 +1,6 @@
-﻿.nav .open > a,
-.nav .open > a:hover,
-.nav .open > a:focus {
+﻿.nav .open > span,
+.nav .open > span:hover,
+.nav .open > span:focus {
     background-color: transparent;
 }
 
@@ -91,7 +91,7 @@
             transition: width .4s ease-in;
         }
 
-        .sidebar-nav li:first-child a {
+        .sidebar-nav li:first-child span {
             color: #fff;
         }
 
@@ -124,19 +124,19 @@
             transition: width .4s ease-in;
         }
 
-        .sidebar-nav li a {
+        .sidebar-nav li span {
             display: block;
             color: #ddd;
             text-decoration: none;
             padding: 10px 15px 10px 30px;
         }
 
-            .sidebar-nav li a:hover,
-            .sidebar-nav li a:active,
-            .sidebar-nav li a:focus,
-            .sidebar-nav li.open a:hover,
-            .sidebar-nav li.open a:active,
-            .sidebar-nav li.open a:focus {
+            .sidebar-nav li span:hover,
+            .sidebar-nav li span:active,
+            .sidebar-nav li span:focus,
+            .sidebar-nav li.open span:hover,
+            .sidebar-nav li.open span:active,
+            .sidebar-nav li.open span:focus {
                 color: #fff;
                 text-decoration: none;
                 background-color: transparent;
@@ -158,11 +158,11 @@
     padding-top: 1em;
 }
 
-    .sidebar-brand a {
+    .sidebar-brand span {
         color: #ddd;
     }
 
-        .sidebar-brand a:hover {
+        .sidebar-brand span:hover {
             color: #fff;
             text-decoration: none;
         }
@@ -190,7 +190,7 @@
     top: 0;
 }
 
-a[href*="#followus"]::before {
+span[href*="#followus"]::before {
     color: #0084b4;
 }
 
