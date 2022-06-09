@@ -9,7 +9,7 @@ public class News
     public string SourceId { get; set; }
     public List<string> Keywords { get; set; }
     public List<string> Creator { get; set; }
-    public string ImageUrl { get; set; }
+    public string image_url { get; set; }
     public string VideoUrl { get; set; }
     public string Description { get; set; }
     public string PubDate { get; set; }

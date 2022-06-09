@@ -18,7 +18,7 @@ export default function Main(props) {
                                     <h5><a className={props.dark === "dark" ? "dark" : ""} href={item.link} target="_blank" rel="noreferrer">{item.title}</a></h5>
                                     <h6 className={props.dark === "dark" ? "dark" : ""}>{item.description}</h6>
                                 </div>
-                                {item.imageUrl !== null ? <img id="article-image" src={item.imageUrl} alt="" /> : ""}
+                                {item.image_url !== null ? <img id="article-image" src={item.image_url} alt="" /> : ""}
                             </Card>)
                     })}
                 </div>
