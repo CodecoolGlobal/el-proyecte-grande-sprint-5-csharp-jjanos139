@@ -12,14 +12,6 @@ span {
   color: #0366d6;
 }
 
-.h5-dark {
-  color: #d9e4f0;
-}
-
-.h6-dark {
-  color: #aab0b7;
-}
-
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;
@@ -85,16 +77,8 @@ body {
   /* Vertically center the text there */
 }
 
-.body-dark {
-  background-color: rgb(79, 74, 74) !important;
-}
-
 .lowerbar {
   background-color: #0E67B4 !important;
-}
-
-.lowerbar-dark {
-  background-color: #575c61 !important;
 }
 
 .navbar-brand,
@@ -106,9 +90,6 @@ body {
   background-color: #050859 !important;
 }
 
-.topbar-dark {
-  background-color: #101012 !important;
-}
 
 #date-and-name,
 #weather-and-exchange {
@@ -195,21 +176,46 @@ body {
   border: 5px solid bisque;
 }
 
-.photo-dark {
+.photo-outer-div {
+  border: 5px solid brown;
+}
+
+.photo-light.dark {
   border: 5px solid rgb(228, 226, 224) !important;
 }
+
 
 #body {
   width: 85%;
   text-align: justify;
 }
 
-.photo-outer-div {
-  border: 5px solid brown;
+body.dark {
+  background-color: rgb(79, 74, 74) !important;
 }
 
-.photo-outer-div-dark {
+.lowerbar.dark {
+  background-color: #575c61 !important;
+}
+
+.topbar.dark {
+  background-color: #101012 !important;
+}
+
+.photo-outer-div.dark {
   border: 5px solid #575c61 !important;
+}
+
+h5.dark {
+  color: #d9e4f0;
+}
+
+h6.dark {
+  color: #aab0b7;
+}
+
+.photo.dark {
+  border: 5px solid rgb(228, 226, 224) !important;
 }
 
 #color-scheme {
