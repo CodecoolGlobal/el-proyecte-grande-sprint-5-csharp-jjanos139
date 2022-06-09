@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import './menu.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './sidebarScript'
+import 'bootstrap/js/dist/dropdown';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

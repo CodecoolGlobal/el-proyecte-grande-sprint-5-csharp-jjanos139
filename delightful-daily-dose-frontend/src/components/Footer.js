@@ -3,7 +3,6 @@ export default function Footer() {
     function loadJoke() {
         window.fetch(`Home/GetJoke`).then((response) => {
             response.json().then((data) => {
-                console.log(data);
                 let joke = document.getElementById("joke");
                 joke.innerHTML = data["contents"]["jokes"]["joke"]["title"];
                 joke.addEventListener("mouseover", () => {
