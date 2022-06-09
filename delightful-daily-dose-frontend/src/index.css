@@ -134,7 +134,7 @@ body {
 
 #sitename {
   margin-right: auto;
-  margin-left: -100px;
+  margin-left: -165px;
 }
 
 #sidebar {
@@ -147,6 +147,7 @@ body {
 }
 
 #menudiv {
+  margin-left: 73px;
   margin-right: auto;
   display: flex;
 }
@@ -159,11 +160,11 @@ body {
 }
 
 #dogdiv {
-  top: 340px;
+  top: 355px;
 }
 
 #naturediv {
-  top: 120px;
+  top: 130px;
 }
 
 #photo,
