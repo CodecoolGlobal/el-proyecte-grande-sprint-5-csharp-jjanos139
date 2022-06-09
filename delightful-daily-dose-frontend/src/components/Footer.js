@@ -1,4 +1,4 @@
-export default function Footer() {
+export default function Footer(props) {
 
     function loadJoke() {
         window.fetch(`Home/GetJoke`).then((response) => {
@@ -18,7 +18,7 @@ export default function Footer() {
     return (
         <footer className="border-top footer text-muted">
             <div className="container">
-                &copy; 2022 - Delightful Daily Dose - <a asp-area="" asp-controller="Home" asp-action="Credits">Credits</a>
+                &copy; 2022 - Delightful Daily Dose - <span>Credits</span>
                 - Joke of the day: <span className="text-center" id="joke"></span>
             </div>
         </footer>

@@ -1,4 +1,4 @@
-import { Component, useEffect } from 'react';
+import { Component } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownMenu from 'react-bootstrap/DropdownMenu';
 import DropdownToggle from 'react-bootstrap/esm/DropdownToggle';
@@ -11,8 +11,8 @@ export default class Sidebar extends Component {
         var isClosed = false;
         var offCanvas = document.querySelector('[data-toggle="offcanvas"]');
         var wrapper = document.querySelector('#wrapper');
-        trigger.addEventListener('click', ()=>{
-            if (isClosed == true) {
+        trigger.addEventListener('click', () => {
+            if (isClosed === true) {
                 overlay.style.visibility = 'hidden';
                 trigger.classList.remove('is-open');
                 trigger.classList.add('is-closed');
@@ -28,11 +28,11 @@ export default class Sidebar extends Component {
             wrapper.classList.toggle('toggled');
         })
     }
-    
+
     render() {
-        function rendy(){
+        function rendy() {
             console.log('randy marsh')
-            }
+        }
         return (
             <div id="wrapper">
                 <div className="overlay"></div>
@@ -40,14 +40,14 @@ export default class Sidebar extends Component {
                     <ul className="nav sidebar-nav">
                         <div className="sidebar-header">
                             <div className="sidebar-brand">
-                                <span id="color-scheme">Sötét Mód</span>
+                                <span id="color-scheme" onClick={this.props.darkMode}>{this.props.dark === "dark" ? "Világos Mód" : "Sötét Mód"}</span>
                             </div>
                         </div>
                         <li><span><i id="fresh" className="fa fa-solid fa-fire"></i> Legfrissebb</span></li>
                         <li><span><i id="most-viewed" className="fa fa-solid fa-arrow-trend-up"></i> Legnézettebb</span></li>
                         <li><Dropdown>
                             <DropdownToggle as="span">
-                            <i id="category" className="fa fa-solid fa-grip-vertical"></i> Kategóriák
+                                <i id="category" className="fa fa-solid fa-grip-vertical"></i> Kategóriák
                             </DropdownToggle>
                             <ul className="animated fadeInLeft"><DropdownMenu>
                                 <li className="menu-list-item"><span id='domestic' onClick={rendy}><i className="fa fa-solid fa-flag"></i> Belföld</span></li>
