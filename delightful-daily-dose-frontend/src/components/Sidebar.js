@@ -13,12 +13,12 @@ export default class Sidebar extends Component {
         var wrapper = document.querySelector('#wrapper');
         trigger.addEventListener('click', ()=>{
             if (isClosed == true) {
-                overlay.style.visibility = 'hidden';
+                overlay.classList.add('overlayOpacity')
                 trigger.classList.remove('is-open');
                 trigger.classList.add('is-closed');
                 isClosed = false;
             } else {
-                overlay.style.visibility = 'visible'
+                overlay.classList.remove('overlayOpacity')
                 trigger.classList.remove('is-closed');
                 trigger.classList.add('is-open');
                 isClosed = true;
@@ -35,7 +35,7 @@ export default class Sidebar extends Component {
             }
         return (
             <div id="wrapper">
-                <div className="overlay"></div>
+                <div className="overlay overlayOpacity"></div>
                 <nav className="navbar navbar-inverse fixed-top" id="sidebar-wrapper" role="navigation">
                     <ul className="nav sidebar-nav">
                         <div className="sidebar-header">
