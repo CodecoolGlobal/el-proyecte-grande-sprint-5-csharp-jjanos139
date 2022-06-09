@@ -335,7 +335,6 @@ span[href*="#followus"]::before {
 
 .overlay {
     position: fixed;
-    display: none;
     width: 100%;
     height: 100%;
     top: 0;
@@ -344,6 +343,10 @@ span[href*="#followus"]::before {
     bottom: 0;
     background-color: rgba(0, 0, 0, .5);
     z-index: 1;
+}
+
+.overlayOpacity {
+    display: none;
 }
 
 #fresh {
@@ -356,4 +359,8 @@ span[href*="#followus"]::before {
 
 #category{
     margin-right: 11px;
+}
+
+li {
+    cursor: pointer;
 }
