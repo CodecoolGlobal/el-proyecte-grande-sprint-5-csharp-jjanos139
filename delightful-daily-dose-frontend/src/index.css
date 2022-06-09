@@ -185,9 +185,8 @@ body {
   border: 5px solid rgb(228, 226, 224) !important;
 }
 
-
 #body {
-  width: 85%;
+  width: 80%;
   text-align: justify;
 }
 
@@ -218,6 +217,21 @@ h6.dark {
 .photo.dark {
   border: 5px solid rgb(228, 226, 224) !important;
 }
+
+.card.dark {
+  background-color: rgb(126, 137, 142) !important;
+}
+
+h5>a.dark,
+h5>a.dark:hover,
+h6.dark {
+  color: white !important;
+}
+
+body.dark {
+  background-color: lightsalmon;
+}
+
 
 #color-scheme {
   color: #ddd;
@@ -259,4 +273,20 @@ h6.dark {
 
 #joke {
   color: inherit;
+}
+
+.card {
+  background-color: rgb(109, 195, 234) !important;
+  margin-bottom: 20px;
+  border-radius: 15px !important;
+  padding: 10px;
+}
+
+h5>a {
+  color: #050859;
+  text-decoration: none;
+}
+
+h5>a:hover {
+  color: #050859;
 }
