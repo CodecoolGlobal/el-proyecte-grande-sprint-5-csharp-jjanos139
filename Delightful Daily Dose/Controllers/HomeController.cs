@@ -31,34 +31,34 @@ namespace Delightful_Daily_Dose.Controllers
         
         public async Task<string> GetJoke()
         {
-            //string apiUrl = "https://api.jokes.one/jod?category=animal";
-            //return await APIHelper.GetApi(apiUrl);
+            string apiUrl = "https://api.jokes.one/jod?category=animal";
+            return await APIHelper.GetApi(apiUrl);
 
-            return @"{
-                    ""success"": {
-                        ""total"": 1
-                    },
-                    ""contents"": {
-                        ""jokes"": {
-                            ""description"": ""Animal Joke of the day"",
-                            ""language"": ""en"",
-                            ""background"": """",
-                            ""category"": ""animal"",
-                            ""date"": ""2022-06-08"",
-                            ""joke"": {
-                                ""title"": ""A bat joke."",
-                                ""lang"": ""en"",
-                                ""length"": 274,
-                                ""clean"": 0,
-                                ""racial"": 0,
-                                ""date"": ""2022-06-08"",
-                                ""id"": ""agGBZojZb0cGOMpquWawbQeF"",
-                                ""text"": ""A group of bats, hanging at the ceiling of a cave, discovers a single bat STANDING upright underneath on the floor of the cave. Surprised by this unusual behavior, they ask this fellow: \""What the heck are you doing down there?\"" And the fellow shouts back: \""Yoga!\""""
-                            }
-                        },
-                        ""copyright"": ""2019-20 https://jokes.one""
-                }
-            }";
+            //return @"{
+            //        ""success"": {
+            //            ""total"": 1
+            //        },
+            //        ""contents"": {
+            //            ""jokes"": {
+            //                ""description"": ""Animal Joke of the day"",
+            //                ""language"": ""en"",
+            //                ""background"": """",
+            //                ""category"": ""animal"",
+            //                ""date"": ""2022-06-08"",
+            //                ""joke"": {
+            //                    ""title"": ""A bat joke."",
+            //                    ""lang"": ""en"",
+            //                    ""length"": 274,
+            //                    ""clean"": 0,
+            //                    ""racial"": 0,
+            //                    ""date"": ""2022-06-08"",
+            //                    ""id"": ""agGBZojZb0cGOMpquWawbQeF"",
+            //                    ""text"": ""A group of bats, hanging at the ceiling of a cave, discovers a single bat STANDING upright underneath on the floor of the cave. Surprised by this unusual behavior, they ask this fellow: \""What the heck are you doing down there?\"" And the fellow shouts back: \""Yoga!\""""
+            //                }
+            //            },
+            //            ""copyright"": ""2019-20 https://jokes.one""
+            //    }
+            //}";
         }
         
         public async Task<string> GetDog()
