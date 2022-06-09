@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Delightful_Daily_Dose.Helpers;
+using Newtonsoft.Json;
 
 namespace Delightful_Daily_Dose.Controllers
 {
@@ -26,9 +27,9 @@ namespace Delightful_Daily_Dose.Controllers
         public async Task<IActionResult> Index()
         {
             List<News> news = await APIHelper.GetNews(ApiUrl);
-            return View("News", news);
+            return Json(news);
         }
-        
+
         public async Task<string> GetJoke()
         {
             //string apiUrl = "https://api.jokes.one/jod?category=animal";
