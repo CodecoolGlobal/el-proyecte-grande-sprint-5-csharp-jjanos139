@@ -13,6 +13,7 @@ export default class App extends Component {
             news: []
         };
         this.darkMode = this.darkMode.bind(this);
+        this.changeNewsSource = this.changeNewsSource.bind(this)
     }
     darkMode() {
         if (this.state.data === "") {
@@ -24,10 +25,14 @@ export default class App extends Component {
         }
     }
 
-    componentDidMount() {
-        fetch('/Home')
+    changeNewsSource(source) {
+        fetch(source)
             .then(response => response.json())
             .then(data => { this.setState({ news: data }) });
+    }
+
+    componentDidMount() {
+        this.changeNewsSource("/Home")
     }
 
     render() {
@@ -35,7 +40,7 @@ export default class App extends Component {
         return (
             <>
                 <Header dark={this.state.data} />
-                <Sidebar dark={this.state.data} darkMode={this.darkMode} />
+                <Sidebar dark={this.state.data} darkMode={this.darkMode} changeNewsSource={this.changeNewsSource} />
                 <Main dark={this.state.data} news={this.state.news} />
                 <Footer dark={this.state.data} />
             </>
