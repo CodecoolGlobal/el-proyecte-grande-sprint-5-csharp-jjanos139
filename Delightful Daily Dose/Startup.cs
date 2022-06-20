@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Delightful_Daily_Dose.Helpers;
+using Delightful_Daily_Dose.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Delightful_Daily_Dose
 {
@@ -24,6 +26,9 @@ namespace Delightful_Daily_Dose
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ApiContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddControllersWithViews();
             services.AddSingleton<ApiHelper>();
         }
