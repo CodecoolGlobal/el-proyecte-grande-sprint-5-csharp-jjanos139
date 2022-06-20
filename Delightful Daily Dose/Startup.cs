@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Delightful_Daily_Dose.Helpers;
 
 namespace Delightful_Daily_Dose
 {
@@ -24,6 +25,7 @@ namespace Delightful_Daily_Dose
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddSingleton<ApiHelper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
