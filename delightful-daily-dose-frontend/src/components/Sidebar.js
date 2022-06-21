@@ -2,6 +2,7 @@ import { Component } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownMenu from 'react-bootstrap/DropdownMenu';
 import DropdownToggle from 'react-bootstrap/esm/DropdownToggle';
+import { Link } from 'react-router-dom';
 
 export default class Sidebar extends Component {
     componentDidMount() {
@@ -39,14 +40,14 @@ export default class Sidebar extends Component {
                                 <span id="color-scheme" onClick={this.props.darkMode}>{this.props.dark === "dark" ? "Világos Mód" : "Sötét Mód"}</span>
                             </div>
                         </div>
-                        <li><span onClick={() => this.props.changeNewsSource("/Home")}><i id="fresh" className="fa fa-solid fa-fire"></i> Legfrissebb</span></li>
+                        <li><Link to="/"><span onClick={() => this.props.changeNewsSource("/Home")}><i id="fresh" className="fa fa-solid fa-fire"></i> Legfrissebb</span></Link></li>
                         <li><span onClick={() => this.props.changeNewsSource("/Home")}><i id="most-viewed" className="fa fa-solid fa-arrow-trend-up"></i> Legnézettebb</span></li>
                         <li><Dropdown>
                             <DropdownToggle as="span">
                                 <i id="category" className="fa fa-solid fa-grip-vertical"></i> Kategóriák
                             </DropdownToggle>
                             <ul className="animated fadeInLeft"><DropdownMenu>
-                                <li className="menu-list-item"><span id='domestic' onClick={() => this.props.changeNewsSource("/Home")}><i className="fa fa-solid fa-flag"></i> Belföld</span></li>
+                                <li className="menu-list-item"><span id='domestic' onClick={() => this.props.changeNewsSource("/Home")}><i className="fa fa-solid fa-flag"></i> Domestic</span></li>
                                 <li className="menu-list-item"><span id='foreign' onClick={() => this.props.changeNewsSource("/Home/Foreign")}><i className="fa fa-solid fa-globe"></i> Külföld</span></li>
                                 <li className="menu-list-item"><span id='sport' onClick={() => this.props.changeNewsSource("/Home/Sport")}><i className="fa fa-solid fa-baseball"></i> Sport</span></li>
                                 <li className="menu-list-item"><span id='culinary' onClick={() => this.props.changeNewsSource("/Home/Culinary")}><i className="fa fa-solid fa-utensils"></i> Gasztronómia</span></li>
@@ -59,6 +60,7 @@ export default class Sidebar extends Component {
                             </DropdownMenu>
                             </ul>
                         </Dropdown></li>
+                        <li><Link to="box_office_top_10"><span onClick={this.props.changeMovieState}><i className="fa-solid fa-film"></i> Box Office Top 10 US</span></Link></li>
                         <li><span><i className="fa fa-brands fa-twitter"></i> Follow us</span></li>
                     </ul>
                 </nav>
