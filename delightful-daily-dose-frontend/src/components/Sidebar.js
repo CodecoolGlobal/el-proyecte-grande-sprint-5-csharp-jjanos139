@@ -36,26 +36,26 @@ export default class Sidebar extends Component {
                     <ul className="nav sidebar-nav">
                         <div className="sidebar-header">
                             <div className="sidebar-brand">
-                                <span id="color-scheme" onClick={this.props.darkMode}>{this.props.dark === "dark" ? "Világos Mód" : "Sötét Mód"}</span>
+                                <span id="color-scheme" onClick={this.props.darkMode}>{this.props.dark === "dark" ? "Light Mode" : "Dark Mode"}</span>
                             </div>
                         </div>
-                        <li><span onClick={() => this.props.changeNewsSource("/Home")}><i id="fresh" className="fa fa-solid fa-fire"></i> Legfrissebb</span></li>
-                        <li><span onClick={() => this.props.changeNewsSource("/Home")}><i id="most-viewed" className="fa fa-solid fa-arrow-trend-up"></i> Legnézettebb</span></li>
+                        <li><span onClick={() => this.props.changeNewsSource("/Home")}><i id="fresh" className="fa fa-solid fa-fire"></i> Hot</span></li>
+                        <li><span onClick={() => this.props.changeNewsSource("/Home")}><i id="most-viewed" className="fa fa-solid fa-arrow-trend-up"></i> Most Viewed</span></li>
                         <li><Dropdown>
                             <DropdownToggle as="span">
-                                <i id="category" className="fa fa-solid fa-grip-vertical"></i> Kategóriák
+                                <i id="category" className="fa fa-solid fa-grip-vertical"></i> Categories
                             </DropdownToggle>
                             <ul className="animated fadeInLeft"><DropdownMenu>
-                                <li className="menu-list-item"><span id='domestic' onClick={() => this.props.changeNewsSource("/Home")}><i className="fa fa-solid fa-flag"></i> Belföld</span></li>
-                                <li className="menu-list-item"><span id='foreign' onClick={() => this.props.changeNewsSource("/Home/Foreign")}><i className="fa fa-solid fa-globe"></i> Külföld</span></li>
+                                <li className="menu-list-item"><span id='domestic' onClick={() => this.props.changeNewsSource("/Home/Domestic")}><i className="fa fa-solid fa-flag"></i> Domestic</span></li>
+                                <li className="menu-list-item"><span id='foreign' onClick={() => this.props.changeNewsSource("/Home/Foreign")}><i className="fa fa-solid fa-globe"></i> World</span></li>
                                 <li className="menu-list-item"><span id='sport' onClick={() => this.props.changeNewsSource("/Home/Sport")}><i className="fa fa-solid fa-baseball"></i> Sport</span></li>
-                                <li className="menu-list-item"><span id='culinary' onClick={() => this.props.changeNewsSource("/Home/Culinary")}><i className="fa fa-solid fa-utensils"></i> Gasztronómia</span></li>
-                                <li className="menu-list-item"><span id='health' onClick={() => this.props.changeNewsSource("/Home/Health")}><i className="fa fa-solid fa-heart"></i> Egészség</span></li>
-                                <li className="menu-list-item"><span id='politics' onClick={() => this.props.changeNewsSource("/Home/Politics")}><i className="fa fa-solid fa-landmark"></i> Politika</span></li>
-                                <li className="menu-list-item"><span id='entertainment' onClick={() => this.props.changeNewsSource("/Home/Entertainment")}><i className="fa fa-solid fa-smile"></i> Szórakozás</span></li>
-                                <li className="menu-list-item"><span id='environment' onClick={() => this.props.changeNewsSource("/Home/Environment")}><i className="fa fa-solid fa-tree"></i> Környezet</span></li>
-                                <li className="menu-list-item"><span id='techworld' onClick={() => this.props.changeNewsSource("/Home/Techworld")}><i className="fa fa-solid fa-microchip"></i> Techvilág</span></li>
-                                <li className="menu-list-item"><span id='business' onClick={() => this.props.changeNewsSource("/Home/Business")}><i className="fa fa-solid fa-briefcase"></i> Gazdaság</span></li>
+                                <li className="menu-list-item"><span id='culinary' onClick={() => this.props.changeNewsSource("/Home/Culinary")}><i className="fa fa-solid fa-utensils"></i> Gastronomy</span></li>
+                                <li className="menu-list-item"><span id='health' onClick={() => this.props.changeNewsSource("/Home/Health")}><i className="fa fa-solid fa-heart"></i> Health</span></li>
+                                <li className="menu-list-item"><span id='politics' onClick={() => this.props.changeNewsSource("/Home/Politics")}><i className="fa fa-solid fa-landmark"></i> Politics</span></li>
+                                <li className="menu-list-item"><span id='entertainment' onClick={() => this.props.changeNewsSource("/Home/Entertainment")}><i className="fa fa-solid fa-smile"></i> Entertainment</span></li>
+                                <li className="menu-list-item"><span id='environment' onClick={() => this.props.changeNewsSource("/Home/Environment")}><i className="fa fa-solid fa-tree"></i> Environment</span></li>
+                                <li className="menu-list-item"><span id='techworld' onClick={() => this.props.changeNewsSource("/Home/Techworld")}><i className="fa fa-solid fa-microchip"></i> TechWorld</span></li>
+                                <li className="menu-list-item"><span id='business' onClick={() => this.props.changeNewsSource("/Home/Business")}><i className="fa fa-solid fa-briefcase"></i> Economy</span></li>
                             </DropdownMenu>
                             </ul>
                         </Dropdown></li>
