@@ -22,7 +22,7 @@ namespace Delightful_Daily_Dose.Controllers
         [Route("/[controller]")]
         public async Task<List<News>> Index()
         {
-            string ApiUrl = "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=hu";
+            string ApiUrl = "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=en&category=world";
             List<News> news = await _apiHelper.GetNews(ApiUrl);
             return news;
 
@@ -32,7 +32,7 @@ namespace Delightful_Daily_Dose.Controllers
         public async Task<List<News>> Business()
         {
             string ApiUrl =
-                "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&country=hu&category=business";
+                "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=en&category=business";
             List <News> news = await _apiHelper.GetNews(ApiUrl);
             return news;
         }
@@ -41,7 +41,7 @@ namespace Delightful_Daily_Dose.Controllers
         public async Task<List<News>> Culinary()
         {
             string ApiUrl =
-                "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=hu&category=food";
+                "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=en&category=food";
             List <News> news = await _apiHelper.GetNews(ApiUrl);
             return news;
         }
@@ -58,7 +58,7 @@ namespace Delightful_Daily_Dose.Controllers
         public async Task<List<News>> Economics()
         {
             string ApiUrl =
-                "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=hu&category=economics";
+                "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=en&category=economics";
             List <News> news = await _apiHelper.GetNews(ApiUrl);
             return news;
         }
@@ -67,7 +67,7 @@ namespace Delightful_Daily_Dose.Controllers
         public async Task<List<News>> Entertainment()
         {
             string ApiUrl =
-                "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=hu&category=entertainment";
+                "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=en&category=entertainment";
             List <News> news = await _apiHelper.GetNews(ApiUrl);
             return news;
         }
@@ -76,7 +76,7 @@ namespace Delightful_Daily_Dose.Controllers
         public async Task<List<News>> Environment()
         {
             string ApiUrl =
-                "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=hu&category=environment";
+                "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=en&category=environment";
             List <News> news = await _apiHelper.GetNews(ApiUrl);
             return news;
         }
@@ -94,7 +94,7 @@ namespace Delightful_Daily_Dose.Controllers
         public async Task<List<News>> Fresh()
         {
             string ApiUrl =
-                "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&country=hu&category=business,health,politics,top,world";
+                "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=en&category=business,health,politics,top,world";
             List <News> news = await _apiHelper.GetNews(ApiUrl);
             return news;
         }
@@ -103,7 +103,7 @@ namespace Delightful_Daily_Dose.Controllers
         public async Task<List<News>> Health()
         {
             string ApiUrl =
-                "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=hu&category=health";
+                "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=en&category=health";
             List <News> news = await _apiHelper.GetNews(ApiUrl);
             return news;
         }
@@ -112,7 +112,7 @@ namespace Delightful_Daily_Dose.Controllers
         public async Task<List<News>> MostViewed()
         {
             string ApiUrl =
-                "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=hu&category=top";
+                "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=en&category=top";
             List <News> news = await _apiHelper.GetNews(ApiUrl);
             return news;
         }
@@ -121,7 +121,7 @@ namespace Delightful_Daily_Dose.Controllers
         public async Task<List<News>> Politics()
         {
             string ApiUrl =
-                "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=hu&category=politics";
+                "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=en&category=politics";
             List <News> news = await _apiHelper.GetNews(ApiUrl);
             return news;
         }
@@ -130,7 +130,7 @@ namespace Delightful_Daily_Dose.Controllers
         public async Task<List<News>> Sport()
         {
             string ApiUrl =
-                "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=hu&category=sports";
+                "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&language=en&category=sports";
             List <News> news = await _apiHelper.GetNews(ApiUrl);
             return news;
         }
@@ -139,7 +139,7 @@ namespace Delightful_Daily_Dose.Controllers
         public async Task<List<News>> TechWorld()
         {
             string ApiUrl =
-                "https://newsdata.io/api/1/news?apikey=pub_7682df2f939752b8d025143691aa2d432601&country=hu&category=science,technology";
+                "https://newsdata.io/api/1/news?apikey=pub_7682df2f939752b8d025143691aa2d432601&language=en&category=science,technology";
             List <News> news = await _apiHelper.GetNews(ApiUrl);
             return news;
         }
@@ -229,15 +229,22 @@ namespace Delightful_Daily_Dose.Controllers
             //}";
         }
 
-        //public IActionResult Credits()
-        //{
-        //    return View();
-        //}
+        [Route("/[controller]/GetTopBoxOffice")]
+        public async Task<string> GetTopBoxOffice()
+        {
+            string apiUrl = "https://imdb-api.com/en/API/BoxOffice/k_isz4vrmq";
+            return await _apiHelper.GetApi(apiUrl);
+        }
 
-        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        //public IActionResult Error()
-        //{
-        //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        //}
-    }
+        //public IActionResult Credits()
+            //{
+            //    return View();
+            //}
+
+            //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+            //public IActionResult Error()
+            //{
+            //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            //}
+        }
 }
