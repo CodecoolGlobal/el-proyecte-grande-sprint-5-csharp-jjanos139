@@ -6,10 +6,6 @@ export default function News(props) {
     return (
         <div className="container">
             <main role="main" className="pb-3">
-                <div className="text-center">
-                    <h1 className="display-4">News</h1>
-                    <br />
-                </div>
                 <div id="body">
                     {news.map((item) => {
                         return (
