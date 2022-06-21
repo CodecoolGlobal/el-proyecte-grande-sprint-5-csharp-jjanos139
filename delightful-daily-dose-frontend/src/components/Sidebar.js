@@ -2,6 +2,7 @@ import { Component } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownMenu from 'react-bootstrap/DropdownMenu';
 import DropdownToggle from 'react-bootstrap/esm/DropdownToggle';
+import { Link } from 'react-router-dom';
 
 export default class Sidebar extends Component {
     componentDidMount() {
@@ -39,7 +40,7 @@ export default class Sidebar extends Component {
                                 <span id="color-scheme" onClick={this.props.darkMode}>{this.props.dark === "dark" ? "Light Mode" : "Dark Mode"}</span>
                             </div>
                         </div>
-                        <li><span onClick={() => this.props.changeNewsSource("/Home")}><i id="fresh" className="fa fa-solid fa-fire"></i> Hot</span></li>
+                        <li><Link to="/"><span onClick={() => this.props.changeNewsSource("/Home")}><i id="fresh" className="fa fa-solid fa-fire"></i> Hot</span></Link></li>
                         <li><span onClick={() => this.props.changeNewsSource("/Home")}><i id="most-viewed" className="fa fa-solid fa-arrow-trend-up"></i> Most Viewed</span></li>
                         <li><Dropdown>
                             <DropdownToggle as="span">
@@ -59,6 +60,7 @@ export default class Sidebar extends Component {
                             </DropdownMenu>
                             </ul>
                         </Dropdown></li>
+                        <li><Link to="box_office_top_10"><span onClick={this.props.changeMovieState}><i className="fa-solid fa-film"></i> Box Office Top 10 US</span></Link></li>
                         <li><span><i className="fa fa-brands fa-twitter"></i> Follow us</span></li>
                     </ul>
                 </nav>
