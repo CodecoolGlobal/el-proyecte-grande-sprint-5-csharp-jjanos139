@@ -275,6 +275,10 @@ body.dark {
     .credits-name {
         font-size: 25px !important;
     }
+
+    .youtube-iframe {
+        width: 200px !important;
+    }
 }
 
 @media screen and (max-width: 770px) {
@@ -284,6 +288,14 @@ body.dark {
 
     .credits-name {
         font-size: 18px !important;
+    }
+
+    .youtube-text {
+        display: none !important;
+    }
+
+    .youtube-iframe {
+        max-width: 100% !important;
     }
 }
 
@@ -394,4 +406,8 @@ h5>a:hover {
 
 .coming-soon-text {
     font-size: 10px;
+}
+
+.youtube-iframe {
+    border-radius: 25px;
 }

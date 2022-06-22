@@ -61,7 +61,8 @@ export default class Sidebar extends Component {
                         </Dropdown></li>
                         <li><Link to="/box_office_top_10"><span><i className="fa-solid fa-film"></i> Box Office Top 10 US</span></Link></li>
                         <li><Link to="/coming_soon"><span><i className="fa-solid fa-film"></i> Coming Soon</span></Link></li>
-                        <li><Link to="/imdb_top_100_tv_shows"><span><i className="fa-solid fa-tv"></i> IMDB Top 100 TV</span></Link></li>
+                        <li><Link to="/imdb_top_100_tv_shows"><span><i className="fa-solid fa-tv"></i> <i style={{ color: "yellow", fontSize: "20px" }} className="fa-brands fa-imdb"></i> Top 100 TV</span></Link></li>
+                        <li><Link to="/youtube_top_25"><span><i className="fa-brands fa-youtube"></i> <i style={{ color: "red" }} className="fa-solid fa-fire"></i> YouTube </span></Link></li>
                         <li><a href="https://twitter.com/delightfuldd1" target="_blank" rel="noreferrer"><span><i className="fa fa-brands fa-twitter"></i> Follow us</span></a></li>
                     </ul>
                 </nav>
