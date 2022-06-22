@@ -6,9 +6,10 @@ import App from './App';
 import Error from './components/Error';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Credits from './components/Credits';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './sidebarScript'
+import './sidebarScript';
 import 'bootstrap/js/dist/dropdown';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import {
@@ -34,6 +35,17 @@ root.render(
             <Route path="/techworld" element={<App />}></Route>
             <Route path="/business" element={<App />}></Route>
             <Route path="/box_office_top_10" element={<App />}></Route>
+            <Route
+                path="/credits"
+                element={
+                    <>
+                        <Header />
+                        <Credits />
+                        <Footer />
+                    </>
+                }>
+
+            </Route>
             <Route
                 path="*"
                 element={
