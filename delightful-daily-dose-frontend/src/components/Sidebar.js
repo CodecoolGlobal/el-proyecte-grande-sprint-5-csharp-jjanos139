@@ -28,7 +28,6 @@ export default class Sidebar extends Component {
             wrapper.classList.toggle('toggled');
         })
     }
-
     render() {
         return (
             <div id="wrapper">
@@ -41,27 +40,33 @@ export default class Sidebar extends Component {
                             </div>
                         </div>
                         <li><Link to="/"><span onClick={() => this.props.changeNewsSource("/Home")}><i id="fresh" className="fa fa-solid fa-fire"></i> Hot</span></Link></li>
-                        <li><span onClick={() => this.props.changeNewsSource("/Home")}><i id="most-viewed" className="fa fa-solid fa-arrow-trend-up"></i> Most Viewed</span></li>
+                        <li><Link to="/most_viewed"><span onClick={() => this.props.changeNewsSource("/Home")}><i id="most-viewed" className="fa fa-solid fa-arrow-trend-up"></i> Most Viewed</span></Link></li>
                         <li><Dropdown>
                             <DropdownToggle as="span">
                                 <i id="category" className="fa fa-solid fa-grip-vertical"></i> Categories
                             </DropdownToggle>
                             <ul className="animated fadeInLeft"><DropdownMenu>
-                                <li className="menu-list-item"><span id='domestic' onClick={() => this.props.changeNewsSource("/Home/Domestic")}><i className="fa fa-solid fa-flag"></i> Domestic</span></li>
-                                <li className="menu-list-item"><span id='foreign' onClick={() => this.props.changeNewsSource("/Home/Foreign")}><i className="fa fa-solid fa-globe"></i> World</span></li>
-                                <li className="menu-list-item"><span id='sport' onClick={() => this.props.changeNewsSource("/Home/Sport")}><i className="fa fa-solid fa-baseball"></i> Sport</span></li>
-                                <li className="menu-list-item"><span id='culinary' onClick={() => this.props.changeNewsSource("/Home/Culinary")}><i className="fa fa-solid fa-utensils"></i> Gastronomy</span></li>
-                                <li className="menu-list-item"><span id='health' onClick={() => this.props.changeNewsSource("/Home/Health")}><i className="fa fa-solid fa-heart"></i> Health</span></li>
-                                <li className="menu-list-item"><span id='politics' onClick={() => this.props.changeNewsSource("/Home/Politics")}><i className="fa fa-solid fa-landmark"></i> Politics</span></li>
-                                <li className="menu-list-item"><span id='entertainment' onClick={() => this.props.changeNewsSource("/Home/Entertainment")}><i className="fa fa-solid fa-smile"></i> Entertainment</span></li>
-                                <li className="menu-list-item"><span id='environment' onClick={() => this.props.changeNewsSource("/Home/Environment")}><i className="fa fa-solid fa-tree"></i> Environment</span></li>
-                                <li className="menu-list-item"><span id='techworld' onClick={() => this.props.changeNewsSource("/Home/Techworld")}><i className="fa fa-solid fa-microchip"></i> TechWorld</span></li>
-                                <li className="menu-list-item"><span id='business' onClick={() => this.props.changeNewsSource("/Home/Business")}><i className="fa fa-solid fa-briefcase"></i> Economy</span></li>
+                                <li className="menu-list-item"><Link to="/domestic"><span id='domestic' onClick={() => this.props.changeNewsSource("/Home/Domestic")}><i className="fa fa-solid fa-flag"></i> Domestic</span></Link></li>
+                                <li className="menu-list-item"><Link to="/foreign"><span id='foreign' onClick={() => this.props.changeNewsSource("/Home/Foreign")}><i className="fa fa-solid fa-globe"></i> World</span></Link></li>
+                                <li className="menu-list-item"><Link to="/sport"><span id='sport' onClick={() => this.props.changeNewsSource("/Home/Sport")}><i className="fa fa-solid fa-baseball"></i> Sport</span></Link></li>
+                                <li className="menu-list-item"><Link to="/culinary"><span id='culinary' onClick={() => this.props.changeNewsSource("/Home/Culinary")}><i className="fa fa-solid fa-utensils"></i> Gastronomy</span></Link></li>
+                                <li className="menu-list-item"><Link to="/health"><span id='health' onClick={() => this.props.changeNewsSource("/Home/Health")}><i className="fa fa-solid fa-heart"></i> Health</span></Link></li>
+                                <li className="menu-list-item"><Link to="/politics"><span id='politics' onClick={() => this.props.changeNewsSource("/Home/Politics")}><i className="fa fa-solid fa-landmark"></i> Politics</span></Link></li>
+                                <li className="menu-list-item"><Link to="/entertainment"><span id='entertainment' onClick={() => this.props.changeNewsSource("/Home/Entertainment")}><i className="fa fa-solid fa-smile"></i> Entertainment</span></Link></li>
+                                <li className="menu-list-item"><Link to="/environment"><span id='environment' onClick={() => this.props.changeNewsSource("/Home/Environment")}><i className="fa fa-solid fa-tree"></i> Environment</span></Link></li>
+                                <li className="menu-list-item"><Link to="/techworld"><span id='techworld' onClick={() => this.props.changeNewsSource("/Home/Techworld")}><i className="fa fa-solid fa-microchip"></i> TechWorld</span></Link></li>
+                                <li className="menu-list-item"><Link to="/business"><span id='business' onClick={() => this.props.changeNewsSource("/Home/Business")}><i className="fa fa-solid fa-briefcase"></i> Economy</span></Link></li>
                             </DropdownMenu>
                             </ul>
                         </Dropdown></li>
-                        <li><Link to="box_office_top_10"><span onClick={this.props.changeMovieState}><i className="fa-solid fa-film"></i> Box Office Top 10 US</span></Link></li>
-                        <li><span><i className="fa fa-brands fa-twitter"></i> Follow us</span></li>
+                        <li>
+                            <Link to="/box_office_top_10">
+                                <span onClick={this.props.changeMovieState}>
+                                    <i className="fa-solid fa-film"></i> Box Office Top 10 US
+                                </span>
+                            </Link>
+                        </li>
+                        <li><a href="https://twitter.com/delightfuldd1" target="_blank"><span><i className="fa fa-brands fa-twitter"></i> Follow us</span></a></li>
                     </ul>
                 </nav>
                 <div id="page-content-wrapper"></div>
