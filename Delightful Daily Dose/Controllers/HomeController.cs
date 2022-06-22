@@ -210,15 +210,11 @@ namespace Delightful_Daily_Dose.Controllers
             return await _apiHelper.GetApi(apiUrl);
         }
 
-        //public IActionResult Credits()
-            //{
-            //    return View();
-            //}
-
-            //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-            //public IActionResult Error()
-            //{
-            //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-            //}
+        [Route("/[controller]/GetTopImdbTvShows")]
+        public async Task<string> GetTopImdbTvShows()
+        {
+            string apiUrl = "https://imdb-api.com/en/API/MostPopularTVs/k_isz4vrmq";
+            return await _apiHelper.GetApi(apiUrl);
         }
+    }
 }

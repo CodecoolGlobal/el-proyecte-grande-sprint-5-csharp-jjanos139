@@ -3,10 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import './menu.css';
 import App from './App';
-import Error from './components/Error';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Credits from './components/Credits';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './sidebarScript';
@@ -34,7 +30,8 @@ root.render(
             <Route path="/environment" element={<App type="news" />}></Route>
             <Route path="/techworld" element={<App type="news" />}></Route>
             <Route path="/business" element={<App type="news" />}></Route>
-            <Route path="/box_office_top_10" element={<App type="news" />}></Route>
+            <Route path="/box_office_top_10" element={<App type="movies" />}></Route>
+            <Route path="/imdb_top_100_tv_shows" element={<App type="tv-shows" />}></Route>
             <Route path="/credits" element={<App type="credits" />}></Route>
             <Route path="/*" element={<App type="error" />}></Route>
         </Routes>

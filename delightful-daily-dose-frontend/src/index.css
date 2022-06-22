@@ -4,6 +4,7 @@ for details on configuring this project to bundle and minify static web assets. 
 li>a,
 div>a {
     text-decoration: none;
+    color: unset;
 }
 
 span.navbar-brand {
