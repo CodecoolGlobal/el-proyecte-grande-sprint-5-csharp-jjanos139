@@ -8,11 +8,12 @@ export default function Movies(props) {
             <main role="main" className="pb-3">
                 <div id="body">
                     {movies.items.map((item) => {
+                        const href = "https://www.imdb.com/title/" + item.id;
                         return (
                             <Card key={item.id} className={dark === "dark" ? "dark" : ""}>
                                 <img className="box-office-image" src={item.image} alt="" />
                                 <div id="article-text">
-                                    <h5>#{item.rank} - {item.title}</h5>
+                                    <a href={href} target="_blank" ><h5>#{item.rank} - {item.title}</h5></a>
                                     <p>Weeks in Box Office: {item.weeks}</p>
                                     <p>Last weekend's gross: {item.weekend}</p>
                                     <p>Total gross: {item.gross}</p>
