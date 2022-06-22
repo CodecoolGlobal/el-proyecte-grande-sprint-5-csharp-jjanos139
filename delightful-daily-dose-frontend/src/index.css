@@ -1,7 +1,8 @@
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
-li>a {
+li>a,
+div>a {
     text-decoration: none;
 }
 
@@ -264,6 +265,24 @@ body.dark {
     #article-image {
         display: none !important;
     }
+
+    .credits-image {
+        width: 200px !important;
+    }
+
+    .credits-name {
+        font-size: 25px !important;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .credits-image {
+        width: 100px !important;
+    }
+
+    .credits-name {
+        font-size: 18px !important;
+    }
 }
 
 @media screen and (max-width: 550px) {
@@ -282,6 +301,16 @@ body.dark {
     #sitename {
         display: none !important;
     }
+
+    .credits-name {
+        top: 25% ! important;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .credits-name {
+        display: none !important;
+    }
 }
 
 @media screen and (max-width: 425px) {
@@ -290,9 +319,11 @@ body.dark {
     }
 }
 
-/* @media screen and (max-width: 332px) {
-
-} */
+@media screen and (max-width: 325px) {
+    .credits-image {
+        display: none !important;
+    }
+}
 
 #joke {
     color: inherit;
@@ -342,4 +373,15 @@ h5>a:hover {
     width: 100px;
     height: 152px;
     margin-left: 20px;
+}
+
+.credits-image {
+    width: 300px;
+}
+
+.credits-name {
+    left: 50%;
+    position: absolute;
+    top: 40%;
+    font-size: 40px;
 }
