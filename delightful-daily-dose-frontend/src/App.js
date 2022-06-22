@@ -4,6 +4,7 @@ import Sidebar from "./components/Sidebar";
 import News from "./components/News";
 import Movies from "./components/Movies";
 import TvShows from "./components/TvShows";
+import ComingSoon from "./components/ComingSoon";
 import Credits from "./components/Credits";
 import Error from "./components/Error";
 import { Component } from "react";
@@ -16,12 +17,14 @@ export default class App extends Component {
             data: "",
             news: [],
             movies: [],
-            tvshows: []
+            tvshows: [],
+            comingSoon: []
         };
         this.darkMode = this.darkMode.bind(this);
         this.changeNewsSource = this.changeNewsSource.bind(this);
         this.getTopBoxOffice = this.getTopBoxOffice.bind(this);
         this.getTopImdbTvShows = this.getTopImdbTvShows.bind(this);
+        this.getComingSoonToBoxOffice = this.getComingSoonToBoxOffice.bind(this);
     }
     darkMode() {
         if (this.state.data === "") {
@@ -43,11 +46,13 @@ export default class App extends Component {
         this.changeNewsSource("/Home");
         this.getTopBoxOffice();
         this.getTopImdbTvShows();
+        this.getComingSoonToBoxOffice();
     }
 
     componentDidCatch() {
         this.getTopBoxOffice();
         this.getTopImdbTvShows();
+        this.getComingSoonToBoxOffice();
     }
 
     getTopBoxOffice() {
@@ -62,6 +67,12 @@ export default class App extends Component {
             .then(data => { this.setState({ tvshows: data }) });
     }
 
+    getComingSoonToBoxOffice() {
+        fetch(`Home/GetComingSoonToBoxOffice`)
+            .then(response => response.json())
+            .then(data => { this.setState({ comingSoon: data }) });
+    }
+
     render() {
         return (
             <>
@@ -70,6 +81,7 @@ export default class App extends Component {
                 {this.props.type === "news" ? <News dark={this.state.data} news={this.state.news} /> : ""}
                 {this.props.type === "movies" ? <Movies dark={this.state.data} movies={this.state.movies} /> : ""}
                 {this.props.type === "tv-shows" ? <TvShows dark={this.state.data} tvshows={this.state.tvshows} /> : ""}
+                {this.props.type === "coming-soon" ? <ComingSoon dark={this.state.data} comingSoon={this.state.comingSoon} /> : ""}
                 {this.props.type === "credits" ? <Credits /> : ""}
                 {this.props.type === "error" ? <Error /> : ""}
                 <Footer dark={this.state.data} />

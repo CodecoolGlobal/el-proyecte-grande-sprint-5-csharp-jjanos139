@@ -216,5 +216,12 @@ namespace Delightful_Daily_Dose.Controllers
             string apiUrl = "https://imdb-api.com/en/API/MostPopularTVs/k_isz4vrmq";
             return await _apiHelper.GetApi(apiUrl);
         }
+
+        [Route("/[controller]/GetComingSoonToBoxOffice")]
+        public async Task<string> GetComingSoonToBoxOffice()
+        {
+            string apiUrl = "https://imdb-api.com/en/API/ComingSoon/k_isz4vrmq";
+            return await _apiHelper.GetApi(apiUrl);
+        }
     }
 }
