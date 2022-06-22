@@ -229,15 +229,22 @@ namespace Delightful_Daily_Dose.Controllers
             //}";
         }
 
-        //public IActionResult Credits()
-        //{
-        //    return View();
-        //}
+        [Route("/[controller]/GetTopBoxOffice")]
+        public async Task<string> GetTopBoxOffice()
+        {
+            string apiUrl = "https://imdb-api.com/en/API/BoxOffice/k_isz4vrmq";
+            return await _apiHelper.GetApi(apiUrl);
+        }
 
-        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        //public IActionResult Error()
-        //{
-        //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        //}
-    }
+        //public IActionResult Credits()
+            //{
+            //    return View();
+            //}
+
+            //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+            //public IActionResult Error()
+            //{
+            //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            //}
+        }
 }
