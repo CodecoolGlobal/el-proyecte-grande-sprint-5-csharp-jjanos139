@@ -2,12 +2,14 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Sidebar from "./components/Sidebar";
 import Main from "./components/Main";
+import Credits from "./components/Credits";
+import Error from "./components/Error";
 import { Component } from "react";
 import React from "react";
 
 export default class App extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             data: "",
             news: [],
@@ -47,7 +49,9 @@ export default class App extends Component {
             <>
                 <Header dark={this.state.data} />
                 <Sidebar dark={this.state.data} darkMode={this.darkMode} changeNewsSource={this.changeNewsSource} changeMovieState={this.changeMovieState} />
-                <Main dark={this.state.data} news={this.state.news} movie={this.state.movie} />
+                {this.props.type === "news" ? <Main dark={this.state.data} news={this.state.news} movie={this.state.movie} /> : ""}
+                {this.props.type === "credits" ? <Credits /> : ""}
+                {this.props.type === "error" ? <Error /> : ""}
                 <Footer dark={this.state.data} />
             </>
         )
