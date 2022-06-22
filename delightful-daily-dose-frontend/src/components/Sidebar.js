@@ -59,13 +59,8 @@ export default class Sidebar extends Component {
                             </DropdownMenu>
                             </ul>
                         </Dropdown></li>
-                        <li>
-                            <Link to="/box_office_top_10">
-                                <span onClick={this.props.changeMovieState}>
-                                    <i className="fa-solid fa-film"></i> Box Office Top 10 US
-                                </span>
-                            </Link>
-                        </li>
+                        <li><Link to="/box_office_top_10"><span><i className="fa-solid fa-film"></i> Box Office Top 10 US</span></Link></li>
+                        <li><Link to="/imdb_top_100_tv_shows"><span><i className="fa-solid fa-tv"></i> IMDB TOP 100 TV</span></Link></li>
                         <li><a href="https://twitter.com/delightfuldd1" target="_blank"><span><i className="fa fa-brands fa-twitter"></i> Follow us</span></a></li>
                     </ul>
                 </nav>
