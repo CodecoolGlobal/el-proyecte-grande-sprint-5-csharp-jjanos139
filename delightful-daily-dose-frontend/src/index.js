@@ -33,6 +33,7 @@ root.render(
             <Route path="/box_office_top_10" element={<App type="movies" />}></Route>
             <Route path="/coming_soon" element={<App type="coming-soon" />}></Route>
             <Route path="/imdb_top_100_tv_shows" element={<App type="tv-shows" />}></Route>
+            <Route path="/youtube_top_25" element={<App type="youtube" />}></Route>
             <Route path="/credits" element={<App type="credits" />}></Route>
             <Route path="/*" element={<App type="error" />}></Route>
         </Routes>
