@@ -1,6 +1,6 @@
 import Card from 'react-bootstrap/Card';
 
-export default function Movies(props) {
+export default function ComingSoon(props) {
     const comingSoon = props.comingSoon;
     const dark = props.dark;
     return (
