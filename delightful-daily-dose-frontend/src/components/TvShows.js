@@ -13,12 +13,12 @@ export default function Movies(props) {
                             <Card key={item.id} className={dark === "dark" ? "dark" : ""}>
                                 <img className="box-office-image" src={item.image} alt="" />
                                 <div id="article-text">
-                                    <a href={href} target="_blank" ><h5>#{item.rank} - {item.fullTitle}</h5></a>
-                                    <p>IMDb rating: {item.imDbRating} (total: {parseInt(item.imDbRatingCount).toLocaleString('en-US')})</p>
-                                    <p>Starring: {item.crew}</p>
-                                    {item.rankUpDown === "0" ? <p><i style={{ color: "yellow" }} className="fa-solid fa-circle"></i> #{item.rank}</p> : ""}
-                                    {parseInt(item.rankUpDown) < 0 ? <p><i style={{ color: "red" }} className="fa-solid fa-circle-down"></i> #{parseInt(item.rank) + parseInt(item.rankUpDown)}</p> : ""}
-                                    {parseInt(item.rankUpDown) > 0 ? <p><i style={{ color: "green" }} className="fa-solid fa-circle-up"></i> #{parseInt(item.rank) + parseInt(item.rankUpDown)}</p> : ""}
+                                    <a href={href} target="_blank" ><h5><i style={{ color: "darkslateblue" }} className="fa-solid fa-hashtag"></i> {item.rank} - {item.fullTitle}</h5></a>
+                                    {item.rankUpDown === "0" ? <p><i style={{ color: "yellow", fontSize: "20px" }} className="fa-solid fa-circle"></i> {item.rank}</p> : ""}
+                                    {parseInt(item.rankUpDown) < 0 ? <p><i style={{ color: "red", fontSize: "20px" }} className="fa-solid fa-circle-down"></i> {parseInt(item.rank) + parseInt(item.rankUpDown)}</p> : ""}
+                                    {parseInt(item.rankUpDown) > 0 ? <p><i style={{ color: "green", fontSize: "20px" }} className="fa-solid fa-circle-up"></i> {parseInt(item.rank) + parseInt(item.rankUpDown)}</p> : ""}
+                                    <p><i style={{ color: "darkslateblue", fontSize: "30px" }} className="fa-brands fa-imdb"></i> {item.imDbRating} (total: {parseInt(item.imDbRatingCount).toLocaleString('en-US')})</p>
+                                    <p><i style={{ color: "pink", fontSize: "20px" }} className="fa-solid fa-star"></i> {item.crew}</p>
                                 </div>
                             </Card>)
                     })}
