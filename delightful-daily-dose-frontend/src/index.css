@@ -1,7 +1,8 @@
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 li>a,
-div>a {
+div>a,
+p>a {
     text-decoration: none;
     color: unset;
 }
@@ -275,6 +276,10 @@ body.dark {
     .credits-name {
         font-size: 25px !important;
     }
+
+    .youtube-iframe {
+        width: 200px !important;
+    }
 }
 
 @media screen and (max-width: 770px) {
@@ -284,6 +289,14 @@ body.dark {
 
     .credits-name {
         font-size: 18px !important;
+    }
+
+    .youtube-text {
+        display: none !important;
+    }
+
+    .youtube-iframe {
+        max-width: 100% !important;
     }
 }
 
@@ -358,23 +371,25 @@ h5>a:hover {
 
 #article-image {
     border-color: rgb(109, 195, 234) !important;
-    width: 400px;
-    margin-left: auto;
-    margin-right: 10px;
+    width: 300px;
+    margin-left: 5px;
     border-radius: 20px;
-    overflow: hidden;
     /* overflow: hidden; */
 }
 
 #article-text {
     margin-left: 10px;
     margin-right: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .box-office-image {
     width: 100px;
     height: 152px;
     margin-left: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .credits-image {
@@ -502,4 +517,10 @@ input{
 }
 .reg-topright:hover, .login-topright:hover{
     color: white;
+
+.coming-soon-text {
+    font-size: 10px;
 }
+
+.youtube-iframe {
+    border-radius: 25px;
