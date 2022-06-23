@@ -6,6 +6,8 @@ import Movies from "./components/Movies";
 import TvShows from "./components/TvShows";
 import Credits from "./components/Credits";
 import Error from "./components/Error";
+import Register from "./components/Register";
+import Login from "./components/Login";
 import { Component } from "react";
 import React from "react";
 
@@ -72,6 +74,8 @@ export default class App extends Component {
                 {this.props.type === "tv-shows" ? <TvShows dark={this.state.data} tvshows={this.state.tvshows} /> : ""}
                 {this.props.type === "credits" ? <Credits /> : ""}
                 {this.props.type === "error" ? <Error /> : ""}
+                {this.props.type === "register" ? <Register /> : ""}
+                {this.props.type === "login" ? <Login /> : ""}
                 <Footer dark={this.state.data} />
             </>
         )
