@@ -25,31 +25,31 @@ export default function Header(props) {
                 let weatherIcon = document.getElementById("weather-icon");
                 // broken clouds
                 if (data["weather"][0]["icon"] === "04d")
-                    weatherIcon.src = `http://openweathermap.org/img/wn/04d.png`;
+                    weatherIcon.src = `https://openweathermap.org/img/wn/04d.png`;
                 // clear sky
                 if (data["weather"][0]["icon"] === "01d")
-                    weatherIcon.src = `http://openweathermap.org/img/wn/01d.png`;
+                    weatherIcon.src = `https://openweathermap.org/img/wn/01d.png`;
                 // few clouds
                 if (data["weather"][0]["icon"] === "02d")
-                    weatherIcon.src = `http://openweathermap.org/img/wn/02d.png`;
+                    weatherIcon.src = `https://openweathermap.org/img/wn/02d.png`;
                 // scattered clouds
                 if (data["weather"][0]["icon"] === "03d")
-                    weatherIcon.src = `http://openweathermap.org/img/wn/03d.png`;
+                    weatherIcon.src = `https://openweathermap.org/img/wn/03d.png`;
                 // shower rain
                 if (data["weather"][0]["icon"] === "09d")
-                    weatherIcon.src = `http://openweathermap.org/img/wn/09d.png`;
+                    weatherIcon.src = `https://openweathermap.org/img/wn/09d.png`;
                 // rain
                 if (data["weather"][0]["icon"] === "10d")
-                    weatherIcon.src = `http://openweathermap.org/img/wn/10d.png`;
+                    weatherIcon.src = `https://openweathermap.org/img/wn/10d.png`;
                 // thunderstorm
                 if (data["weather"][0]["icon"] === "11d")
-                    weatherIcon.src = `http://openweathermap.org/img/wn/11d.png`;
+                    weatherIcon.src = `https://openweathermap.org/img/wn/11d.png`;
                 // snow
                 if (data["weather"][0]["icon"] === "13d")
-                    weatherIcon.src = `http://openweathermap.org/img/wn/13d.png`;
+                    weatherIcon.src = `https://openweathermap.org/img/wn/13d.png`;
                 // mist
                 if (data["weather"][0]["icon"] === "50d")
-                    weatherIcon.src = `http://openweathermap.org/img/wn/50d.png`;
+                    weatherIcon.src = `https://openweathermap.org/img/wn/50d.png`;
             });
         });
     }
@@ -62,17 +62,6 @@ export default function Header(props) {
             });
         });
     }
-
-    function runSite() {
-        loadNameDay();
-        loadWeather();
-        loadExchangeRate("EUR");
-        loadExchangeRate("USD");
-        loadDogPhoto();
-        loadNaturePhoto();
-    }
-
-    runSite();
 
     function loadDogPhoto() {
         window.fetch(`Home/GetDog`).then((response) => {
@@ -95,7 +84,13 @@ export default function Header(props) {
         const siteNameLogo = document.getElementById("sitename").firstElementChild;
         logo.src = props.dark === "dark" ? SiteLogoDark : SiteLogo;
         siteNameLogo.src = props.dark === "dark" ? SiteNameDark : SiteName;
-    }, [props.dark])
+        loadNameDay();
+        loadWeather();
+        loadExchangeRate("EUR");
+        loadExchangeRate("USD");
+        loadDogPhoto();
+        loadNaturePhoto();
+    }, [props.dark]);
 
     return (
         <header>
