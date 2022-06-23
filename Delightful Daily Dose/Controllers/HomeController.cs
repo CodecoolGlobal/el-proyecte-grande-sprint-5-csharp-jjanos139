@@ -184,7 +184,7 @@ namespace Delightful_Daily_Dose.Controllers
         public async Task<string> GetExchangeRate(string from)
         {
             string apiUrl =
-                $"https://api.apilayer.com/exchangerates_data/convert?to=HUF&from={from}&amount=1&apikey=JS7qpwEXHPVbtntwU7H69R1jHnAHj7AA";
+                $"https://api.apilayer.com/exchangerates_data/convert?to=HUF&from={from}&amount=1&apikey=x9FyrdPeE5RhuDFaLljkZtmqRGdeKL7a";
             return await _apiHelper.GetApi(apiUrl);
 
             //return @"            {

@@ -1,15 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Delightful_Daily_Dose.Models;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 namespace Delightful_Daily_Dose.Helpers
 {
     public class ApiHelper
     {
-        private readonly Dictionary<string, HttpResponseMessage> Cache = new();
+        private static readonly Dictionary<string, HttpResponseMessage> Cache = new();
+        private readonly ApiContext _context;
+
+        public ApiHelper(ApiContext context)
+        {
+            _context = context;
+        }
 
         private async Task<HttpResponseMessage> GetDataFromApi(string apiUrl)
         {
@@ -36,7 +44,7 @@ namespace Delightful_Daily_Dose.Helpers
 
         public async Task<string> GetApi(string apiUrl)
         {
-            if (!Cache.ContainsKey(apiUrl) || DateTime.Now.TimeOfDay - Cache[apiUrl].Headers.Date.GetValueOrDefault().LocalDateTime.TimeOfDay > new TimeSpan(0, 1, 0, 0))
+            if (DataNeedsToBeUpdated(apiUrl))
             {
                 Cache[apiUrl] = await GetDataFromApi(apiUrl);
             }
@@ -44,9 +52,24 @@ namespace Delightful_Daily_Dose.Helpers
             return await GetDataFromCache(apiUrl);
         }
 
+        private bool DataNeedsToBeUpdated(string apiUrl)
+        {
+            return !Cache.ContainsKey(apiUrl) || DateTime.Now.TimeOfDay - Cache[apiUrl].Headers.Date.GetValueOrDefault().LocalDateTime.TimeOfDay > new TimeSpan(0, 1, 0, 0);
+        }
+
         public async Task<List<News>> GetNews(string apiUrl)
         {
             var data = JsonConvert.DeserializeObject<Result>(await GetApi(apiUrl));
+            if (DataNeedsToBeUpdated(apiUrl))
+            {
+                await _context.News.AddRangeAsync(data!.Results.Where(
+                        entity => !_context.News
+                            .Select(n => n.Title)
+                            .Any(title => title == entity.Title)
+                    )
+                );
+                await _context.SaveChangesAsync();
+            }
             return data?.Results;
         }
     }
