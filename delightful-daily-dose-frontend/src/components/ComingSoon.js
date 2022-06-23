@@ -20,7 +20,7 @@ export default function ComingSoon(props) {
                                         {item.directorList.map((director) => {
                                             const directorHref = "https://www.imdb.com/name/" + director.id;
                                             return (
-                                                <a href={directorHref}> {director.name} </a>
+                                                <a key={director.id} href={directorHref}> {director.name} </a>
                                             )
                                         })}
                                     </p>
@@ -28,7 +28,7 @@ export default function ComingSoon(props) {
                                         {item.starList.map((star) => {
                                             const starHref = "https://www.imdb.com/name/" + star.id;
                                             return (
-                                                <a href={starHref}> {star.name} </a>
+                                                <a key={star.id} href={starHref}> {star.name} </a>
                                             )
                                         })}
                                     </p>

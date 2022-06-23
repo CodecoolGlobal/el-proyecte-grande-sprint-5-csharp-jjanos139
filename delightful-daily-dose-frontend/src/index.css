@@ -370,11 +370,9 @@ h5>a:hover {
 
 #article-image {
     border-color: rgb(109, 195, 234) !important;
-    width: 400px;
-    margin-left: auto;
-    margin-right: 10px;
+    width: 300px;
+    margin-left: 5px;
     border-radius: 20px;
-    overflow: hidden;
     /* overflow: hidden; */
 }
 

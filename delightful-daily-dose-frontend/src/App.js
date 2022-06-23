@@ -8,96 +8,89 @@ import ComingSoon from "./components/ComingSoon";
 import YouTube from "./components/YouTube";
 import Credits from "./components/Credits";
 import Error from "./components/Error";
-import { Component } from "react";
 import React from "react";
 
-export default class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            data: "",
-            news: [],
-            movies: [],
-            tvshows: [],
-            comingSoon: [],
-            youtube: []
-        };
-        this.darkMode = this.darkMode.bind(this);
-        this.changeNewsSource = this.changeNewsSource.bind(this);
-        this.getTopBoxOffice = this.getTopBoxOffice.bind(this);
-        this.getTopImdbTvShows = this.getTopImdbTvShows.bind(this);
-        this.getComingSoonToBoxOffice = this.getComingSoonToBoxOffice.bind(this);
-        this.getYoutubeMostViewed = this.getYoutubeMostViewed.bind(this);
-    }
-    darkMode() {
-        if (this.state.data === "") {
-            this.setState({ data: "dark" });
+export default function App(props) {
+    const [dark, setDark] = React.useState("");
+    const [news, setNews] = React.useState([]);
+    const [movies, setMovies] = React.useState([]);
+    const [tvshows, setTvshows] = React.useState([]);
+    const [comingSoon, setComingSoon] = React.useState([]);
+    const [youtube, setYoutube] = React.useState([]);
+
+    React.useEffect(() => {
+        // TODO : make sure it loads only once
+        changeNewsSource(`Home`);
+    }, [])
+
+    React.useEffect(() => {
+        getTopBoxOffice();
+    }, [movies])
+
+    React.useEffect(() => {
+        getTopImdbTvShows();
+    }, [tvshows])
+
+    React.useEffect(() => {
+        getComingSoonToBoxOffice();
+    }, [comingSoon])
+
+    React.useEffect(() => {
+        getYoutubeMostViewed();
+    }, [youtube])
+
+    function darkMode() {
+        if (dark === "") {
+            setDark("dark");
             document.body.classList.add('dark');
         } else {
-            this.setState({ data: "" });
+            setDark("");
             document.body.classList.remove('dark');
         }
     }
 
-    changeNewsSource(source) {
+    function changeNewsSource(source) {
         fetch(source)
             .then(response => response.json())
-            .then(data => { this.setState({ news: data }) });
+            .then(data => { setNews(data) });
     }
 
-    componentDidMount() {
-        this.changeNewsSource("/Home");
-        this.getTopBoxOffice();
-        this.getTopImdbTvShows();
-        this.getComingSoonToBoxOffice();
-        this.getYoutubeMostViewed();
-    }
-
-    componentDidCatch() {
-        this.getTopBoxOffice();
-        this.getTopImdbTvShows();
-        this.getComingSoonToBoxOffice();
-        this.getYoutubeMostViewed();
-    }
-
-    getTopBoxOffice() {
+    function getTopBoxOffice() {
         fetch(`Home/GetTopBoxOffice`)
             .then(response => response.json())
-            .then(data => { this.setState({ movies: data }) });
+            .then(data => { setMovies(data) });
     }
 
-    getTopImdbTvShows() {
+    function getTopImdbTvShows() {
         fetch(`Home/GetTopImdbTvShows`)
             .then(response => response.json())
-            .then(data => { this.setState({ tvshows: data }) });
+            .then(data => { setTvshows(data) });
     }
 
-    getComingSoonToBoxOffice() {
+    function getComingSoonToBoxOffice() {
         fetch(`Home/GetComingSoonToBoxOffice`)
             .then(response => response.json())
-            .then(data => { this.setState({ comingSoon: data }) });
+            .then(data => { setComingSoon(data) });
     }
 
-    getYoutubeMostViewed() {
+    function getYoutubeMostViewed() {
         fetch(`Home/GetYoutubeMostViewed`)
             .then(response => response.json())
-            .then(data => { this.setState({ youtube: data }) });
+            .then(data => { setYoutube(data) });
     }
 
-    render() {
-        return (
-            <>
-                <Header dark={this.state.data} />
-                <Sidebar dark={this.state.data} darkMode={this.darkMode} changeNewsSource={this.changeNewsSource} />
-                {this.props.type === "news" ? <News dark={this.state.data} news={this.state.news} /> : ""}
-                {this.props.type === "movies" ? <Movies dark={this.state.data} movies={this.state.movies} /> : ""}
-                {this.props.type === "tv-shows" ? <TvShows dark={this.state.data} tvshows={this.state.tvshows} /> : ""}
-                {this.props.type === "coming-soon" ? <ComingSoon dark={this.state.data} comingSoon={this.state.comingSoon} /> : ""}
-                {this.props.type === "youtube" ? <YouTube dark={this.state.data} youtube={this.state.youtube} /> : ""}
-                {this.props.type === "credits" ? <Credits /> : ""}
-                {this.props.type === "error" ? <Error /> : ""}
-                <Footer dark={this.state.data} />
-            </>
-        )
-    }
+    return (
+        <>
+            <Header dark={dark} />
+            <Sidebar dark={dark} darkMode={darkMode} changeNewsSource={changeNewsSource} />
+            {props.type === "news" ? <News dark={dark} news={news} /> : ""}
+            {props.type === "movies" ? <Movies dark={dark} movies={movies} /> : ""}
+            {props.type === "tv-shows" ? <TvShows dark={dark} tvshows={tvshows} /> : ""}
+            {props.type === "coming-soon" ? <ComingSoon dark={dark} comingSoon={comingSoon} /> : ""}
+            {props.type === "youtube" ? <YouTube dark={dark} youtube={youtube} /> : ""}
+            {props.type === "credits" ? <Credits dark={dark} /> : ""}
+            {props.type === "error" ? <Error dark={dark} /> : ""}
+            <Footer dark={dark} />
+        </>
+    )
 }
