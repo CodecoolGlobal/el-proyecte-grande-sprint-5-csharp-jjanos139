@@ -35,6 +35,8 @@ root.render(
             <Route path="/imdb_top_100_tv_shows" element={<App type="tv-shows" />}></Route>
             <Route path="/youtube_top_25" element={<App type="youtube" />}></Route>
             <Route path="/credits" element={<App type="credits" />}></Route>
+            <Route path="/Register" element={<App type="register" />}></Route>
+            <Route path="/Login" element={<App type="login" />}></Route>
             <Route path="/*" element={<App type="error" />}></Route>
         </Routes>
     </BrowserRouter>

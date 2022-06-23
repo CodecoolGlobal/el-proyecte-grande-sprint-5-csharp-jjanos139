@@ -8,6 +8,8 @@ import ComingSoon from "./components/ComingSoon";
 import YouTube from "./components/YouTube";
 import Credits from "./components/Credits";
 import Error from "./components/Error";
+import Register from "./components/Register";
+import Login from "./components/Login";
 import React from "react";
 
 export default function App(props) {

@@ -183,25 +183,24 @@ namespace Delightful_Daily_Dose.Controllers
         [Route("/[controller]/GetExchangeRate")]
         public async Task<string> GetExchangeRate(string from)
         {
-            string apiUrl =
-                $"https://api.apilayer.com/exchangerates_data/convert?to=HUF&from={from}&amount=1&apikey=x9FyrdPeE5RhuDFaLljkZtmqRGdeKL7a";
-            return await _apiHelper.GetApi(apiUrl);
+            //string apiUrl =
+            //    $"https://api.apilayer.com/exchangerates_data/convert?to=HUF&from={from}&amount=1&apikey=JS7qpwEXHPVbtntwU7H69R1jHnAHj7AA";
+            //return await _apiHelper.GetApi(apiUrl);
 
-            //return @"            {
-            //    ""success"": true,
-            //    ""query"": {
-            //        ""from"": ""EUR"",
-            //        ""to"": ""HUF"",
-            //        ""amount"": 1
-            //    },
-            //    ""info"": {
-            //        ""timestamp"": 1654682403,
-            //        ""rate"": 389.772845
-            //    },
-            //    ""date"": ""2022-06-08"",
-            //    ""result"": 389.772845
-            //}";
-        }
+            return @"            {
+                ""success"": true,
+                ""query"": {
+                    ""from"": ""EUR"",
+                    ""to"": ""HUF"",
+                    ""amount"": 1
+                },
+                ""info"": {
+                    ""timestamp"": 1654682403,
+                    ""rate"": 389.772845
+                },
+                ""date"": ""2022-06-08"",
+                ""result"": 389.772845
+            }";
 
         [Route("/[controller]/GetTopBoxOffice")]
         public async Task<string> GetTopBoxOffice()
@@ -230,7 +229,5 @@ namespace Delightful_Daily_Dose.Controllers
             string apiUrl = "https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&regionCode=HU&videoCategoryId=0&key=AIzaSyD61k1tx-iwfoKtmhIHGmAm4xq3_Q8Oy5I";
             return await _apiHelper.GetApi(apiUrl);
         }
-
-
     }
 }
