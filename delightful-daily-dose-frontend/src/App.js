@@ -19,6 +19,7 @@ export default function App(props) {
     const [youtube, setYoutube] = React.useState([]);
 
     React.useEffect(() => {
+        // TODO : make sure it loads only once
         changeNewsSource(`Home`);
     }, [])
 

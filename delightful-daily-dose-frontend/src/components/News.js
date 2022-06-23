@@ -14,6 +14,7 @@ export default function News(props) {
                                 <div id="article-text">
                                     <h5><a className={dark === "dark" ? "dark" : ""} href={item.link} target="_blank" rel="noreferrer">{item.title}</a></h5>
                                     <h6 className={dark === "dark" ? "dark" : ""}>{item.description}</h6>
+                                    <p><i className="fa-solid fa-upload"></i> {item.pubDate}</p>
                                 </div>
                             </Card>)
                     })}
