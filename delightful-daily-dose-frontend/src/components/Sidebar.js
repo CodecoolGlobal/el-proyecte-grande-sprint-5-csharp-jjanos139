@@ -27,6 +27,21 @@ export default class Sidebar extends Component {
         offCanvas.addEventListener('click', () => {
             wrapper.classList.toggle('toggled');
         })
+        overlay.addEventListener('click', () => {
+            if (isClosed === true) {
+                overlay.classList.add('overlayOpacity')
+                trigger.classList.remove('is-open');
+                trigger.classList.add('is-closed');
+                isClosed = false;
+                wrapper.classList.toggle('toggled');
+            } else {
+                overlay.classList.remove('overlayOpacity')
+                trigger.classList.remove('is-closed');
+                trigger.classList.add('is-open');
+                isClosed = true;
+                wrapper.classList.toggle('toggled');
+            }
+        })
     }
     render() {
         return (
