@@ -13,7 +13,7 @@ export default function Movies(props) {
                             <Card key={item.id} className={dark === "dark" ? "dark" : ""}>
                                 <img className="box-office-image" src={item.image} alt="" />
                                 <div id="article-text">
-                                    <a href={href} target="_blank" ><h5><i style={{ color: "darkslateblue" }} className="fa-solid fa-hashtag"></i> {item.rank} - {item.fullTitle}</h5></a>
+                                    <a href={href} target="_blank" rel="noreferrer"><h5><i style={{ color: "darkslateblue" }} className="fa-solid fa-hashtag"></i> {item.rank} - {item.fullTitle}</h5></a>
                                     {item.rankUpDown === "0" ? <p><i style={{ color: "yellow", fontSize: "20px" }} className="fa-solid fa-circle"></i> {item.rank}</p> : ""}
                                     {parseInt(item.rankUpDown) < 0 ? <p><i style={{ color: "red", fontSize: "20px" }} className="fa-solid fa-circle-down"></i> {parseInt(item.rank) + parseInt(item.rankUpDown)}</p> : ""}
                                     {parseInt(item.rankUpDown) > 0 ? <p><i style={{ color: "green", fontSize: "20px" }} className="fa-solid fa-circle-up"></i> {parseInt(item.rank) + parseInt(item.rankUpDown)}</p> : ""}

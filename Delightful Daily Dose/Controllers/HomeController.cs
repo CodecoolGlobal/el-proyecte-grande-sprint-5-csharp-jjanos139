@@ -201,6 +201,7 @@ namespace Delightful_Daily_Dose.Controllers
                 ""date"": ""2022-06-08"",
                 ""result"": 389.772845
             }";
+        }
 
         [Route("/[controller]/GetTopBoxOffice")]
         public async Task<string> GetTopBoxOffice()

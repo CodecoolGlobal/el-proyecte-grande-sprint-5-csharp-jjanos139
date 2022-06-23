@@ -1,4 +1,4 @@
-export default function Login() {
+export default function Login(props) {
     return (
         <form method="post">
             <h3 className="login-h3">Login Here</h3>

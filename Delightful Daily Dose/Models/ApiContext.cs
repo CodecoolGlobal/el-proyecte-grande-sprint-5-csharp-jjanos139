@@ -15,11 +15,11 @@ namespace Delightful_Daily_Dose.Models
         public ApiContext(DbContextOptions<ApiContext> options) : base(options)
         {
         }
-        
+
         public DbSet<User> User { get; set; }
         public DbSet<News> News { get; set; }
-        public DbSet<Category> Categories { get; set; }       
-        
+        public DbSet<Category> Categories { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<News>().HasIndex(n => n.Title).IsUnique();
@@ -38,16 +38,20 @@ namespace Delightful_Daily_Dose.Models
             {
                 throw new Exception("This email/username is already in use.");
             }
+
             return new OkResult();
         }
 
         public async Task<bool> LoginUser(User user)
         {
-            var getUser = await User.SingleAsync(p => p.Username == user.Username && p.Password == AESCryptography.Encrypt(user.Password));
+            var getUser = await User.SingleAsync(p =>
+                p.Username == user.Username && p.Password == AESCryptography.Encrypt(user.Password));
             if (getUser != null)
             {
                 return true;
             }
+
             return false;
         }
+    }
 }

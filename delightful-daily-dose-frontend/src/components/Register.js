@@ -1,10 +1,7 @@
 import React from "react";
-import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { event } from "jquery";
 
-
-export default function Register(){
+export default function Register(props) {
     // const { handleSubmit, register, formState: { errors } } = useForm();
     const [input, setInput] = useState({
         email: '',
@@ -82,9 +79,9 @@ export default function Register(){
                 value={input.username}
                 onChange={onInputChange}
                 onBlur={validateInput}
-                required = "Required"
+                required="Required"
                 pattern="^[a-zA-Z0-9_\\.-]{3,20}"
-                
+
             />
             <label className="reg-label" htmlFor="email">E-mail</label>
             <input
@@ -94,7 +91,7 @@ export default function Register(){
                 value={input.email}
                 onChange={onInputChange}
                 onBlur={validateInput}
-                required = "Required"                
+                required="Required"
             />
             {/* {errors.email && errors.email.message} */}
             <label className="reg-label" htmlfor="password">Password</label>
@@ -106,12 +103,12 @@ export default function Register(){
                 onChange={onInputChange}
                 onBlur={validateInput}
                 pattern="^([a-zA-Z0-9@*#]{8,15})$"
-                // {...register("password", {
-                //     required: "Required",
-                //     pattern: {
-                //         value: /^([a-zA-Z0-9@*#]{8,15})$/i,
-                //     }
-                // })}
+            // {...register("password", {
+            //     required: "Required",
+            //     pattern: {
+            //         value: /^([a-zA-Z0-9@*#]{8,15})$/i,
+            //     }
+            // })}
             />
             {/* {errors.password && errors.password.message} */}
             <label className="reg-label" htmlfor="confirmpassword">Confirm Password</label>
@@ -123,21 +120,21 @@ export default function Register(){
                 onChange={onInputChange}
                 onBlur={validateInput}
                 pattern="^([a-zA-Z0-9@*#]{8,15})$"
-                // {...register("confirmpassword", {
-                //     required: "Required",
-                //     pattern: {
-                //         value: /^([a-zA-Z0-9@*#]{8,15})$/i,
-                //         message: "Password must contain: Minimum 8 characters. May contain 1 UpperCase, 1 LowerCase, 1 Number and 1 Special Character!"
-                //     },
-                // })}
+            // {...register("confirmpassword", {
+            //     required: "Required",
+            //     pattern: {
+            //         value: /^([a-zA-Z0-9@*#]{8,15})$/i,
+            //         message: "Password must contain: Minimum 8 characters. May contain 1 UpperCase, 1 LowerCase, 1 Number and 1 Special Character!"
+            //     },
+            // })}
             />
             {/* {errors.confirmpassword && errors.confirmpassword.message} */}
             <label className="reg-label" htmlFor="ispublisher">Are you a publisher?</label>
             <input className="registration-checkbox"
                 type="checkbox"
                 name="ispublisher"
-                // {...register("ispublisher")
-                // }
+            // {...register("ispublisher")
+            // }
             />
             <button className="reg-button">Submit</button>
         </form>

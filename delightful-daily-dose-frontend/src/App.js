@@ -92,6 +92,8 @@ export default function App(props) {
             {props.type === "youtube" ? <YouTube dark={dark} youtube={youtube} /> : ""}
             {props.type === "credits" ? <Credits dark={dark} /> : ""}
             {props.type === "error" ? <Error dark={dark} /> : ""}
+            {props.type === "login" ? <Login dark={dark} /> : ""}
+            {props.type === "register" ? <Register dark={dark} /> : ""}
             <Footer dark={dark} />
         </>
     )

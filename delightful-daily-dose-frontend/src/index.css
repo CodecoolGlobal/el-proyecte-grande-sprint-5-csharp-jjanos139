@@ -515,12 +515,14 @@ input{
 .reg-topright{
     color: white;
 }
-.reg-topright:hover, .login-topright:hover{
-    color: white;
+.reg-topright:hover, .login-topright:hover {
+     color: white;
+}
 
 .coming-soon-text {
     font-size: 10px;
 }
 
 .youtube-iframe {
-    border-radius: 25px;
+     border-radius: 25px;
+}
