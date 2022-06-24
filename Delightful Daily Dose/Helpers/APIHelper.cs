@@ -44,7 +44,7 @@ namespace Delightful_Daily_Dose.Helpers
 
         public async Task<string> GetApi(string apiUrl)
         {
-            if (DataNeedsToBeUpdated(apiUrl))
+            if (!Cache.ContainsKey(apiUrl) || DateTime.Now.TimeOfDay - Cache[apiUrl].Headers.Date.GetValueOrDefault().LocalDateTime.TimeOfDay > new TimeSpan(0, 1, 0, 0))
             {
                 Cache[apiUrl] = await GetDataFromApi(apiUrl);
             }
@@ -52,24 +52,16 @@ namespace Delightful_Daily_Dose.Helpers
             return await GetDataFromCache(apiUrl);
         }
 
-        private bool DataNeedsToBeUpdated(string apiUrl)
-        {
-            return !Cache.ContainsKey(apiUrl) || DateTime.Now.TimeOfDay - Cache[apiUrl].Headers.Date.GetValueOrDefault().LocalDateTime.TimeOfDay > new TimeSpan(0, 1, 0, 0);
-        }
-
         public async Task<List<News>> GetNews(string apiUrl)
         {
             var data = JsonConvert.DeserializeObject<Result>(await GetApi(apiUrl));
-            if (DataNeedsToBeUpdated(apiUrl))
-            {
-                await _context.News.AddRangeAsync(data!.Results.Where(
+            await _context.News.AddRangeAsync(data!.Results.Where(
                         entity => !_context.News
                             .Select(n => n.Title)
                             .Any(title => title == entity.Title)
                     )
                 );
-                await _context.SaveChangesAsync();
-            }
+            await _context.SaveChangesAsync();
             return data?.Results;
         }
     }
