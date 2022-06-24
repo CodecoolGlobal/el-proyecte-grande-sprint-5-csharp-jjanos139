@@ -1,45 +1,19 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Sidebar from "./components/Sidebar";
-import News from "./components/News";
-import Movies from "./components/Movies";
-import TvShows from "./components/TvShows";
-import ComingSoon from "./components/ComingSoon";
-import YouTube from "./components/YouTube";
+import News from "./components/Mains/News";
+import Movies from "./components/Mains/Movies";
+import TvShows from "./components/Mains/TvShows";
+import ComingSoon from "./components/Mains/ComingSoon";
+import YouTube from "./components/Mains/YouTube";
 import Credits from "./components/Credits";
 import Error from "./components/Error";
-import Register from "./components/Register";
-import Login from "./components/Login";
+import Register from "./components/User/Register";
+import Login from "./components/User/Login";
 import React from "react";
 
 export default function App(props) {
     const [dark, setDark] = React.useState("");
-    const [news, setNews] = React.useState([]);
-    const [movies, setMovies] = React.useState([]);
-    const [tvshows, setTvshows] = React.useState([]);
-    const [comingSoon, setComingSoon] = React.useState([]);
-    const [youtube, setYoutube] = React.useState([]);
-
-    React.useEffect(() => {
-        // TODO : make sure it loads only once
-        changeNewsSource(`Home`);
-    }, [])
-
-    React.useEffect(() => {
-        getTopBoxOffice();
-    }, [movies])
-
-    React.useEffect(() => {
-        getTopImdbTvShows();
-    }, [tvshows])
-
-    React.useEffect(() => {
-        getComingSoonToBoxOffice();
-    }, [comingSoon])
-
-    React.useEffect(() => {
-        getYoutubeMostViewed();
-    }, [youtube])
 
     function darkMode() {
         if (dark === "") {
@@ -51,49 +25,41 @@ export default function App(props) {
         }
     }
 
-    function changeNewsSource(source) {
-        fetch(source)
-            .then(response => response.json())
-            .then(data => { setNews(data) });
-    }
-
-    function getTopBoxOffice() {
-        fetch(`Home/GetTopBoxOffice`)
-            .then(response => response.json())
-            .then(data => { setMovies(data) });
-    }
-
-    function getTopImdbTvShows() {
-        fetch(`Home/GetTopImdbTvShows`)
-            .then(response => response.json())
-            .then(data => { setTvshows(data) });
-    }
-
-    function getComingSoonToBoxOffice() {
-        fetch(`Home/GetComingSoonToBoxOffice`)
-            .then(response => response.json())
-            .then(data => { setComingSoon(data) });
-    }
-
-    function getYoutubeMostViewed() {
-        fetch(`Home/GetYoutubeMostViewed`)
-            .then(response => response.json())
-            .then(data => { setYoutube(data) });
+    function switchSite() {
+        if (props.type === "news") {
+            return (<News dark={dark} />)
+        }
+        if (props.type === "movies") {
+            return (<Movies dark={dark} />)
+        }
+        if (props.type === "tv-shows") {
+            return (<TvShows dark={dark} />)
+        }
+        if (props.type === "coming-soon") {
+            return (<ComingSoon dark={dark} />)
+        }
+        if (props.type === "youtube") {
+            return (<YouTube dark={dark} />)
+        }
+        if (props.type === "credits") {
+            return (<Credits dark={dark} />)
+        }
+        if (props.type === "error") {
+            return (<Error dark={dark} />)
+        }
+        if (props.type === "login") {
+            return (<Login dark={dark} />)
+        }
+        if (props.type === "register") {
+            return (<Register dark={dark} />)
+        }
     }
 
     return (
         <>
             <Header dark={dark} />
-            <Sidebar dark={dark} darkMode={darkMode} changeNewsSource={changeNewsSource} />
-            {props.type === "news" ? <News dark={dark} news={news} /> : ""}
-            {props.type === "movies" ? <Movies dark={dark} movies={movies} /> : ""}
-            {props.type === "tv-shows" ? <TvShows dark={dark} tvshows={tvshows} /> : ""}
-            {props.type === "coming-soon" ? <ComingSoon dark={dark} comingSoon={comingSoon} /> : ""}
-            {props.type === "youtube" ? <YouTube dark={dark} youtube={youtube} /> : ""}
-            {props.type === "credits" ? <Credits dark={dark} /> : ""}
-            {props.type === "error" ? <Error dark={dark} /> : ""}
-            {props.type === "login" ? <Login dark={dark} /> : ""}
-            {props.type === "register" ? <Register dark={dark} /> : ""}
+            <Sidebar dark={dark} darkMode={darkMode} />
+            {switchSite()}
             <Footer dark={dark} />
         </>
     )

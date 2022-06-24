@@ -78,6 +78,7 @@ export default function Register(props) {
                 name="username"
                 placeholder='Enter username'
                 value={input.username}
+                autoComplete="username"
                 onChange={onInputChange}
                 onBlur={validateInput}
                 required="Required"
@@ -91,18 +92,20 @@ export default function Register(props) {
                 name="email"
                 placeholder='Enter E-mail'
                 value={input.email}
+                autoComplete="email"
                 onChange={onInputChange}
                 onBlur={validateInput}
                 required="Required"
             />
             {/* {errors.email && errors.email.message} */}
-            <label className="reg-label" htmlfor="password">Password</label>
+            <label className="reg-label" htmlFor="password">Password</label>
             <input
                 className="form-input"
                 type="password"
                 name="password"
                 placeholder='Enter password'
                 value={input.password}
+                autoComplete="new-password"
                 onChange={onInputChange}
                 onBlur={validateInput}
                 pattern="^([a-zA-Z0-9@*#]{8,15})$"
@@ -121,6 +124,7 @@ export default function Register(props) {
                 name="confirmpassword"
                 placeholder='Confirm Password'
                 value={input.confirmpassword}
+                autoComplete="new-password"
                 onChange={onInputChange}
                 onBlur={validateInput}
                 pattern="^([a-zA-Z0-9@*#]{8,15})$"
@@ -134,14 +138,14 @@ export default function Register(props) {
             />
             {/* {errors.confirmpassword && errors.confirmpassword.message} */}
             <div className="checkbox-div">
-            <label className="reg-checkbox" htmlFor="ispublisher">Are you a publisher?</label>
+                <label className="reg-checkbox" htmlFor="ispublisher">Are you a publisher?</label>
                 <span className="checkbox-span"><input data-val="true" value="true" className="registration-checkbox"
-                type="checkbox"
-                name="ispublisher"
-            // {...register("ispublisher")
-            // }
+                    type="checkbox"
+                    name="ispublisher"
+                // {...register("ispublisher")
+                // }
                 /></span>
-            <div className="clearboth"></div>
+                <div className="clearboth"></div>
             </div>
             <button className="reg-button">Submit</button>
         </form>

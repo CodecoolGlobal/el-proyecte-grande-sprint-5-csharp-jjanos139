@@ -1,8 +1,17 @@
 import Card from 'react-bootstrap/Card';
+import React from "react";
 
 export default function News(props) {
-    const news = props.news;
+    const [news, setNews] = React.useState([])
     const dark = props.dark;
+
+    React.useEffect(() => {
+        const source = "Home" + window.location.pathname;
+        fetch(source)
+            .then(response => response.json())
+            .then(data => setNews(data));
+    }, [window.location.pathname])
+
     return (
         <div className="container">
             <main role="main" className="pb-3">

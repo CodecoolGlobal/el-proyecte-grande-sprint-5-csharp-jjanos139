@@ -15,7 +15,7 @@ export default function Footer(props) {
         <footer className="border-top footer text-muted">
             <div className="container" id="joke-container">
                 <Link to="/credits">Credits</Link> &copy; 2022 - Delightful Daily Dose -
-                Joke of the day: <marquee behavior="scroll" direction="left" id="joke">{joke}</marquee>
+                Chuck of the day: <marquee behavior="scroll" direction="left" id="joke">{joke}</marquee>
             </div>
         </footer>
     )
