@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
-import NavbarComponent from "./NavbarComponent"
-import Photo from "./Photo"
+import NavbarComponent from "./HeaderElements/NavbarComponent"
+import Photo from "./HeaderElements/Photo"
 import SiteName from "../images/Delightful Daily Dose-name.png"
 import SiteLogo from "../images/Delightful Daily Dose-logo.png"
 import SiteNameDark from "../images/Delightful Daily Dose-name-dark.png"

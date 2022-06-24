@@ -1,13 +1,21 @@
 import Card from 'react-bootstrap/Card';
+import React from 'react';
 
-export default function Movies(props) {
-    const tvshows = props.tvshows;
+export default function TvShows(props) {
+    const [tvshows, setTvshows] = React.useState([]);
     const dark = props.dark;
+
+    React.useEffect(() => {
+        fetch(`Home/GetTopImdbTvShows`)
+            .then(response => response.json())
+            .then(data => setTvshows(data.items));
+    }, [])
+
     return (
         <div className="container">
             <main role="main" className="pb-3">
                 <div id="body">
-                    {tvshows.items.map((item) => {
+                    {tvshows.map((item) => {
                         const href = "https://www.imdb.com/title/" + item.id;
                         return (
                             <Card key={item.id} className={dark === "dark" ? "dark" : ""}>
@@ -24,5 +32,6 @@ export default function Movies(props) {
                     })}
                 </div>
             </main >
-        </div >)
+        </div>
+    )
 }

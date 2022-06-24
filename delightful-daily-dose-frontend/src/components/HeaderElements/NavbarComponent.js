@@ -1,8 +1,8 @@
 import DateAndName from "./DateAndName";
 import Logo from "./Logo"
 import WeatherAndExchange from "./WeatherAndExchange";
-import Menu from "./Menu"
-import {Link} from 'react-router-dom';
+import Menu from "../Menu"
+import { Link } from 'react-router-dom';
 
 export default function Navbar(props) {
 

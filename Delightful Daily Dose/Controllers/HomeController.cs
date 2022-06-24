@@ -28,7 +28,7 @@ namespace Delightful_Daily_Dose.Controllers
 
         }
 
-        [Route("/[controller]/Business")]
+        [Route("/[controller]/business")]
         public async Task<List<News>> Business()
         {
             string ApiUrl =
@@ -37,7 +37,7 @@ namespace Delightful_Daily_Dose.Controllers
             return news;
         }
 
-        [Route("/[controller]/Culinary")]
+        [Route("/[controller]/culinary")]
         public async Task<List<News>> Culinary()
         {
             string ApiUrl =
@@ -46,7 +46,7 @@ namespace Delightful_Daily_Dose.Controllers
             return news;
         }
 
-        [Route("/[controller]/Domestic")]
+        [Route("/[controller]/domestic")]
         public async Task<List<News>> Domestic()
         {
             string ApiUrl = "https://newsdata.io/api/1/news?apikey=pub_7623a07d5aec61d454d6ab40deb859282e19&country=hu";
@@ -54,7 +54,7 @@ namespace Delightful_Daily_Dose.Controllers
             return news;
         }
 
-        [Route("/[controller]/Economics")]
+        [Route("/[controller]/economics")]
         public async Task<List<News>> Economics()
         {
             string ApiUrl =
@@ -63,7 +63,7 @@ namespace Delightful_Daily_Dose.Controllers
             return news;
         }
 
-        [Route("/[controller]/Entertainment")]
+        [Route("/[controller]/entertainment")]
         public async Task<List<News>> Entertainment()
         {
             string ApiUrl =
@@ -72,7 +72,7 @@ namespace Delightful_Daily_Dose.Controllers
             return news;
         }
 
-        [Route("/[controller]/Environment")]
+        [Route("/[controller]/environment")]
         public async Task<List<News>> Environment()
         {
             string ApiUrl =
@@ -81,7 +81,7 @@ namespace Delightful_Daily_Dose.Controllers
             return news;
         }
 
-        [Route("/[controller]/Foreign")]
+        [Route("/[controller]/foreign")]
         public async Task<List<News>> Foreign()
         {
             string ApiUrl =
@@ -90,7 +90,7 @@ namespace Delightful_Daily_Dose.Controllers
             return news;
         }
 
-        [Route("/[controller]/Fresh")]
+        [Route("/[controller]/fresh")]
         public async Task<List<News>> Fresh()
         {
             string ApiUrl =
@@ -99,7 +99,7 @@ namespace Delightful_Daily_Dose.Controllers
             return news;
         }
 
-        [Route("/[controller]/Health")]
+        [Route("/[controller]/health")]
         public async Task<List<News>> Health()
         {
             string ApiUrl =
@@ -108,7 +108,7 @@ namespace Delightful_Daily_Dose.Controllers
             return news;
         }
 
-        [Route("/[controller]/MostViewed")]
+        [Route("/[controller]/most_viewed")]
         public async Task<List<News>> MostViewed()
         {
             string ApiUrl =
@@ -117,7 +117,7 @@ namespace Delightful_Daily_Dose.Controllers
             return news;
         }
 
-        [Route("/[controller]/Politics")]
+        [Route("/[controller]/politics")]
         public async Task<List<News>> Politics()
         {
             string ApiUrl =
@@ -126,7 +126,7 @@ namespace Delightful_Daily_Dose.Controllers
             return news;
         }
 
-        [Route("/[controller]/Sport")]
+        [Route("/[controller]/sport")]
         public async Task<List<News>> Sport()
         {
             string ApiUrl =
@@ -135,7 +135,7 @@ namespace Delightful_Daily_Dose.Controllers
             return news;
         }
 
-        [Route("/[controller]/TechWorld")]
+        [Route("/[controller]/techworld")]
         public async Task<List<News>> TechWorld()
         {
             string ApiUrl =

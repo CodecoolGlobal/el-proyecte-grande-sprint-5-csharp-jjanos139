@@ -54,23 +54,23 @@ export default function Sidebar(props) {
                             <span id="color-scheme" onClick={props.darkMode}>{props.dark === "dark" ? "Light Mode" : "Dark Mode"}</span>
                         </div>
                     </div>
-                    <li><Link to="/"><span onClick={() => props.changeNewsSource("/Home")}><i id="fresh" className="fa fa-solid fa-fire"></i> Hot</span></Link></li>
-                    <li><Link to="/most_viewed"><span onClick={() => props.changeNewsSource("/Home")}><i id="most-viewed" className="fa fa-solid fa-arrow-trend-up"></i> Most Viewed</span></Link></li>
+                    <li><Link to="/"><span><i id="fresh" className="fa fa-solid fa-fire"></i> Hot</span></Link></li>
+                    <li><Link to="/most_viewed"><span><i id="most-viewed" className="fa fa-solid fa-arrow-trend-up"></i> Most Viewed</span></Link></li>
                     <li><Dropdown>
                         <DropdownToggle as="span">
                             <i id="category" className="fa fa-solid fa-grip-vertical"></i> Categories
                         </DropdownToggle>
                         <ul className="animated fadeInLeft"><DropdownMenu>
-                            <li className="menu-list-item"><Link to="/domestic"><span id='domestic' onClick={() => props.changeNewsSource("/Home/Domestic")}><i className="fa fa-solid fa-flag"></i> Domestic</span></Link></li>
-                            <li className="menu-list-item"><Link to="/foreign"><span id='foreign' onClick={() => props.changeNewsSource("/Home/Foreign")}><i className="fa fa-solid fa-globe"></i> World</span></Link></li>
-                            <li className="menu-list-item"><Link to="/sport"><span id='sport' onClick={() => props.changeNewsSource("/Home/Sport")}><i className="fa fa-solid fa-baseball"></i> Sport</span></Link></li>
-                            <li className="menu-list-item"><Link to="/culinary"><span id='culinary' onClick={() => props.changeNewsSource("/Home/Culinary")}><i className="fa fa-solid fa-utensils"></i> Gastronomy</span></Link></li>
-                            <li className="menu-list-item"><Link to="/health"><span id='health' onClick={() => props.changeNewsSource("/Home/Health")}><i className="fa fa-solid fa-heart"></i> Health</span></Link></li>
-                            <li className="menu-list-item"><Link to="/politics"><span id='politics' onClick={() => props.changeNewsSource("/Home/Politics")}><i className="fa fa-solid fa-landmark"></i> Politics</span></Link></li>
-                            <li className="menu-list-item"><Link to="/entertainment"><span id='entertainment' onClick={() => props.changeNewsSource("/Home/Entertainment")}><i className="fa fa-solid fa-smile"></i> Entertainment</span></Link></li>
-                            <li className="menu-list-item"><Link to="/environment"><span id='environment' onClick={() => props.changeNewsSource("/Home/Environment")}><i className="fa fa-solid fa-tree"></i> Environment</span></Link></li>
-                            <li className="menu-list-item"><Link to="/techworld"><span id='techworld' onClick={() => props.changeNewsSource("/Home/Techworld")}><i className="fa fa-solid fa-microchip"></i> TechWorld</span></Link></li>
-                            <li className="menu-list-item"><Link to="/business"><span id='business' onClick={() => props.changeNewsSource("/Home/Business")}><i className="fa fa-solid fa-briefcase"></i> Economy</span></Link></li>
+                            <li className="menu-list-item"><Link to="/domestic"><span id='domestic'><i className="fa fa-solid fa-flag"></i> Domestic</span></Link></li>
+                            <li className="menu-list-item"><Link to="/foreign"><span id='foreign'><i className="fa fa-solid fa-globe"></i> Foreign</span></Link></li>
+                            <li className="menu-list-item"><Link to="/sport"><span id='sport'><i className="fa fa-solid fa-baseball"></i> Sport</span></Link></li>
+                            <li className="menu-list-item"><Link to="/culinary"><span id='culinary'><i className="fa fa-solid fa-utensils"></i> Culinary</span></Link></li>
+                            <li className="menu-list-item"><Link to="/health"><span id='health'><i className="fa fa-solid fa-heart"></i> Health</span></Link></li>
+                            <li className="menu-list-item"><Link to="/politics"><span id='politics'><i className="fa fa-solid fa-landmark"></i> Politics</span></Link></li>
+                            <li className="menu-list-item"><Link to="/entertainment"><span id='entertainment'><i className="fa fa-solid fa-smile"></i> Entertainment</span></Link></li>
+                            <li className="menu-list-item"><Link to="/environment"><span id='environment'><i className="fa fa-solid fa-tree"></i> Environment</span></Link></li>
+                            <li className="menu-list-item"><Link to="/techworld"><span id='techworld'><i className="fa fa-solid fa-microchip"></i> TechWorld</span></Link></li>
+                            <li className="menu-list-item"><Link to="/business"><span id='business'><i className="fa fa-solid fa-briefcase"></i> Business</span></Link></li>
                         </DropdownMenu>
                         </ul>
                     </Dropdown></li>

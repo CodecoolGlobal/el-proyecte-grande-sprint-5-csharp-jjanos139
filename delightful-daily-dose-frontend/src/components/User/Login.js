@@ -8,6 +8,7 @@ export default function Login(props) {
                 type="text"
                 name="username"
                 placeholder='Enter username'
+                autoComplete="username"
                 required="Required"
                 pattern="^[a-zA-Z0-9_\\.-]{3,20}"
 
@@ -18,6 +19,7 @@ export default function Login(props) {
                 type="password"
                 name="password"
                 placeholder='Enter password'
+                autoComplete="new-password"
                 required="Required"
                 pattern="^([a-zA-Z0-9@*#]{8,15})$"
             />

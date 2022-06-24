@@ -1,13 +1,21 @@
 import Card from 'react-bootstrap/Card';
+import React from 'react';
 
 export default function ComingSoon(props) {
-    const comingSoon = props.comingSoon;
     const dark = props.dark;
+    const [comingSoon, setComingSoon] = React.useState([]);
+
+    React.useEffect(() => {
+        fetch(`Home/GetComingSoonToBoxOffice`)
+            .then(response => response.json())
+            .then(data => setComingSoon(data.items));
+    }, [])
+
     return (
         <div className="container">
             <main role="main" className="pb-3">
                 <div id="body">
-                    {comingSoon.items.map((item) => {
+                    {comingSoon.map((item) => {
                         const href = "https://www.imdb.com/title/" + item.id;
                         return (
                             <Card key={item.id} className={dark === "dark" ? "dark" : ""}>
@@ -36,6 +44,7 @@ export default function ComingSoon(props) {
                             </Card>)
                     })}
                 </div>
-            </main >
-        </div >)
+            </main>
+        </div>
+    )
 }
