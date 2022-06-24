@@ -73,6 +73,7 @@ export default function Register(props) {
             <h3 className="reg-h3">Registration</h3>
             <label className="reg-label" htmlFor="username">Username</label>
             <input
+                className="form-input"
                 type="text"
                 name="username"
                 placeholder='Enter username'
@@ -85,6 +86,7 @@ export default function Register(props) {
             />
             <label className="reg-label" htmlFor="email">E-mail</label>
             <input
+                className="form-input"
                 type="email"
                 name="email"
                 placeholder='Enter E-mail'
@@ -96,6 +98,7 @@ export default function Register(props) {
             {/* {errors.email && errors.email.message} */}
             <label className="reg-label" htmlfor="password">Password</label>
             <input
+                className="form-input"
                 type="password"
                 name="password"
                 placeholder='Enter password'
@@ -113,6 +116,7 @@ export default function Register(props) {
             {/* {errors.password && errors.password.message} */}
             <label className="reg-label" htmlfor="confirmpassword">Confirm Password</label>
             <input
+                className="form-input"
                 type="password"
                 name="confirmpassword"
                 placeholder='Confirm Password'
@@ -129,13 +133,16 @@ export default function Register(props) {
             // })}
             />
             {/* {errors.confirmpassword && errors.confirmpassword.message} */}
-            <label className="reg-label" htmlFor="ispublisher">Are you a publisher?</label>
-            <input className="registration-checkbox"
+            <div className="checkbox-div">
+            <label className="reg-checkbox" htmlFor="ispublisher">Are you a publisher?</label>
+                <span className="checkbox-span"><input data-val="true" value="true" className="registration-checkbox"
                 type="checkbox"
                 name="ispublisher"
             // {...register("ispublisher")
             // }
-            />
+                /></span>
+            <div className="clearboth"></div>
+            </div>
             <button className="reg-button">Submit</button>
         </form>
     );

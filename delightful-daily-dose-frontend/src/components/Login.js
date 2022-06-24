@@ -4,6 +4,7 @@ export default function Login(props) {
             <h3 className="login-h3">Login Here</h3>
             <label htmlFor="username">Username</label>
             <input
+                className="form-input"
                 type="text"
                 name="username"
                 placeholder='Enter username'
@@ -13,6 +14,7 @@ export default function Login(props) {
             />
             <label htmlFor="password">Password</label>
             <input
+                className="form-input"
                 type="password"
                 name="password"
                 placeholder='Enter password'
