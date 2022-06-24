@@ -564,3 +564,7 @@ label{
 .reg-topright:active, .login-topright:active {
     transform: scale(0.95);
 }
+
+#color-scheme {
+    cursor: pointer;
+}
