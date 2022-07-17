@@ -76,11 +76,9 @@ body {
 }
 
 .footer {
-    height: 60px;
     width: 100%;
     white-space: nowrap;
     position: absolute;
-    bottom: 0;
     /* Vertically center the text there */
 }
 
@@ -407,13 +405,13 @@ h5>a:hover {
 
 /* Login and Registration form */
 form {
-    margin-top: 33px;
-    height: 520px;
+    margin-top: 300px;
+    /* height: 520px; */
     width: 400px;
     background-color: rgba(109, 195, 234, 0.2);
-    position: absolute;
+    position: relative;
     transform: translate(-50%, -50%);
-    top: 50%;
+    /* top: 50%; */
     left: 50%;
     border-radius: 10px;
     backdrop-filter: blur(10px);
