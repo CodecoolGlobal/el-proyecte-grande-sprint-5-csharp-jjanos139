@@ -3,20 +3,29 @@ import React from "react";
 
 export default function News(props) {
     const [news, setNews] = React.useState([])
+    const [filteredNews, setFilteredNews] = React.useState(news);
     const dark = props.dark;
 
     React.useEffect(() => {
         const source = "Home" + window.location.pathname;
         fetch(source)
             .then(response => response.json())
-            .then(data => setNews(data));
+            .then(data => {
+                setNews(data);
+                setFilteredNews(data);
+            });
     }, [window.location.pathname])
 
     return (
         <div className="container">
             <main role="main" className="pb-3">
+                <div className="search">
+                    <label id="search-input" for="input">Search:</label>
+                    <input id="input" type="text" onChange={(event) => props.handleSearch(event, news, setFilteredNews)}></input>
+                    <p>Articles: {filteredNews.length}</p>
+                </div>
                 <div id="body">
-                    {news.map((item) => {
+                    {filteredNews.map((item) => {
                         return (
                             <Card key={item.link} className={dark === "dark" ? "dark" : ""}>
                                 {item.image_url !== null ? <img id="article-image" src={item.image_url} alt="" /> : ""}
