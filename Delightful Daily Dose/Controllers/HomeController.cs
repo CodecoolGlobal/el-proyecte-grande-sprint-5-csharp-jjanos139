@@ -213,7 +213,7 @@ namespace Delightful_Daily_Dose.Controllers
         [Route("/[controller]/GetTopImdbTvShows")]
         public async Task<string> GetTopImdbTvShows()
         {
-            string apiUrl = "https://imdb-api.com/en/API/MostPopularTVs/k_isz4vrmq";
+            string apiUrl = "https://imdb-api.com/en/API/Top250TVs/k_isz4vrmq";
             return await _apiHelper.GetApi(apiUrl);
         }
 
