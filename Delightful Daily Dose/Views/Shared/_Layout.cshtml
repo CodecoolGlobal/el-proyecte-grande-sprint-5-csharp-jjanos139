@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Delightful Daily Dose</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/menu.css" />
+    <script type="text/javascript" src="js/site.js" defer asp-append-version="true"></script>
+    <script type="text/javascript" src="js/menu.js" defer asp-append-version="true"></script>
+    <script src="https://kit.fontawesome.com/bdd5f96ccc.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div id="naturediv">
+            <h5 class="text-center">A soul calmer</h5>
+            <div class="photo-outer-div">
+                <img id="nature-photo" class="photo-light"/>
+            </div>
+        </div>
+        <div id="dogdiv">
+            <h5 class="text-center">A true friend</h5>
+            <div class="photo-outer-div">
+                <img id="photo" class="photo-light"/>
+            </div>
+        </div>
+        <nav id="topbar" class="navbar topbar">
+            <div class="container">
+                <div id="date-and-name">
+                    <text id="datetime" class="nav-link">@DateTime.Now.ToString("yyyy-MM-dd, dddd")</text>
+                    <text class="nav-link" id="nameday"></text>
+                </div>
+                <div id="logo">
+                    <img width="50" src="img/Delightful Daily Dose-logo.png" />
+                </div>
+                <div id="weather-and-exchange">
+                    <text class="nav-link" id="weather"></text>
+                    <text class="nav-link" id="EUR"></text>
+                    <text class="nav-link" id="USD"></text>
+                </div>
+            </div>
+        </nav>
+        <nav id="lowerbar" class="navbar lowerbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <div id="menudiv">
+                    <a class="nav-link" id="menu">Menu</a>
+                    <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
+                        <span class="hamb-top close-button"></span>
+                        <span class="hamb-middle close-button"></span>
+                        <span class="hamb-bottom close-button"></span>
+                    </button>
+                </div>
+                <a id="sitename" class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img width="150" src="img/Delightful Daily Dose-name.png" /></a>
+            </div>
+        </nav>
+    </header>
+    @*All about the bass, bout the bass. No menu.*@
+    <div id="wrapper">
+        <div class="overlay"></div>
+        <nav class="navbar navbar-inverse fixed-top" id="sidebar-wrapper" role="navigation">
+            <ul class="nav sidebar-nav">
+                <div class="sidebar-header">
+                    <div class="sidebar-brand">
+                        <text id="color-scheme">Sötét Mód</text>
+                    </div>
+                </div>
+                <li><a asp-action="Index" asp-controller="Fresh"><i id="fresh" class="fa fa-solid fa-fire"></i> Legfrissebb</a></li>
+                <li><a asp-action="Index" asp-controller="MostViewed"><i id="most-viewed" class="fa fa-solid fa-arrow-trend-up"></i> Legnézettebb</a></li>
+                <li class="dropdown">
+                    <a href="#works" class="dropdown-toggle" data-toggle="dropdown"><i id="category" class="fa fa-solid fa-grip-vertical"></i> Kategóriák<span class="caret"></span></a>
+                    <ul class="dropdown-menu animated fadeInLeft" role="menu">
+                        <li class="menu-list-item" id="domestic"><a asp-action="Index" asp-controller="Domestic"><i class="fa fa-solid fa-flag"></i> Belföld</a></li>
+                        <li class="menu-list-item" id="foreign"><a asp-action="Index" asp-controller="Foreign"><i class="fa fa-solid fa-globe"></i> Külföld</a></li>
+                        <li class="menu-list-item" id="sport"><a asp-action="Index" asp-controller="Sport"><i class="fa-solid fa-baseball"></i> Sport</a></li>
+                        <li class="menu-list-item" id="culinary"><a asp-action="Index" asp-controller="Culinary"><i class="fa fa-solid fa-utensils"></i> Gasztronómia</a></li>
+                        <li class="menu-list-item" id="health"><a asp-action="Index" asp-controller="Health"><i class="fa fa-solid fa-heart"></i> Egészség</a></li>
+                        <li class="menu-list-item" id="politics"><a asp-action="Index" asp-controller="Politics"><i class="fa fa-solid fa-landmark"></i> Politika</a></li>
+                        @*<li class="menu-list-item" id="economics"><a asp-action="Index" asp-controller="Economics"><i class="fa fa-solid fa-coins"></i> Tőzsde</a></li>*@
+                        <li class="menu-list-item" id="entertainment"><a asp-action="Index" asp-controller="Entertainment"><i class="fa fa-solid fa-face-smile"></i> Szórakozás</a></li>
+                        <li class="menu-list-item" id="environment"><a asp-action="Index" asp-controller="Environment"><i class="fa fa-solid fa-tree"></i> Környezet</a></li>
+                        <li class="menu-list-item" id="techworld"><a asp-action="Index" asp-controller="TechWorld"><i class="fa fa-solid fa-microchip"></i> Techvilág</a></li>
+                        <li class="menu-list-item" id="business"><a asp-action="Index" asp-controller="Business"><i class="fa fa-solid fa-briefcase"></i> Gazdaság</a></li>
+                    </ul>
+                </li>
+                <li><a href="#followus"><i class="fa fa-brands fa-twitter"></i> Follow us</a></li>
+            </ul>
+        </nav>
+        <div id="page-content-wrapper"></div>
+    </div>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - Delightful Daily Dose - <a asp-area="" asp-controller="Home" asp-action="Credits">Credits</a>
+            - Joke of the day: <text class="text-center" id="joke"></text>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
