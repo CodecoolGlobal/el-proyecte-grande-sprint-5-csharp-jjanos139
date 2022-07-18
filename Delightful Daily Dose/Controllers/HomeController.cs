@@ -196,10 +196,10 @@ namespace Delightful_Daily_Dose.Controllers
                 },
                 ""info"": {
                     ""timestamp"": 1654682403,
-                    ""rate"": 389.772845
+                    ""rate"": 415.555771
                 },
                 ""date"": ""2022-06-08"",
-                ""result"": 389.772845
+                ""result"": 415.555771
             }";
         }
 
@@ -213,7 +213,7 @@ namespace Delightful_Daily_Dose.Controllers
         [Route("/[controller]/GetTopImdbTvShows")]
         public async Task<string> GetTopImdbTvShows()
         {
-            string apiUrl = "https://imdb-api.com/en/API/MostPopularTVs/k_isz4vrmq";
+            string apiUrl = "https://imdb-api.com/en/API/Top250TVs/k_isz4vrmq";
             return await _apiHelper.GetApi(apiUrl);
         }
 
@@ -229,6 +229,12 @@ namespace Delightful_Daily_Dose.Controllers
         {
             string apiUrl = "https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&regionCode=HU&videoCategoryId=0&key=AIzaSyD61k1tx-iwfoKtmhIHGmAm4xq3_Q8Oy5I";
             return await _apiHelper.GetApi(apiUrl);
+        }
+
+        [Route("/[controller]/history")]
+        public IEnumerable<News> GetNewsHistory()
+        {
+            return _apiHelper.GetNewsFromDb();
         }
     }
 }

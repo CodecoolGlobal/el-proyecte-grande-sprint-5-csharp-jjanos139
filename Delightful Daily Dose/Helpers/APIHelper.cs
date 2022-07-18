@@ -4,7 +4,6 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Delightful_Daily_Dose.Models;
-using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 namespace Delightful_Daily_Dose.Helpers
@@ -63,6 +62,12 @@ namespace Delightful_Daily_Dose.Helpers
                 );
             await _context.SaveChangesAsync();
             return data?.Results;
+        }
+
+        public IEnumerable<News> GetNewsFromDb()
+        {
+            var news = _context.News;
+            return news.OrderByDescending(data => data.PubDate);
         }
     }
 }

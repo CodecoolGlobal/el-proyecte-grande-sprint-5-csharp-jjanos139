@@ -443,6 +443,12 @@ h5>a:hover {
     .credits-name {
         top: 25% ! important;
     }
+    
+    .card {
+        width: 380px;
+        margin-left: 8px
+    }
+    
     #menudiv {
         margin-right: 1.25rem;
         margin-left: 5rem;

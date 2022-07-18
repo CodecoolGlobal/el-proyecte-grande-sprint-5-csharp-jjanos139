@@ -56,6 +56,7 @@ export default function Sidebar(props) {
                     </div>
                     <li><Link to="/"><span><i id="fresh" className="fa fa-solid fa-fire"></i> Hot</span></Link></li>
                     <li><Link to="/most_viewed"><span><i id="most-viewed" className="fa fa-solid fa-arrow-trend-up"></i> Most Viewed</span></Link></li>
+                    <li><Link to="/history"><span><i id="history" className="fa fa-solid fa-hourglass"></i> History</span></Link></li>
                     <li><Dropdown>
                         <DropdownToggle as="span">
                             <i id="category" className="fa fa-solid fa-grip-vertical"></i> Categories
@@ -76,7 +77,7 @@ export default function Sidebar(props) {
                     </Dropdown></li>
                     <li><Link to="/box_office_top_10"><span><i className="fa-solid fa-film"></i> Box Office Top 10 US</span></Link></li>
                     <li><Link to="/coming_soon"><span><i className="fa-solid fa-film"></i> Coming Soon</span></Link></li>
-                    <li><Link to="/imdb_top_100_tv_shows"><span><i className="fa-solid fa-tv"></i> <i style={{ color: "yellow", fontSize: "20px" }} className="fa-brands fa-imdb"></i> Top 100 TV</span></Link></li>
+                    <li><Link to="/imdb_top_250_tv_shows"><span><i className="fa-solid fa-tv"></i> <i style={{ color: "yellow", fontSize: "20px" }} className="fa-brands fa-imdb"></i> Top 250 TV</span></Link></li>
                     <li><Link to="/youtube_top_25"><span><i className="fa-brands fa-youtube"></i> <i style={{ color: "red" }} className="fa-solid fa-fire"></i> YouTube </span></Link></li>
                     <li><a href="https://twitter.com/delightfuldd1" target="_blank" rel="noreferrer"><span><i className="fa fa-brands fa-twitter"></i> Follow us</span></a></li>
                 </ul>
