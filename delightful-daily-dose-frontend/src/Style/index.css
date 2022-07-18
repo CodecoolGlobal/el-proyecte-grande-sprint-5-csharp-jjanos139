@@ -130,6 +130,18 @@ button.accept-policy {
     align-items: center !important;
 }
 
+.search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -30px;
+}
+
+#input {
+    border-radius: 25px;
+    text-indent: 10px;
+}
+
 .container {
     flex-wrap: unset !important;
     justify-content: center !important;
