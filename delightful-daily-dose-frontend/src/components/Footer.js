@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Marquee from "react-fast-marquee";
 import React from "react";
 
 export default function Footer(props) {
@@ -12,10 +13,9 @@ export default function Footer(props) {
     })
 
     return (
-        <footer className="border-top footer text-muted">
-            <div className="container" id="joke-container">
-                <Link to="/credits">Credits</Link> &copy; 2022 - Delightful Daily Dose -
-                Chuck of the day: <marquee behavior="scroll" direction="left" id="joke">{joke}</marquee>
+        <footer className="border-top text-muted">
+            <div className="container text-center">
+                <Link to="/credits">Credits</Link> &copy; 2022 - Delightful Daily Dose<Marquee speed={50} gradient={false}>{joke} </Marquee>
             </div>
         </footer>
     )
