@@ -56,6 +56,7 @@ export default function Sidebar(props) {
                     </div>
                     <li><Link to="/"><span><i id="fresh" className="fa fa-solid fa-fire"></i> Hot</span></Link></li>
                     <li><Link to="/most_viewed"><span><i id="most-viewed" className="fa fa-solid fa-arrow-trend-up"></i> Most Viewed</span></Link></li>
+                    <li><Link to="/history"><span><i id="history" className="fa fa-solid fa-hourglass"></i> History</span></Link></li>
                     <li><Dropdown>
                         <DropdownToggle as="span">
                             <i id="category" className="fa fa-solid fa-grip-vertical"></i> Categories
