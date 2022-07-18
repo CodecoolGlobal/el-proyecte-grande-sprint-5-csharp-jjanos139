@@ -394,6 +394,11 @@ h5>a:hover {
     .credits-name {
         top: 25% ! important;
     }
+
+    .card {
+        width: 380px;
+        margin-left: 8px;
+    }
 }
 
 @media screen and (max-width: 450px) {
