@@ -26,11 +26,9 @@ span.navbar-brand {
 /* footer style */
 
 .footer {
-    height: 60px;
     width: 100%;
     white-space: nowrap;
     position: absolute;
-    bottom: 0;
 }
 
 #joke {
@@ -118,7 +116,11 @@ button.accept-policy {
     margin-left: 25px;
 }
 
-#USD, #EUR, #nameday, #sitename, #menudiv {
+#USD,
+#EUR,
+#nameday,
+#sitename,
+#menudiv {
     float: left;
 }
 
