@@ -25,9 +25,18 @@ export default function App(props) {
         }
     }
 
+    const handleSearch = (event, news, setFilteredNews) => {
+        let value = event.target.value.toLowerCase();
+        let result = [];
+        result = news.filter((item) => {
+            return item.title.toLowerCase().search(value) != -1;
+        });
+        setFilteredNews(result);
+    }
+
     function switchSite() {
-        if (!props.type || props.type === "news") {
-            return (<News dark={dark} site={props.site} />)
+        if (props.type === "news") {
+            return (<News dark={dark} site={props.site} handleSearch={handleSearch} />)
         }
         if (props.type === "movies") {
             return (<Movies dark={dark} />)
