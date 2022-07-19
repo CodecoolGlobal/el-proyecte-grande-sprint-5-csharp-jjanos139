@@ -29,7 +29,7 @@ export default function App(props) {
         let value = event.target.value.toLowerCase();
         let result = [];
         result = news.filter((item) => {
-            return item.title.toLowerCase().search(value) != -1;
+            return item.title.toLowerCase().search(value) !== -1;
         });
         setFilteredNews(result);
     }

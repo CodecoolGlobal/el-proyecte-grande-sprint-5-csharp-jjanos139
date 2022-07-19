@@ -3,24 +3,23 @@ import React from "react";
 
 export default function News(props) {
     const [news, setNews] = React.useState([])
-    const [filteredNews, setFilteredNews] = React.useState(news);
+    const [filteredNews, setFilteredNews] = React.useState(news)
     const dark = props.dark;
 
     React.useEffect(() => {
-        const source = "Home" + window.location.pathname;
-        fetch(source)
+        fetch(props.site)
             .then(response => response.json())
             .then(data => {
                 setNews(data);
                 setFilteredNews(data);
             });
-    }, [window.location.pathname])
+    }, [props])
 
     return (
         <div className="container">
             <main role="main" className="pb-3">
                 <div className="search">
-                    <label id="search-input" for="input">Search:</label>
+                    <label id="search-input" HtmlFor="input">Search:</label>
                     <input id="input" type="text" onChange={(event) => props.handleSearch(event, news, setFilteredNews)}></input>
                     <p>Articles: {filteredNews.length}</p>
                 </div>
@@ -37,7 +36,7 @@ export default function News(props) {
                             </Card>)
                     })}
                 </div>
-            </main>
-        </div>
+            </main >
+        </div >
     )
 }

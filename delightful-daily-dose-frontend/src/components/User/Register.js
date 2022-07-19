@@ -117,7 +117,7 @@ export default function Register(props) {
             // })}
             />
             {/* {errors.password && errors.password.message} */}
-            <label className="reg-label" htmlfor="confirmpassword">Confirm Password</label>
+            <label className="reg-label" htmlFor="confirmpassword">Confirm Password</label>
             <input
                 className="form-input"
                 type="password"
