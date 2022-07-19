@@ -1,16 +1,14 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 using Delightful_Daily_Dose.Helpers;
 using Delightful_Daily_Dose.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Delightful_Daily_Dose
 {
@@ -26,8 +24,36 @@ namespace Delightful_Daily_Dose
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApiContext>(options =>
+            IConfigurationSection jwtAuthSection =
+                Configuration.GetSection("JWTAuthSection");
+            services
+                .AddDbContext<ApiContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+
+                        IssuerSigningKey = new SymmetricSecurityKey(
+                            Encoding.UTF8.GetBytes(jwtAuthSection["JWTSecretKey"])
+                        )
+                    };
+                });
+
+            services.AddScoped<IUserRepository, UserRepository>();
+
+            services.AddSingleton<IAuthService>(
+                new AuthService(
+                    jwtAuthSection["JWTSecretKey"],
+                    int.Parse(jwtAuthSection["JWTLifespan"])
+                )
+            );
 
             services.AddControllersWithViews();
             services.AddTransient<ApiHelper>();
@@ -48,6 +74,8 @@ namespace Delightful_Daily_Dose
             }
             //app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseAuthentication();
 
             app.UseRouting();
 
