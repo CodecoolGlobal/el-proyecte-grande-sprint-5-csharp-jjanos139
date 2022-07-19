@@ -26,8 +26,8 @@ export default function App(props) {
     }
 
     function switchSite() {
-        if (props.type === "news") {
-            return (<News dark={dark} />)
+        if (!props.type || props.type === "news") {
+            return (<News dark={dark} site={props.site} />)
         }
         if (props.type === "movies") {
             return (<Movies dark={dark} />)

@@ -19,19 +19,19 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>
         <Routes>
-            <Route path="/" element={<App type="news" />}></Route>
-            <Route path="/most_viewed" element={<App type="news" />}></Route>
-            <Route path="/domestic" element={<App type="news" />}></Route>
-            <Route path="/foreign" element={<App type="news" />}></Route>
-            <Route path="/sport" element={<App type="news" />}></Route>
-            <Route path="/culinary" element={<App type="news" />}></Route>
-            <Route path="/health" element={<App type="news" />}></Route>
-            <Route path="/politics" element={<App type="news" />}></Route>
-            <Route path="/entertainment" element={<App type="news" />}></Route>
-            <Route path="/environment" element={<App type="news" />}></Route>
-            <Route path="/techworld" element={<App type="news" />}></Route>
-            <Route path="/business" element={<App type="news" />}></Route>
-            <Route path="/history" element={<App type="news" />}></Route>
+            <Route path="/" element={<App type="news" site="Home/" />}></Route>
+            <Route path="/most_viewed" element={<App type="news" site="Home/most_viewed" />}></Route>
+            <Route path="/domestic" element={<App type="news" site="Home/domestic" />}></Route>
+            <Route path="/foreign" element={<App type="news" site="Home/foreign" />}></Route>
+            <Route path="/sport" element={<App type="news" site="Home/sport" />}></Route>
+            <Route path="/culinary" element={<App type="news" site="Home/culinary" />}></Route>
+            <Route path="/health" element={<App type="news" site="Home/health" />}></Route>
+            <Route path="/politics" element={<App type="news" site="Home/politics" />}></Route>
+            <Route path="/entertainment" element={<App type="news" site="Home/entertainment" />}></Route>
+            <Route path="/environment" element={<App type="news" site="Home/environment" />}></Route>
+            <Route path="/techworld" element={<App type="news" site="Home/techworld" />}></Route>
+            <Route path="/business" element={<App type="news" site="Home/business" />}></Route>
+            <Route path="/history" element={<App type="news" site="Home/history" />}></Route>
             <Route path="/box_office_top_10" element={<App type="movies" />}></Route>
             <Route path="/coming_soon" element={<App type="coming-soon" />}></Route>
             <Route path="/imdb_top_250_tv_shows" element={<App type="tv-shows" />}></Route>
