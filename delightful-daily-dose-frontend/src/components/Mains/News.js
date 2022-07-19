@@ -3,18 +3,17 @@ import React from "react";
 
 export default function News(props) {
     const [news, setNews] = React.useState([])
-    const [filteredNews, setFilteredNews] = React.useState(news);
+    const [filteredNews, setFilteredNews] = React.useState(news)
     const dark = props.dark;
 
     React.useEffect(() => {
-        const source = "Home" + window.location.pathname;
-        fetch(source)
+        fetch(props.site)
             .then(response => response.json())
             .then(data => {
                 setNews(data);
                 setFilteredNews(data);
             });
-    }, [window.location.pathname])
+    }, [props])
 
     return (
         <div className="container">
@@ -37,7 +36,7 @@ export default function News(props) {
                             </Card>)
                     })}
                 </div>
-            </main>
-        </div>
+            </main >
+        </div >
     )
 }

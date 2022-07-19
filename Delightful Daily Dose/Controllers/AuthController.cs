@@ -39,11 +39,11 @@ namespace Delightful_Daily_Dose.Controllers
 
             HttpContext.Response.Cookies.Append(
                 "user",
-                model.Username,
-                new CookieOptions
-                {
-                    HttpOnly = true
-                });
+                model.Username);
+                //new CookieOptions
+                //{
+                //    HttpOnly = true
+                //});
 
             return Redirect("/");
         }
@@ -69,6 +69,13 @@ namespace Delightful_Daily_Dose.Controllers
             userRepository.Add(user);
             userRepository.Commit();
 
+            return Redirect("/");
+        }
+
+        [HttpPost("/Logout")]
+        public IActionResult Post()
+        {
+            HttpContext.Response.Cookies.Delete("user");
             return Redirect("/");
         }
     }

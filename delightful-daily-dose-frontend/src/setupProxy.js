@@ -4,7 +4,8 @@
 const context = [
     "/Home",
     "/Login",
-    "/Register"
+    "/Register",
+    "/Logout"
 ];
 
 module.exports = function (app) {
