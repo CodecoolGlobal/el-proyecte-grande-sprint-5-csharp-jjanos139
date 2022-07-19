@@ -93,13 +93,17 @@ button.accept-policy {
 }
 
 #date-and-name {
-    margin-left: 50px;
+    margin-left: 3.125rem;
 }
 
 #date-and-name,
 #weather-and-exchange {
     width: 550px;
     overflow: hidden;
+}
+
+#datetime {
+    margin-left: 3.125rem;
 }
 
 #datetime,
@@ -110,6 +114,7 @@ button.accept-policy {
 
 #weather {
     min-width: 150px;
+    margin-left: 3.25rem;
 }
 
 #menu {
@@ -128,6 +133,8 @@ button.accept-policy {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .search {
@@ -147,13 +154,9 @@ button.accept-policy {
     justify-content: center !important;
 }
 
-#weather {
-    margin-left: 100px;
-}
-
 #sitename {
-    left: 50%;
-    margin-right: 210px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* sidebar */
@@ -344,6 +347,29 @@ h5>a:hover {
     #EUR {
         display: none !important;
     }
+    #weather {
+        margin-left: 12.5rem;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+
+    #menudiv {
+        margin-right: 11.25rem;
+    }
+    #datetime {
+        margin-left: 3.125rem;
+    }
+    #weather {
+        margin-left: 10rem;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+
+    #weather {
+        margin-left: 7rem;
+    }
 }
 
 @media screen and (max-width: 1000px) {
@@ -368,6 +394,18 @@ h5>a:hover {
     }
 }
 
+@media screen and (max-width: 990px) {
+
+    #menudiv {
+        margin-right: 6.25rem;
+        margin-left: 10.125rem;
+    }
+    #weather {
+        margin-left: 5rem;
+    }
+
+}
+
 @media screen and (max-width: 770px) {
     .credits-image {
         width: 100px !important;
@@ -383,6 +421,17 @@ h5>a:hover {
 
     .youtube-iframe {
         max-width: 100% !important;
+    }
+    #menudiv {
+        margin-right: 1.25rem;
+        margin-left: 15.125rem;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    #menudiv {
+        margin-right: 2.25rem;
+        margin-left: 14.9rem;
     }
 }
 
@@ -405,6 +454,26 @@ h5>a:hover {
 
     .credits-name {
         top: 25% ! important;
+    }
+    
+    .card {
+        width: 380px;
+        margin-left: 8px
+    }
+    
+    #menudiv {
+        margin-right: 1.25rem;
+        margin-left: 5rem;
+    }
+}
+
+@media screen and (max-width: 501px) {
+    #menudiv {
+        margin-right: 1.25rem;
+        margin-left: 8rem;
+    }
+    #date-and-name {
+        margin-left: 3rem;
     }
 }
 
