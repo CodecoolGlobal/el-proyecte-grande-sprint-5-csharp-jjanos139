@@ -24,6 +24,8 @@ namespace Delightful_Daily_Dose
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            IConfigurationSection jwtAuthSection =
+                Configuration.GetSection("JWTAuthSection");
             services
                 .AddDbContext<ApiContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -39,7 +41,7 @@ namespace Delightful_Daily_Dose
                         ValidateIssuerSigningKey = true,
 
                         IssuerSigningKey = new SymmetricSecurityKey(
-                            Encoding.UTF8.GetBytes(Configuration.GetValue<string>("JWTSecretKey"))
+                            Encoding.UTF8.GetBytes(jwtAuthSection["JWTSecretKey"])
                         )
                     };
                 });
@@ -48,8 +50,8 @@ namespace Delightful_Daily_Dose
 
             services.AddSingleton<IAuthService>(
                 new AuthService(
-                    Configuration.GetValue<string>("JWTSecretKey"),
-                    Configuration.GetValue<int>("JWTLifespan")
+                    jwtAuthSection["JWTSecretKey"],
+                    int.Parse(jwtAuthSection["JWTLifespan"])
                 )
             );
 
