@@ -35,5 +35,21 @@ namespace Delightful_Daily_Dose.Models
                 .HasMaxLength(60)
                 .IsRequired();
         }
+        void ConfigureModelBuilderForStory(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<UserStory>().ToTable("Story");
+            modelBuilder.Entity<UserStory>()
+                .Property(s => s.Title)
+                .HasMaxLength(60);
+
+            modelBuilder.Entity<UserStory>()
+                .Property(s => s.OwnerId)
+                .IsRequired();
+
+            modelBuilder.Entity<UserStory>()
+                .HasOne(s => s.Owner)
+                .WithMany(u => u.Stories)
+                .HasForeignKey(s => s.OwnerId);
+        }
     }
 }

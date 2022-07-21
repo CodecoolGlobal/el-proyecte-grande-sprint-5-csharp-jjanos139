@@ -19,7 +19,7 @@ export default function News(props) {
         <div className="container">
             <main role="main" className="pb-3">
                 <div className="search-container">
-                    <input type="text" name="search" placeholder="Search..." className="search-input" spellcheck="false" onChange={(event) => props.handleSearch(event, news, setFilteredNews)}></input>
+                    <input type="text" name="search" placeholder="Search..." className="search-input" spellCheck="false" onChange={(event) => props.handleSearch(event, news, setFilteredNews)}></input>
                     <div className="search"></div>
                     <p className="article-numbers">Articles: {filteredNews.length}</p>
                 </div>
