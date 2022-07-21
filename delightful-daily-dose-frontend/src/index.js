@@ -6,6 +6,7 @@ import './Style/form.css';
 import './Style/searchbox.css';
 import './Style/story.css';
 import App from './App';
+import Logged from './components/User/Logged';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './sidebarScript';
@@ -18,6 +19,7 @@ import {
 } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
     <BrowserRouter>
         <Routes>
@@ -44,6 +46,7 @@ root.render(
             <Route path="/Register" element={<App type="register" />}></Route>
             <Route path="/Login" element={<App type="login" />}></Route>
             <Route path="/users" element={<App type="users" />}></Route>
+            <Route path="/logged" element={<Logged />}></Route>
             <Route path="/*" element={<App type="error" />}></Route>
         </Routes>
     </BrowserRouter>

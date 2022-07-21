@@ -55,5 +55,4 @@ export default function Login(props) {
             <button className="login-button">Login</button>
         </form>
     )
-
 }

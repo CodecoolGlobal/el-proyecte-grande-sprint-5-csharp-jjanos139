@@ -41,7 +41,7 @@ namespace Delightful_Daily_Dose.Models
                 {
                     Id = "1",
                     Username = "admin",
-                    Password = "admin123",
+                    Password = "AQAAAAEAACcQAAAAENwASiH23ZvwjKbm5UfcNf9mXMzkBrqU5Jkzsa0FJAiugpFyX9JoLpSJ0AzzI76cfw==",
                     Email = "admin@ddd.com",
                     Role = "Admin"
                 });

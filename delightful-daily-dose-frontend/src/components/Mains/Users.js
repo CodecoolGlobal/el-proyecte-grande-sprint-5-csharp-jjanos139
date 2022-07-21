@@ -15,7 +15,6 @@ export default function Users(props) {
         <div className="container">
             <main role="main" className="pb-3">
                 <div id="body">
-                    <h1>Bazdmeg</h1>
                     {users.map((item) => {
                         return (
                             <Card key={item.id} className={dark === "dark" ? "dark" : ""}>

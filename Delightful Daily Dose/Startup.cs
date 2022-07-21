@@ -1,4 +1,3 @@
-using System.Security.Claims;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -8,7 +7,6 @@ using System.Text;
 using AutoMapper;
 using Delightful_Daily_Dose.Helpers;
 using Delightful_Daily_Dose.Models;
-using Delightful_Daily_Dose.Models.Entities;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
@@ -31,25 +29,12 @@ namespace Delightful_Daily_Dose
         {
             IConfigurationSection jwtAuthSection =
                 Configuration.GetSection("JWTAuthSection");
+            IConfigurationSection emailSection = Configuration.GetSection("EmailSection");
+            //IConfigurationSection googleAuthNSection =
+            //    Configuration.GetSection("Authentication:Google");
             services
                 .AddDbContext<ApiContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-            //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            //    .AddJwtBearer(options =>
-            //    {
-            //        options.TokenValidationParameters = new TokenValidationParameters
-            //        {
-            //            ValidateIssuer = false,
-            //            ValidateAudience = false,
-            //            ValidateLifetime = true,
-            //            ValidateIssuerSigningKey = true,
-
-            //            IssuerSigningKey = new SymmetricSecurityKey(
-            //                Encoding.UTF8.GetBytes(jwtAuthSection["JWTSecretKey"])
-            //            )
-            //        };
-            //    });
 
             services.AddAuthentication("JwtAuthentication")
                 .AddScheme<AuthenticationSchemeOptions, JwtAuthenticationHandler>("JwtAuthentication", null);
@@ -58,8 +43,39 @@ namespace Delightful_Daily_Dose
                 mc.AddProfile(new Mapping.Mapping())
             );
             services.AddSingleton(mappingConfig.CreateMapper());
+            services.AddSingleton(
+                new EmailSender(emailSection["Email"], emailSection["Password"]));
 
+            //services.AddAuthentication(options =>
+            //    {
+            //    })
+            //    .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
+            //    {
+            //        options.TokenValidationParameters = new TokenValidationParameters
+            //        {
+            //            ValidateIssuer = false,
+            //            ValidateAudience = false,
+            //            ValidateLifetime = true,
+            //            ValidateIssuerSigningKey = true,
 
+                //        IssuerSigningKey = new SymmetricSecurityKey(
+                //            Encoding.UTF8.GetBytes(jwtAuthSection["JWTSecretKey"])
+                //        )
+                //    };
+                //})
+                //.AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
+                //{
+                //    options.LoginPath = "/googleLogin";
+                //    options.LogoutPath = "/";
+                //    options.ExpireTimeSpan = new TimeSpan(1, 0, 0);
+                //})
+                //.AddGoogle(GoogleDefaults.AuthenticationScheme, options =>
+                //{
+                //    options.ClientId = googleAuthNSection["ClientId"];
+                //    options.ClientSecret = googleAuthNSection["ClientSecret"];
+                //});
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IStoryRepository, StoryRepository>();
 
@@ -70,15 +86,16 @@ namespace Delightful_Daily_Dose
                 )
             );
 
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddControllersWithViews();
+            services.AddTransient<ApiHelper>();
 
-            //TODO: use authorization with roles instead of policies
-            //services.AddIdentityCore<User>().AddRoles<>();
 
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
                 options.AddPolicy("PublisherAndAdmin", policy => policy.RequireRole("Admin", "Publisher"));
+                options.AddPolicy("User", policy => policy.RequireRole("User", "Publisher", "Admin"));
+                
             });
 
             services.AddControllersWithViews();
@@ -99,13 +116,14 @@ namespace Delightful_Daily_Dose
                 app.UseHsts();
             }
             //app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
+            //app.UseCors("ReactPolicy");
             app.UseAuthentication();
-
             app.UseRouting();
-
             app.UseAuthorization();
+
 
             app.UseEndpoints(endpoints =>
             {

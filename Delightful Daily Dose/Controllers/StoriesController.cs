@@ -5,6 +5,7 @@ using AutoMapper;
 using Delightful_Daily_Dose.Helpers;
 using Delightful_Daily_Dose.Models;
 using Delightful_Daily_Dose.Models.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Delightful_Daily_Dose.Controllers
@@ -14,14 +15,17 @@ namespace Delightful_Daily_Dose.Controllers
     public class StoriesController : ControllerBase
     {
         private IStoryRepository storyRepository;
+        private IUserRepository _userRepository;
         private IMapper mapper;
 
-        public StoriesController(IStoryRepository storyRepository, IMapper mapper)
+        public StoriesController(IStoryRepository storyRepository, IMapper mapper, IUserRepository userRepository)
         {
             this.storyRepository = storyRepository;
             this.mapper = mapper;
+            _userRepository = userRepository;
         }
 
+        [Authorize(Policy = "User")]
         [HttpGet]
         public IEnumerable<StoryDetailViewModel> GetStories()
         {
@@ -29,7 +33,7 @@ namespace Delightful_Daily_Dose.Controllers
             return stories.Select(story => mapper.Map<StoryDetailViewModel>(story)).ToList();
         }
 
-
+        [Authorize(Policy = "User")]
         [HttpGet("{id}")]
         public ActionResult<StoryDetailViewModel> GetStoryDetails(string id)
         {
@@ -37,10 +41,11 @@ namespace Delightful_Daily_Dose.Controllers
             return mapper.Map<StoryDetailViewModel>(story);
         }
 
+        [Authorize(Policy = "PublisherAndAdmin")]
         [HttpPost]
         public ActionResult<StoryCreationViewModel> Post([FromBody] UpdateStoryViewModel model)
         {
-            var ownerId = HttpContext.User.Identity.Name;
+            var ownerId = _userRepository.FindCurrentUser().Id;
             var creationTime = ((DateTimeOffset) DateTime.Now).ToUnixTimeSeconds();
             var storyId = Guid.NewGuid().ToString();
             var story = new UserStory
@@ -63,6 +68,7 @@ namespace Delightful_Daily_Dose.Controllers
             };
         }
 
+        [Authorize(Policy = "PublisherAndAdmin")]
         [HttpPatch("{id}")]
         public ActionResult Patch(string id, [FromBody] UpdateStoryViewModel model)
         {
@@ -83,6 +89,7 @@ namespace Delightful_Daily_Dose.Controllers
             return NoContent();
         }
 
+        [Authorize(Policy = "PublisherAndAdmin")]
         [HttpDelete("{id}")]
         public ActionResult Delete(string id)
         {
