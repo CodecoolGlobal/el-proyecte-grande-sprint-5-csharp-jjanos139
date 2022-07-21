@@ -10,7 +10,6 @@ namespace Delightful_Daily_Dose.Models
         public DbSet<User> User { get; set; }
         public DbSet<News> News { get; set; }
 
-        public DbSet<UserStory> Stories { get; set; }
         public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
