@@ -5,6 +5,7 @@ using AutoMapper;
 using Delightful_Daily_Dose.Helpers;
 using Delightful_Daily_Dose.Models;
 using Delightful_Daily_Dose.Models.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Delightful_Daily_Dose.Controllers
@@ -22,6 +23,7 @@ namespace Delightful_Daily_Dose.Controllers
             this.mapper = mapper;
         }
 
+        [Authorize(Policy = "User")]
         [HttpGet]
         public IEnumerable<StoryDetailViewModel> GetStories()
         {
@@ -29,7 +31,7 @@ namespace Delightful_Daily_Dose.Controllers
             return stories.Select(story => mapper.Map<StoryDetailViewModel>(story)).ToList();
         }
 
-
+        [Authorize(Policy = "User")]
         [HttpGet("{id}")]
         public ActionResult<StoryDetailViewModel> GetStoryDetails(string id)
         {
@@ -37,6 +39,7 @@ namespace Delightful_Daily_Dose.Controllers
             return mapper.Map<StoryDetailViewModel>(story);
         }
 
+        [Authorize(Policy = "PublisherAndAdmin")]
         [HttpPost]
         public ActionResult<StoryCreationViewModel> Post([FromBody] UpdateStoryViewModel model)
         {
@@ -63,6 +66,7 @@ namespace Delightful_Daily_Dose.Controllers
             };
         }
 
+        [Authorize(Policy = "PublisherAndAdmin")]
         [HttpPatch("{id}")]
         public ActionResult Patch(string id, [FromBody] UpdateStoryViewModel model)
         {
@@ -83,6 +87,7 @@ namespace Delightful_Daily_Dose.Controllers
             return NoContent();
         }
 
+        [Authorize(Policy = "PublisherAndAdmin")]
         [HttpDelete("{id}")]
         public ActionResult Delete(string id)
         {

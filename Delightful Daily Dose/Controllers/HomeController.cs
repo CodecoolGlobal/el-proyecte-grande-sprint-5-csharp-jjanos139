@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Delightful_Daily_Dose.Controllers
 {
+    [Authorize]
     [ApiController]
     public class HomeController : ControllerBase
     {
@@ -23,6 +24,7 @@ namespace Delightful_Daily_Dose.Controllers
             _userRepository = userRepository;
         }
 
+        [AllowAnonymous]
         [Route("/[controller]")]
         public async Task<List<News>> Index()
         {
@@ -32,13 +34,14 @@ namespace Delightful_Daily_Dose.Controllers
 
         }
 
-        //[Authorize(Policy = "AdminOnly")]
+        [Authorize(Policy = "AdminOnly")]
         [Route("/[controller]/users")]
         public IEnumerable<User> Users()
         {
             return _userRepository.GetAllUsers();
         }
 
+        [AllowAnonymous]
         [Route("/[controller]/business")]
         public async Task<List<News>> Business()
         {
@@ -48,6 +51,7 @@ namespace Delightful_Daily_Dose.Controllers
             return news;
         }
 
+        [AllowAnonymous]
         [Route("/[controller]/culinary")]
         public async Task<List<News>> Culinary()
         {
@@ -57,6 +61,7 @@ namespace Delightful_Daily_Dose.Controllers
             return news;
         }
 
+        [AllowAnonymous]
         [Route("/[controller]/domestic")]
         public async Task<List<News>> Domestic()
         {
@@ -65,6 +70,7 @@ namespace Delightful_Daily_Dose.Controllers
             return news;
         }
 
+        [AllowAnonymous]
         [Route("/[controller]/economics")]
         public async Task<List<News>> Economics()
         {
@@ -74,6 +80,7 @@ namespace Delightful_Daily_Dose.Controllers
             return news;
         }
 
+        [AllowAnonymous]
         [Route("/[controller]/entertainment")]
         public async Task<List<News>> Entertainment()
         {
@@ -83,6 +90,7 @@ namespace Delightful_Daily_Dose.Controllers
             return news;
         }
 
+        [AllowAnonymous]
         [Route("/[controller]/environment")]
         public async Task<List<News>> Environment()
         {
@@ -92,6 +100,7 @@ namespace Delightful_Daily_Dose.Controllers
             return news;
         }
 
+        [AllowAnonymous]
         [Route("/[controller]/foreign")]
         public async Task<List<News>> Foreign()
         {
@@ -101,6 +110,7 @@ namespace Delightful_Daily_Dose.Controllers
             return news;
         }
 
+        [AllowAnonymous]
         [Route("/[controller]/fresh")]
         public async Task<List<News>> Fresh()
         {
@@ -110,6 +120,7 @@ namespace Delightful_Daily_Dose.Controllers
             return news;
         }
 
+        [AllowAnonymous]
         [Route("/[controller]/health")]
         public async Task<List<News>> Health()
         {
@@ -119,6 +130,7 @@ namespace Delightful_Daily_Dose.Controllers
             return news;
         }
 
+        [AllowAnonymous]
         [Route("/[controller]/most_viewed")]
         public async Task<List<News>> MostViewed()
         {
@@ -128,6 +140,7 @@ namespace Delightful_Daily_Dose.Controllers
             return news;
         }
 
+        [AllowAnonymous]
         [Route("/[controller]/politics")]
         public async Task<List<News>> Politics()
         {
@@ -137,6 +150,7 @@ namespace Delightful_Daily_Dose.Controllers
             return news;
         }
 
+        [AllowAnonymous]
         [Route("/[controller]/sport")]
         public async Task<List<News>> Sport()
         {
@@ -146,6 +160,7 @@ namespace Delightful_Daily_Dose.Controllers
             return news;
         }
 
+        [AllowAnonymous]
         [Route("/[controller]/techworld")]
         public async Task<List<News>> TechWorld()
         {
@@ -155,6 +170,7 @@ namespace Delightful_Daily_Dose.Controllers
             return news;
         }
 
+        [AllowAnonymous]
         [Route("/[controller]/GetJoke")]
         public async Task<string> GetJoke()
         {
@@ -162,6 +178,7 @@ namespace Delightful_Daily_Dose.Controllers
             return await _apiHelper.GetApi(apiUrl);
         }
 
+        [AllowAnonymous]
         [Route("/[controller]/GetDog")]
         public async Task<string> GetDog()
         {
@@ -169,6 +186,7 @@ namespace Delightful_Daily_Dose.Controllers
             return await _apiHelper.GetApi(apiUrl);
         }
 
+        [AllowAnonymous]
         [Route("/[controller]/GetNameDay")]
         public async Task<string> GetNameDay()
         {
@@ -179,6 +197,7 @@ namespace Delightful_Daily_Dose.Controllers
 
         }
 
+        [AllowAnonymous]
         [Route("/[controller]/GetWeather")]
         public async Task<string> GetWeather()
         {
@@ -191,6 +210,7 @@ namespace Delightful_Daily_Dose.Controllers
 
         }
 
+        [AllowAnonymous]
         [Route("/[controller]/GetExchangeRate")]
         public async Task<string> GetExchangeRate(string from)
         {
@@ -214,8 +234,7 @@ namespace Delightful_Daily_Dose.Controllers
             }";
         }
 
-        [Authorize(Policy = "AdminOnly")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Policy = "User")]
         [Route("/[controller]/GetTopBoxOffice")]
         public async Task<string> GetTopBoxOffice()
         {
@@ -223,6 +242,7 @@ namespace Delightful_Daily_Dose.Controllers
             return await _apiHelper.GetApi(apiUrl);
         }
 
+        [Authorize(Policy = "User")]
         [Route("/[controller]/GetTopImdbTvShows")]
         public async Task<string> GetTopImdbTvShows()
         {
@@ -230,6 +250,7 @@ namespace Delightful_Daily_Dose.Controllers
             return await _apiHelper.GetApi(apiUrl);
         }
 
+        [Authorize(Policy = "User")]
         [Route("/[controller]/GetComingSoonToBoxOffice")]
         public async Task<string> GetComingSoonToBoxOffice()
         {
@@ -237,6 +258,7 @@ namespace Delightful_Daily_Dose.Controllers
             return await _apiHelper.GetApi(apiUrl);
         }
 
+        [Authorize(Policy = "User")]
         [Route("/[controller]/GetYoutubeMostViewed")]
         public async Task<string> GetYoutubeMostViewed()
         {
@@ -244,6 +266,7 @@ namespace Delightful_Daily_Dose.Controllers
             return await _apiHelper.GetApi(apiUrl);
         }
 
+        [Authorize(Policy = "AdminOnly")]
         [Route("/[controller]/history")]
         public IEnumerable<News> GetNewsHistory()
         {
