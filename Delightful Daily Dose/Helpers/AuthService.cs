@@ -17,7 +17,7 @@ namespace Delightful_Daily_Dose.Helpers
             this.jwtSecret = jwtSecret;
             this.jwtLifespan = jwtLifespan;
         }
-        public AuthData GetAuthData(string id)
+        public AuthData GetAuthData(string id, string role)
         {
             var expirationTime = DateTime.UtcNow.AddSeconds(jwtLifespan);
 
@@ -25,7 +25,8 @@ namespace Delightful_Daily_Dose.Helpers
             {
                 Subject = new ClaimsIdentity(new[]
                 {
-                    new Claim(ClaimTypes.Name, id)
+                    new Claim(ClaimTypes.Name, id),
+                    new Claim(ClaimTypes.Role, role)
                 }),
                 Expires = expirationTime,
                 // new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256Signature)

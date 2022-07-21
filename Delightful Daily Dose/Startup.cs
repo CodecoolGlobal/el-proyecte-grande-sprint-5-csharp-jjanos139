@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -7,7 +8,10 @@ using System.Text;
 using AutoMapper;
 using Delightful_Daily_Dose.Helpers;
 using Delightful_Daily_Dose.Models;
+using Delightful_Daily_Dose.Models.Entities;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
@@ -31,21 +35,24 @@ namespace Delightful_Daily_Dose
                 .AddDbContext<ApiContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options =>
-                {
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuer = false,
-                        ValidateAudience = false,
-                        ValidateLifetime = true,
-                        ValidateIssuerSigningKey = true,
+            //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            //    .AddJwtBearer(options =>
+            //    {
+            //        options.TokenValidationParameters = new TokenValidationParameters
+            //        {
+            //            ValidateIssuer = false,
+            //            ValidateAudience = false,
+            //            ValidateLifetime = true,
+            //            ValidateIssuerSigningKey = true,
 
-                        IssuerSigningKey = new SymmetricSecurityKey(
-                            Encoding.UTF8.GetBytes(jwtAuthSection["JWTSecretKey"])
-                        )
-                    };
-                });
+            //            IssuerSigningKey = new SymmetricSecurityKey(
+            //                Encoding.UTF8.GetBytes(jwtAuthSection["JWTSecretKey"])
+            //            )
+            //        };
+            //    });
+
+            services.AddAuthentication("JwtAuthentication")
+                .AddScheme<AuthenticationSchemeOptions, JwtAuthenticationHandler>("JwtAuthentication", null);
 
             var mappingConfig = new MapperConfiguration(mc =>
                 mc.AddProfile(new Mapping.Mapping())
@@ -62,6 +69,17 @@ namespace Delightful_Daily_Dose
                     int.Parse(jwtAuthSection["JWTLifespan"])
                 )
             );
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            //TODO: use authorization with roles instead of policies
+            //services.AddIdentityCore<User>().AddRoles<>();
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
+                options.AddPolicy("PublisherAndAdmin", policy => policy.RequireRole("Admin", "Publisher"));
+            });
 
             services.AddControllersWithViews();
             services.AddTransient<ApiHelper>();

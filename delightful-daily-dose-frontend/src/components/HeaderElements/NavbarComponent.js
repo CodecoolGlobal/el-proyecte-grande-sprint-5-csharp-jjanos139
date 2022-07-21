@@ -4,15 +4,33 @@ import WeatherAndExchange from "./WeatherAndExchange";
 import Menu from "../Menu"
 import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
+import {useEffect, useState} from 'react';
+
+const cookies = new Cookies();
 
 export default function Navbar(props) {
-    const cookies = new Cookies();
-    const user = cookies.get('user')
+    let [user, setUser] = useState();
+
+    // function setUserHelper(asd) {
+    //     setUser(asd);
+    // }
+
+    useEffect(function(){
+        setUser(cookies.get('user'));
+    }, []);
+
     function logout() {
         fetch("/Logout", {
             method: "POST"
-        }).then(window.location.reload())
+        }).then(() => setUser(null));
     }
+    
+    // function login() {
+    //     fetch("/Login", {
+    //         method: "POST"
+    //     }).then(() => setUser(cookies.get('user'))).then(window.location.replace("/"));
+    // }
+
     return (
         <div className="container">
             {props.elements === "top" ? <DateAndName /> : ""}
