@@ -11,6 +11,7 @@ import Error from "./components/Error";
 import Register from "./components/User/Register";
 import Login from "./components/User/Login";
 import React from "react";
+import Story from "./components/Mains/Story";
 
 export default function App(props) {
     const [dark, setDark] = React.useState("");
@@ -61,6 +62,10 @@ export default function App(props) {
         }
         if (props.type === "register") {
             return (<Register dark={dark} />)
+        }
+
+        if (props.type === "stories") {
+            return (<Story dark={dark} />)
         }
     }
 
