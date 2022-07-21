@@ -10,37 +10,31 @@ namespace Delightful_Daily_Dose.Controllers
     {
         IAuthService authService;
         IUserRepository userRepository;
-        public AuthController(IAuthService authService, IUserRepository userRepository)
+        EmailSender _emailSender;
+        public AuthController(IAuthService authService, IUserRepository userRepository, EmailSender emailSender)
         {
             this.authService = authService;
             this.userRepository = userRepository;
+            _emailSender = emailSender;
         }
 
         [HttpPost("/Login")]
         public IActionResult Login([FromBody] LoginViewModel model)
         {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
-
             var user = userRepository.GetSingle(u => u.Username == model.Username);
 
-            if (user == null)
-            {
-                return BadRequest(new { username = "no user with this username" });
-            }
+            var isVerified = authService.VerifyPassword(model.Password, user.Password);
 
-            var passwordValid = authService.VerifyPassword(model.Password, user.Password);
-            if (!passwordValid)
+            if (isVerified)
             {
-                return BadRequest(new { password = "invalid password" });
-            }
-
-            HttpContext.Response.Cookies.Append(
-                "user",
-                model.Username);
+                HttpContext.Response.Cookies.Append(
+                    "user",
+                    model.Username);
                 //new CookieOptions
                 //{
                 //    HttpOnly = true
                 //});
+            }
 
             var token = authService.GetAuthData(user.Id, user.Role);
 
@@ -50,12 +44,8 @@ namespace Delightful_Daily_Dose.Controllers
         [HttpPost("/Register")]
         public IActionResult Register([FromForm] RegisterViewModel model)
         {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
-
             var emailUniq = userRepository.IsEmailUniq(model.Email);
-            if (!emailUniq) return BadRequest(new { email = "user with this email already exists" });
             var usernameUniq = userRepository.IsUsernameUniq(model.Username);
-            if (!usernameUniq) return BadRequest(new { username = "user with this email already exists" });
 
             var id = Guid.NewGuid().ToString();
             var user = new User
@@ -70,6 +60,7 @@ namespace Delightful_Daily_Dose.Controllers
             userRepository.Add(user);
             userRepository.Commit();
 
+            _emailSender.SendConfirmationEmail(user.Username, user.Email);
             return NoContent();
         }
 
@@ -79,5 +70,47 @@ namespace Delightful_Daily_Dose.Controllers
             HttpContext.Response.Cookies.Delete("user");
             return Ok();
         }
+
+        //[EnableCors("ReactPolicy")]
+        //[HttpPost("/googleLogin")]
+        //public IActionResult GoogleLogin()
+        //{
+        //    try
+        //    {
+        //        var properties = new AuthenticationProperties { RedirectUri = Url.Action("GoogleResponse") };
+        //        return Challenge(properties, GoogleDefaults.AuthenticationScheme);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Console.WriteLine(e.Message);
+        //    }
+
+        //    return null;
+        //}
+
+        ////[EnableCors("ReactPolicy")]
+        //[HttpPost("google-response")]
+        //public async void GoogleResponse()
+        //{
+        //    try
+        //    {
+        //        var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        //        var claims = result.Principal.Identities.FirstOrDefault()
+        //            .Claims.Select(claim => new
+        //            {
+        //                claim.Issuer,
+        //                claim.OriginalIssuer,
+        //                claim.Type,
+        //                claim.Value
+        //            });
+        //        HttpContext.Response.Cookies.Append("user", claims.ToList()[1].Value);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Console.WriteLine(e.Message);
+        //    }
+
+        //    //return Ok();
+        //}
     }
 }

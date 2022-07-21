@@ -6,7 +6,9 @@ const context = [
     "/Login",
     "/Register",
     "/Logout",
-    "/Stories"
+    "/Stories",
+    "/googleLogin",
+    "/google-response"
 ];
 
 module.exports = function (app) {

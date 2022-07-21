@@ -25,11 +25,12 @@ export default function Navbar(props) {
         }).then(() => setUser(null));
     }
     
-    // function login() {
-    //     fetch("/Login", {
-    //         method: "POST"
-    //     }).then(() => setUser(cookies.get('user'))).then(window.location.replace("/"));
-    // }
+    //function googleLogin() {
+    //    fetch("/googleLogin",
+    //        {
+    //            method: 'POST',
+    //        }).then(response => console.log(response));
+    //}
 
     return (
         <div className="container">
