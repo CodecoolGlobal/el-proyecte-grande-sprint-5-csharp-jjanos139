@@ -53,7 +53,8 @@ namespace Delightful_Daily_Dose.Controllers
                 Id = id,
                 Username = model.Username,
                 Email = model.Email,
-                Password = authService.HashPassword(model.Password)
+                Password = authService.HashPassword(model.Password),
+                Role = model.IsPublisher ? "Publisher" : "User"
             };
             userRepository.Add(user);
             userRepository.Commit();

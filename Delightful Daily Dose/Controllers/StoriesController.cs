@@ -25,7 +25,7 @@ namespace Delightful_Daily_Dose.Controllers
             _userRepository = userRepository;
         }
 
-        [Authorize(Policy = "User")]
+        [Authorize(Policy = "PublisherAndAdmin")]
         [HttpGet]
         public IEnumerable<StoryDetailViewModel> GetStories()
         {
@@ -33,7 +33,7 @@ namespace Delightful_Daily_Dose.Controllers
             return stories.Select(story => mapper.Map<StoryDetailViewModel>(story)).ToList();
         }
 
-        [Authorize(Policy = "User")]
+        [Authorize(Policy = "PublisherAndAdmin")]
         [HttpGet("{id}")]
         public ActionResult<StoryDetailViewModel> GetStoryDetails(string id)
         {
@@ -46,7 +46,9 @@ namespace Delightful_Daily_Dose.Controllers
         public ActionResult<StoryCreationViewModel> Post([FromBody] UpdateStoryViewModel model)
         {
             var ownerId = _userRepository.FindCurrentUser().Id;
-            var creationTime = ((DateTimeOffset) DateTime.Now).ToUnixTimeSeconds();
+            var creationTime = (int)DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
+
+
             var storyId = Guid.NewGuid().ToString();
             var story = new UserStory
             {
