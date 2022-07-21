@@ -94,6 +94,8 @@ namespace Delightful_Daily_Dose
             {
                 options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
                 options.AddPolicy("PublisherAndAdmin", policy => policy.RequireRole("Admin", "Publisher"));
+                options.AddPolicy("User", policy => policy.RequireRole("User", "Publisher", "Admin"));
+                
             });
 
             services.AddControllersWithViews();
