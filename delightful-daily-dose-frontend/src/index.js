@@ -4,6 +4,7 @@ import './Style/index.css';
 import './Style/menu.css';
 import './Style/form.css';
 import './Style/searchbox.css';
+import './Style/story.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -38,6 +39,7 @@ root.render(
             <Route path="/imdb_top_250_tv_shows" element={<App type="tv-shows" />}></Route>
             <Route path="/youtube_top_25" element={<App type="youtube" />}></Route>
             <Route path="/stories" element={<App type="stories" />}></Route>
+            <Route path="/new-story" element={<App type="new-story" />}></Route>
             <Route path="/credits" element={<App type="credits" />}></Route>
             <Route path="/Register" element={<App type="register" />}></Route>
             <Route path="/Login" element={<App type="login" />}></Route>

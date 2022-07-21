@@ -1,5 +1,7 @@
 import Card from 'react-bootstrap/Card';
 import React from "react";
+import { Link } from 'react-router-dom';
+
 
 export default function Story(props) {
     const [stories, setStories] = React.useState([]);
@@ -14,6 +16,7 @@ export default function Story(props) {
     return (
         <div className="container">
             <main role="main" className="pb-3">
+                <Link to="/new-story" className="new-story"><i className="fa-solid fa-feather-pointed"></i> Add new story</Link>
                 <div id="body">
                     {stories.map((item) => {
                         const url = "Stories/" + item.id;
