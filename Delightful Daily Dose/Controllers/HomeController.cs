@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Delightful_Daily_Dose.Helpers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Delightful_Daily_Dose.Controllers
 {
@@ -203,6 +204,8 @@ namespace Delightful_Daily_Dose.Controllers
             }";
         }
 
+        [Authorize(Policy = "AdminOnly")]
+        //[Authorize(Roles = "Admin")]
         [Route("/[controller]/GetTopBoxOffice")]
         public async Task<string> GetTopBoxOffice()
         {
