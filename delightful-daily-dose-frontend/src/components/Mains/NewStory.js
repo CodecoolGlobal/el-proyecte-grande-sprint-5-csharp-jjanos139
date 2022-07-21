@@ -1,6 +1,3 @@
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownMenu from 'react-bootstrap/DropdownMenu';
-import DropdownToggle from 'react-bootstrap/esm/DropdownToggle';
 import React from 'react';
 
 export default function NewStory() {
@@ -10,7 +7,7 @@ export default function NewStory() {
     const [input, setInput] = React.useState({
         title: '',
         content: '',
-        tag: ''
+        tag: 'domestic'
     });
 
     const onInputChange = e => {
@@ -21,17 +18,11 @@ export default function NewStory() {
         }));
     }
 
-    function handleSubmit(e) {
-        e.preventDefault()
-        console.log(JSON.stringify(input))
+    function handleSubmit() {
         fetch(`Stories`, {
             method: "POST",
-            ContentType: "application/json",
-            body: JSON.stringify({
-                "title": input.title,
-                "content": input.content,
-                "tag": input.tag
-            })
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(input)
         })
     }
 
@@ -70,7 +61,6 @@ export default function NewStory() {
                             value={item}
                         >{item}
                         </option>
-
                     )
                 })}
             </select>
