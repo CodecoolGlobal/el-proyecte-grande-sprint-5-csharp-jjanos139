@@ -1,9 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function NewStory() {
     const tags = [
         "domestic", "foreign", "sport", "culinary", "health", "politics", "entertainment", "environment", "technology", "business"
     ]
+
+    const nav = useNavigate();
+
     const [input, setInput] = React.useState({
         title: '',
         content: '',
@@ -23,7 +27,7 @@ export default function NewStory() {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(input)
-        })
+        }).then(nav("/stories"))
     }
 
     return (

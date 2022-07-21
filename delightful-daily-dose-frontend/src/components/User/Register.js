@@ -1,12 +1,15 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Register(props) {
-    // const { handleSubmit, register, formState: { errors } } = useForm();
+    const nav = useNavigate();
+
     const [input, setInput] = useState({
         email: '',
         password: '',
         confirmpassword: '',
+        username: '',
         ispublisher: false
     });
 
@@ -14,6 +17,7 @@ export default function Register(props) {
         email: '',
         password: '',
         confirmpassword: '',
+        username: '',
         ispublisher: false
     })
 
@@ -70,8 +74,16 @@ export default function Register(props) {
         });
     }
 
+    function handleSubmit() {
+        fetch(`Register`, {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(input)
+        }).then(nav("/stories"))
+    }
+
     return (
-        <form method="post">
+        <form onSubmit={handleSubmit}>
             <h3 className="reg-h3">Registration</h3>
             <label className="reg-label" htmlFor="username">Username</label>
             <input
@@ -151,7 +163,7 @@ export default function Register(props) {
                 /></span>
                 <div className="clearboth"></div>
             </div>
-            <button className="reg-button">Submit</button>
+            <input type="submit" className="reg-button" value="Submit"></input>
         </form>
     );
 };

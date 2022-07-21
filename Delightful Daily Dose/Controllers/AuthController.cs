@@ -42,7 +42,7 @@ namespace Delightful_Daily_Dose.Controllers
         }
 
         [HttpPost("/Register")]
-        public IActionResult Register([FromForm] RegisterViewModel model)
+        public IActionResult Register([FromBody] RegisterViewModel model)
         {
             var emailUniq = userRepository.IsEmailUniq(model.Email);
             var usernameUniq = userRepository.IsUsernameUniq(model.Username);
@@ -53,9 +53,7 @@ namespace Delightful_Daily_Dose.Controllers
                 Id = id,
                 Username = model.Username,
                 Email = model.Email,
-                Password = authService.HashPassword(model.Password),
-                //IsPublisher = model.IsPublisher,
-                Role = model.IsPublisher ? "Publisher" : "User"
+                Password = authService.HashPassword(model.Password)
             };
             userRepository.Add(user);
             userRepository.Commit();
@@ -65,7 +63,7 @@ namespace Delightful_Daily_Dose.Controllers
         }
 
         [HttpPost("/Logout")]
-        public IActionResult Logout()
+        public IActionResult Post()
         {
             HttpContext.Response.Cookies.Delete("user");
             return Ok();
