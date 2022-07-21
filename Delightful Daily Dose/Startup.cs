@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -6,7 +7,11 @@ using Microsoft.Extensions.Hosting;
 using System.Text;
 using Delightful_Daily_Dose.Helpers;
 using Delightful_Daily_Dose.Models;
+using Delightful_Daily_Dose.Models.Entities;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
@@ -26,12 +31,20 @@ namespace Delightful_Daily_Dose
         {
             IConfigurationSection jwtAuthSection =
                 Configuration.GetSection("JWTAuthSection");
+            IConfigurationSection emailSection = Configuration.GetSection("EmailSection");
+            IConfigurationSection googleAuthNSection =
+                Configuration.GetSection("Authentication:Google");
             services
                 .AddDbContext<ApiContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options =>
+            services.AddSingleton(
+                new EmailSender(emailSection["Email"], emailSection["Password"]));
+
+            services.AddAuthentication(options =>
+                {
+                })
+                .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
                 {
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
@@ -44,6 +57,17 @@ namespace Delightful_Daily_Dose
                             Encoding.UTF8.GetBytes(jwtAuthSection["JWTSecretKey"])
                         )
                     };
+                })
+                .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
+                {
+                    options.LoginPath = "/googleLogin";
+                    options.LogoutPath = "/";
+                    options.ExpireTimeSpan = new TimeSpan(1, 0, 0);
+                })
+                .AddGoogle(GoogleDefaults.AuthenticationScheme, options =>
+                {
+                    options.ClientId = googleAuthNSection["ClientId"];
+                    options.ClientSecret = googleAuthNSection["ClientSecret"];
                 });
 
             services.AddScoped<IUserRepository, UserRepository>();
@@ -54,6 +78,11 @@ namespace Delightful_Daily_Dose
                     int.Parse(jwtAuthSection["JWTLifespan"])
                 )
             );
+
+            services.AddCors(options => options.AddPolicy("ReactPolicy", builder =>
+            {
+                builder.WithOrigins("https://localhost:3000").AllowAnyMethod().AllowAnyHeader();
+            }));
 
             services.AddControllersWithViews();
             services.AddTransient<ApiHelper>();
@@ -72,14 +101,16 @@ namespace Delightful_Daily_Dose
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            //app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
+
+
             app.UseStaticFiles();
 
-            app.UseAuthentication();
-
+            app.UseCors("ReactPolicy");
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
+
 
             app.UseEndpoints(endpoints =>
             {
