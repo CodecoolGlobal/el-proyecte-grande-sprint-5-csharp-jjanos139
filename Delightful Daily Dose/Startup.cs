@@ -4,8 +4,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Text;
+using AutoMapper;
 using Delightful_Daily_Dose.Helpers;
 using Delightful_Daily_Dose.Models;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -84,7 +86,6 @@ namespace Delightful_Daily_Dose
 
             services.AddControllersWithViews();
             services.AddTransient<ApiHelper>();
-        }
 
 
             services.AddAuthorization(options =>

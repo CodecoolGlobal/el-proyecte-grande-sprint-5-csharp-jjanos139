@@ -77,6 +77,7 @@ export default function App(props) {
         }
         if (props.type === "new-story") {
             return (<NewStory dark={dark} />)
+        }
         if (props.type === "users") {
             return (<Users dark={dark} />)
         }
