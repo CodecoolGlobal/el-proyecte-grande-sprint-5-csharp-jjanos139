@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using Delightful_Daily_Dose.Helpers;
+using Delightful_Daily_Dose.Models;
 using Delightful_Daily_Dose.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,12 +16,19 @@ namespace Delightful_Daily_Dose.Controllers
         private IStoryRepository storyRepository;
         private IMapper mapper;
 
-
         public StoriesController(IStoryRepository storyRepository, IMapper mapper)
         {
             this.storyRepository = storyRepository;
             this.mapper = mapper;
         }
+
+        [HttpGet]
+        public IEnumerable<StoryDetailViewModel> GetStories()
+        {
+            var stories = storyRepository.GetAll();
+            return stories.Select(story => mapper.Map<StoryDetailViewModel>(story)).ToList();
+        }
+
 
         [HttpGet("{id}")]
         public ActionResult<StoryDetailViewModel> GetStoryDetails(string id)

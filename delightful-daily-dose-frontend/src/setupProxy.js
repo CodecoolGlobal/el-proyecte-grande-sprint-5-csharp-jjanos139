@@ -5,14 +5,15 @@ const context = [
     "/Home",
     "/Login",
     "/Register",
-    "/Logout"
+    "/Logout",
+    "/Stories"
 ];
 
 module.exports = function (app) {
     const appProxy = createProxyMiddleware(context, {
         target: 'https://localhost:44310',
         secure: false,
-        changeOrigin: true
+        changeOrigin: true,
     });
 
     app.use(appProxy);

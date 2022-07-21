@@ -11,6 +11,8 @@ import Error from "./components/Error";
 import Register from "./components/User/Register";
 import Login from "./components/User/Login";
 import React from "react";
+import Story from "./components/Mains/Story";
+import NewStory from "./components/Mains/NewStory";
 import Users from "./components/Mains/Users";
 
 export default function App(props) {
@@ -63,6 +65,11 @@ export default function App(props) {
         if (props.type === "register") {
             return (<Register dark={dark} />)
         }
+        if (props.type === "stories") {
+            return (<Story dark={dark} />)
+        }
+        if (props.type === "new-story") {
+            return (<NewStory dark={dark} />)
         if (props.type === "users") {
             return (<Users dark={dark} />)
         }

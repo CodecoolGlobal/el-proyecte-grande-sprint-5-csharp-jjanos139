@@ -9,6 +9,7 @@ namespace Delightful_Daily_Dose.Models
         public ApiContext(DbContextOptions<ApiContext> options) : base(options) { }
         public DbSet<User> User { get; set; }
         public DbSet<News> News { get; set; }
+
         public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
