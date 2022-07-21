@@ -29,6 +29,7 @@ export default function Story(props) {
                                 <div id="article-text">
                                     <h5><a className={dark === "dark" ? "dark" : ""} href={url} target="_blank" rel="noreferrer">{item.title}</a></h5>
                                     <h6 className={dark === "dark" ? "dark" : ""}>{item.content}</h6>
+                                    <h6 className={dark === "dark" ? "dark" : ""}>{item.tag}</h6>
                                     <p><i className="fa-solid fa-upload"></i> {year}-{month}-{day} </p>
                                 </div>
                             </Card>)
