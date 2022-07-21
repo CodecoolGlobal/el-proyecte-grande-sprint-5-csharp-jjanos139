@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Delightful_Daily_Dose.Models;
@@ -29,7 +30,9 @@ namespace Delightful_Daily_Dose.Helpers
 
         public User FindCurrentUser()
         {
-            var userName = _httpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.Name)?.Value;
+            _httpContextAccessor.HttpContext.Request.Cookies.TryGetValue("user", out var userName);
+
+            //var userName = _httpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.Name)?.Value;
             var user = GetSingle(user => user.Username == userName);
             return user;
         }
@@ -40,6 +43,9 @@ namespace Delightful_Daily_Dose.Helpers
             return user == null;
         }
 
-
+        public IEnumerable<User> GetAllUsers()
+        {
+            return GetAll();
+        }
     }
 }
