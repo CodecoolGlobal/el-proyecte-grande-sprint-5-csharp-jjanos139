@@ -13,6 +13,7 @@ import Login from "./components/User/Login";
 import React from "react";
 import Story from "./components/Mains/Story";
 import NewStory from "./components/Mains/NewStory";
+import Users from "./components/Mains/Users";
 
 export default function App(props) {
     const [dark, setDark] = React.useState("");
@@ -69,6 +70,8 @@ export default function App(props) {
         }
         if (props.type === "new-story") {
             return (<NewStory dark={dark} />)
+        if (props.type === "users") {
+            return (<Users dark={dark} />)
         }
     }
 

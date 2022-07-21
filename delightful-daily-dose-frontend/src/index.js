@@ -43,6 +43,7 @@ root.render(
             <Route path="/credits" element={<App type="credits" />}></Route>
             <Route path="/Register" element={<App type="register" />}></Route>
             <Route path="/Login" element={<App type="login" />}></Route>
+            <Route path="/users" element={<App type="users" />}></Route>
             <Route path="/*" element={<App type="error" />}></Route>
         </Routes>
     </BrowserRouter>

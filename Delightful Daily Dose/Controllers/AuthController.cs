@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Net.Http;
 using Delightful_Daily_Dose.Helpers;
 using Delightful_Daily_Dose.Models.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Net.Http.Headers;
 
 namespace Delightful_Daily_Dose.Controllers
 {
@@ -20,7 +17,7 @@ namespace Delightful_Daily_Dose.Controllers
         }
 
         [HttpPost("/Login")]
-        public IActionResult Post([FromForm] LoginViewModel model)
+        public IActionResult Login([FromBody] LoginViewModel model)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
@@ -45,11 +42,13 @@ namespace Delightful_Daily_Dose.Controllers
                 //    HttpOnly = true
                 //});
 
-            return Redirect("/");
+            var token = authService.GetAuthData(user.Id, user.Role);
+
+            return Ok(token);
         }
 
         [HttpPost("/Register")]
-        public IActionResult Post([FromForm] RegisterViewModel model)
+        public IActionResult Register([FromForm] RegisterViewModel model)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
@@ -64,19 +63,21 @@ namespace Delightful_Daily_Dose.Controllers
                 Id = id,
                 Username = model.Username,
                 Email = model.Email,
-                Password = authService.HashPassword(model.Password)
+                Password = authService.HashPassword(model.Password),
+                //IsPublisher = model.IsPublisher,
+                Role = model.IsPublisher ? "Publisher" : "User"
             };
             userRepository.Add(user);
             userRepository.Commit();
 
-            return Redirect("/");
+            return NoContent();
         }
 
         [HttpPost("/Logout")]
-        public IActionResult Post()
+        public IActionResult Logout()
         {
             HttpContext.Response.Cookies.Delete("user");
-            return Redirect("/");
+            return Ok();
         }
     }
 }
