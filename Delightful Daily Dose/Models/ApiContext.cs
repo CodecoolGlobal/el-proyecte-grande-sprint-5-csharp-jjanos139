@@ -34,6 +34,16 @@ namespace Delightful_Daily_Dose.Models
                 .Property(user => user.Email)
                 .HasMaxLength(60)
                 .IsRequired();
+
+            modelBuilder.Entity<User>().HasData(
+                new User
+                {
+                    Id = "1",
+                    Username = "admin",
+                    Password = "admin123",
+                    Email = "admin@ddd.com",
+                    Role = "Admin"
+                });
         }
     }
 }
