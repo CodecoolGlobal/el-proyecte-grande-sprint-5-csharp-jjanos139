@@ -10,6 +10,9 @@ import Credits from "./components/Credits";
 import Error from "./components/Error";
 import Register from "./components/User/Register";
 import Login from "./components/User/Login";
+import Logged from "./components/User/Logged";
+import Cookies from 'universal-cookie';
+
 import React from "react";
 
 export default function App(props) {
@@ -34,6 +37,10 @@ export default function App(props) {
         setFilteredNews(result);
     }
 
+    const cookies = new Cookies();
+    const [user, setUser] = React.useState(cookies.get("user"));
+
+
     function switchSite() {
         if (props.type === "news") {
             return (<News dark={dark} site={props.site} handleSearch={handleSearch} />)
@@ -57,7 +64,7 @@ export default function App(props) {
             return (<Error dark={dark} />)
         }
         if (props.type === "login") {
-            return (<Login dark={dark} />)
+            return (<Login dark={dark} setUser={setUser} />)
         }
         if (props.type === "register") {
             return (<Register dark={dark} />)
