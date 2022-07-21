@@ -35,11 +35,13 @@ namespace Delightful_Daily_Dose.Helpers
             //string userName = "admin"; //notadmin
             //string password = "AQAAAAEAACcQAAAAENwASiH23ZvwjKbm5UfcNf9mXMzkBrqU5Jkzsa0FJAiugpFyX9JoLpSJ0AzzI76cfw=="; //"AQAAAAEAACcQAAAAEGsayogugQksGvaHsmu8Bz2AhEbdiOYnMIokArhpaJGGtxC7DQAQHGXh3o3n+NjVog=="
 
-            User currentUser = _userRepository.FindCurrentUser();
-            string userName = currentUser?.Username ?? "";
-            string password = currentUser?.Password ?? "";
 
-            var user = await _userRepository.AuthenticateAsync(userName, password);
+
+            User user = _userRepository.FindCurrentUser();
+            //string userName = currentUser?.Username ?? "";
+            //string password = currentUser?.Password ?? "";
+
+            //var user = await _userRepository.AuthenticateAsync(userName, password);
 
             if (user is null)
             {
