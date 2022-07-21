@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Text;
+using AutoMapper;
 using Delightful_Daily_Dose.Helpers;
 using Delightful_Daily_Dose.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -46,7 +47,14 @@ namespace Delightful_Daily_Dose
                     };
                 });
 
+            var mappingConfig = new MapperConfiguration(mc =>
+                mc.AddProfile(new Mapping.Mapping())
+            );
+            services.AddSingleton(mappingConfig.CreateMapper());
+
+
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IStoryRepository, StoryRepository>();
 
             services.AddSingleton<IAuthService>(
                 new AuthService(
