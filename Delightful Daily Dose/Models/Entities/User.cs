@@ -10,6 +10,7 @@ namespace Delightful_Daily_Dose.Models.Entities
         public string Email { get; set; }
         public string Password { get; set; }
         //public bool IsPublisher { get; set; }
+        public string Role { get; set; }
         //public bool IsAdmin { get; set; }
     }
 }
