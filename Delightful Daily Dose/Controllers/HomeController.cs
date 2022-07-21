@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Delightful_Daily_Dose.Helpers;
+using Delightful_Daily_Dose.Models.Entities;
 using Microsoft.AspNetCore.Authorization;
 
 namespace Delightful_Daily_Dose.Controllers
@@ -13,11 +14,13 @@ namespace Delightful_Daily_Dose.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ApiHelper _apiHelper;
+        private readonly IUserRepository _userRepository;
 
-        public HomeController(ILogger<HomeController> logger, ApiHelper apiHelper)
+        public HomeController(ILogger<HomeController> logger, ApiHelper apiHelper, IUserRepository userRepository)
         {
             _logger = logger;
             _apiHelper = apiHelper;
+            _userRepository = userRepository;
         }
 
         [Route("/[controller]")]
@@ -27,6 +30,13 @@ namespace Delightful_Daily_Dose.Controllers
             List<News> news = await _apiHelper.GetNews(ApiUrl);
             return news;
 
+        }
+
+        //[Authorize(Policy = "AdminOnly")]
+        [Route("/[controller]/users")]
+        public IEnumerable<User> Users()
+        {
+            return _userRepository.GetAllUsers();
         }
 
         [Route("/[controller]/business")]
