@@ -6,6 +6,6 @@ namespace Delightful_Daily_Dose.Helpers
     {
         string HashPassword(string password);
         bool VerifyPassword(string actualPassword, string hashedPassword);
-        AuthData GetAuthData(string id);
+        AuthData GetAuthData(string id, string role);
     }
 }
