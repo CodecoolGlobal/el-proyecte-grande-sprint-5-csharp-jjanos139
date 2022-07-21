@@ -14,12 +14,14 @@ namespace Delightful_Daily_Dose.Controllers
     public class StoriesController : ControllerBase
     {
         private IStoryRepository storyRepository;
+        private IUserRepository _userRepository;
         private IMapper mapper;
 
-        public StoriesController(IStoryRepository storyRepository, IMapper mapper)
+        public StoriesController(IStoryRepository storyRepository, IMapper mapper, IUserRepository userRepository)
         {
             this.storyRepository = storyRepository;
             this.mapper = mapper;
+            _userRepository = userRepository;
         }
 
         [HttpGet]
@@ -40,7 +42,7 @@ namespace Delightful_Daily_Dose.Controllers
         [HttpPost]
         public ActionResult<StoryCreationViewModel> Post([FromBody] UpdateStoryViewModel model)
         {
-            var ownerId = HttpContext.User.Identity.Name;
+            var ownerId = _userRepository.FindCurrentUser().Id;
             var creationTime = ((DateTimeOffset) DateTime.Now).ToUnixTimeSeconds();
             var storyId = Guid.NewGuid().ToString();
             var story = new UserStory
