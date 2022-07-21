@@ -9,6 +9,7 @@ using Delightful_Daily_Dose.Helpers;
 using Delightful_Daily_Dose.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
@@ -29,8 +30,8 @@ namespace Delightful_Daily_Dose
             IConfigurationSection jwtAuthSection =
                 Configuration.GetSection("JWTAuthSection");
             IConfigurationSection emailSection = Configuration.GetSection("EmailSection");
-            IConfigurationSection googleAuthNSection =
-                Configuration.GetSection("Authentication:Google");
+            //IConfigurationSection googleAuthNSection =
+            //    Configuration.GetSection("Authentication:Google");
             services
                 .AddDbContext<ApiContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -74,6 +75,7 @@ namespace Delightful_Daily_Dose
                 //    options.ClientSecret = googleAuthNSection["ClientSecret"];
                 //});
 
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IStoryRepository, StoryRepository>();
 
