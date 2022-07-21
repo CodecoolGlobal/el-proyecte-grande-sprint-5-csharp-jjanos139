@@ -6,20 +6,22 @@ export default function Register(props) {
     const [input, setInput] = useState({
         email: '',
         password: '',
-        confirmpassword: ''
+        confirmpassword: '',
+        ispublisher: false
     });
 
     const [error, setError] = useState({
         email: '',
         password: '',
-        confirmpassword: ''
+        confirmpassword: '',
+        ispublisher: false
     })
 
     const onInputChange = e => {
-        const { name, value } = e.target;
+        const { name, value, type, checked } = e.target;
         setInput(prev => ({
             ...prev,
-            [name]: value
+            [name]: type === "checkbox" ? checked : value
         }));
         validateInput(e);
     }
@@ -142,6 +144,8 @@ export default function Register(props) {
                 <span className="checkbox-span"><input data-val="true" value="true" className="registration-checkbox"
                     type="checkbox"
                     name="ispublisher"
+                    checked={input.ispublisher}
+                    onChange={onInputChange}
                 // {...register("ispublisher")
                 // }
                 /></span>
