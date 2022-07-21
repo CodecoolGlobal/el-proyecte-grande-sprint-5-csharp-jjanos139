@@ -15,5 +15,8 @@ namespace Delightful_Daily_Dose.Models.Entities
         [Microsoft.Build.Framework.Required]
         [StringLength(60, MinimumLength = 3)]
         public string Password { get; set; }
+
+        [Microsoft.Build.Framework.Required]
+        public bool IsPublisher { get; set; }
     }
 }
