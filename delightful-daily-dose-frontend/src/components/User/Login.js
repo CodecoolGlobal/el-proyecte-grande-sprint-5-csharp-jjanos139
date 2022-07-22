@@ -15,14 +15,14 @@ export default function Login(props) {
             Password: password
         })
     };
-    
+
     function handleSubmit(event) {
         event.preventDefault();
         // const cookies = new Cookies();
 
         fetch("/Login", requestOptions)
             // .then(() => props.setNewUserData(cookies.get('user')))
-            .then(() => nav("/", { state: { username: username } }));
+            .then(() => nav("/logged", { state: { username: username } }));
     };
 
     return (

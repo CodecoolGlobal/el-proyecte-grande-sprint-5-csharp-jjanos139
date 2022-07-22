@@ -4,18 +4,17 @@ import WeatherAndExchange from "./WeatherAndExchange";
 import Menu from "../Menu"
 import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 
 const cookies = new Cookies();
 
 export default function Navbar(props) {
     let [user, setUser] = useState();
-
     // function setUserHelper(asd) {
     //     setUser(asd);
     // }
 
-    useEffect(function(){
+    useEffect(function () {
         setUser(cookies.get('user'));
     }, []);
 
@@ -24,7 +23,7 @@ export default function Navbar(props) {
             method: "POST"
         }).then(() => setUser(null));
     }
-    
+
     //function googleLogin() {
     //    fetch("/googleLogin",
     //        {
@@ -42,7 +41,7 @@ export default function Navbar(props) {
             {props.elements === "lower" && !user ? <Link to="/Register" className="reg-topright">Register</Link> : ""}
             {props.elements === "lower" && !user ? <Link to="/Login" className="login-topright">Login</Link> : ""}
             {props.elements === "lower" && user ? <h5 className="reg-topright">{user}</h5> : ""}
-            {props.elements === "lower" && user ? <Link to="/" onClick={logout} className="login-topright">Logout</Link> : ""}
+            {props.elements === "lower" && user ? <Link to="/Login" onClick={logout} className="login-topright">Logout</Link> : ""}
         </div>
     )
 }
