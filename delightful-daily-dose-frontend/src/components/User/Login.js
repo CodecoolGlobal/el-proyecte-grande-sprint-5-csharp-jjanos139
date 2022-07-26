@@ -22,7 +22,11 @@ export default function Login(props) {
 
         fetch("/Login", requestOptions)
             // .then(() => props.setNewUserData(cookies.get('user')))
-            .then(() => nav("/logged", { state: { username: username } }));
+            .then((resp) => resp.json())
+            .then((data) => {
+                localStorage.setItem("user", JSON.stringify(data.token));
+                nav("/logged", { state: { username: username } });
+            });
     };
 
     return (
