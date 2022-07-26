@@ -32,16 +32,13 @@ namespace Delightful_Daily_Dose.Helpers
             if (endpoint?.Metadata?.GetMetadata<IAllowAnonymous>() != null)
                 return AuthenticateResult.NoResult();
 
-            //string userName = "admin"; //notadmin
-            //string password = "AQAAAAEAACcQAAAAENwASiH23ZvwjKbm5UfcNf9mXMzkBrqU5Jkzsa0FJAiugpFyX9JoLpSJ0AzzI76cfw=="; //"AQAAAAEAACcQAAAAEGsayogugQksGvaHsmu8Bz2AhEbdiOYnMIokArhpaJGGtxC7DQAQHGXh3o3n+NjVog=="
+            if (!Request.Headers.ContainsKey("Authorization"))
+                return AuthenticateResult.Fail("Missing Authorization Header");
 
-
+            //TODO: Remove remaining code snippets from cookie based authentication (frontend?)
+            //TODO: Add authHeaders() function call to each fetch where authentication is needed (frontend)
 
             User user = _userRepository.FindCurrentUser();
-            //string userName = currentUser?.Username ?? "";
-            //string password = currentUser?.Password ?? "";
-
-            //var user = await _userRepository.AuthenticateAsync(userName, password);
 
             if (user is null)
             {
