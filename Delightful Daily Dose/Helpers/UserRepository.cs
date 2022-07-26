@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using Delightful_Daily_Dose.Models;
 using Delightful_Daily_Dose.Models.Entities;
@@ -30,9 +30,12 @@ namespace Delightful_Daily_Dose.Helpers
 
         public User FindCurrentUser()
         {
-            _httpContextAccessor.HttpContext.Request.Cookies.TryGetValue("user", out var userName);
+            var authorization = _httpContextAccessor.HttpContext.Request.Headers.Authorization.ToString();
 
-            //var userName = _httpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.Name)?.Value;
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var token = tokenHandler.ReadJwtToken(authorization.Split(' ').Last());
+            var userName = token.Claims.Single(claim => claim.Type == "name").Value;
+
             var user = GetSingle(user => user.Username == userName);
             return user;
         }
