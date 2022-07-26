@@ -1,5 +1,6 @@
 import Card from 'react-bootstrap/Card';
 import React from "react";
+import authHeader from '../../authHeader';
 
 export default function News(props) {
     const [news, setNews] = React.useState([])
@@ -7,7 +8,7 @@ export default function News(props) {
     const dark = props.dark;
 
     React.useEffect(() => {
-        fetch(props.site)
+        fetch(props.site, {headers: authHeader()})
             .then(response => response.json())
             .then(data => {
                 setNews(data);
