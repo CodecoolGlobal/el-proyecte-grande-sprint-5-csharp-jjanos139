@@ -36,7 +36,7 @@ namespace Delightful_Daily_Dose.Controllers
                 //});
             }
 
-            var token = authService.GetAuthData(user.Id, user.Role);
+            var token = authService.GetAuthData(user.Username, user.Role);
 
             return Ok(token);
         }
