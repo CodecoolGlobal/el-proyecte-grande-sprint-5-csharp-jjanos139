@@ -43,8 +43,8 @@ root.render(
             <Route path="/stories" element={<App type="stories" />}></Route>
             <Route path="/new-story" element={<App type="new-story" />}></Route>
             <Route path="/credits" element={<App type="credits" />}></Route>
-            <Route path="/Register" element={<App type="register" />}></Route>
-            <Route path="/Login" element={<App type="login" />}></Route>
+            <Route path="/register" element={<App type="register" />}></Route>
+            <Route path="/login" element={<App type="login" />}></Route>
             <Route path="/users" element={<App type="users" />}></Route>
             <Route path="/logged" element={<Logged />}></Route>
             <Route path="/*" element={<App type="error" />}></Route>
