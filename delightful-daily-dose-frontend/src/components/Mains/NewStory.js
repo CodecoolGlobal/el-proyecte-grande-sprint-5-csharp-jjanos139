@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import authHeader from '../../authHeader'
 
 export default function NewStory() {
     const tags = [
@@ -21,11 +22,13 @@ export default function NewStory() {
             [name]: value
         }));
     }
+    const requestHeaders = authHeader();
+    requestHeaders['Content-Type'] = 'application/json';
 
     function handleSubmit() {
         fetch(`Stories`, {
             method: "POST",
-            headers: { 'Content-Type': 'application/json' },
+            headers: requestHeaders,
             body: JSON.stringify(input)
         }).then(nav("/stories"))
     }
