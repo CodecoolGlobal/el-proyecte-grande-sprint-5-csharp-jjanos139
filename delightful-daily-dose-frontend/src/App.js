@@ -11,7 +11,6 @@ import Credits from "./components/Credits";
 import Error from "./components/Error";
 import Register from "./components/User/Register";
 import Login from "./components/User/Login";
-import Cookies from 'universal-cookie';
 import Story from "./components/Mains/Story";
 import NewStory from "./components/Mains/NewStory";
 import Users from "./components/Mains/Users";
@@ -38,13 +37,8 @@ export default function App(props) {
         setFilteredNews(result);
     }
 
-    const cookies = new Cookies();
-    const [user, setUser] = React.useState(cookies.get("user"));
-
     function switchSite() {
         switch (props.type) {
-            case "news":
-                return (<News dark={dark} site={props.site} handleSearch={handleSearch} />);
             case "movies":
                 return (<Movies dark={dark} />);
             case "tv-shows":
@@ -58,7 +52,7 @@ export default function App(props) {
             case "error":
                 return (<Error dark={dark} />);
             case "login":
-                return (<Login dark={dark} setUser={setUser} />);
+                return (<Login dark={dark} />);
             case "register":
                 return (<Register dark={dark} />);
             case "stories":
@@ -67,6 +61,8 @@ export default function App(props) {
                 return (<NewStory dark={dark} />);
             case "users":
                 return (<Users dark={dark} />);
+            default:
+                return (<News dark={dark} site={props.site} handleSearch={handleSearch} />);
         }
     }
 
