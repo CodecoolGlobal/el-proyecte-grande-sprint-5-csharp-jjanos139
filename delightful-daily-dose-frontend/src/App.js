@@ -1,3 +1,4 @@
+import React from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Sidebar from "./components/Sidebar";
@@ -10,10 +11,7 @@ import Credits from "./components/Credits";
 import Error from "./components/Error";
 import Register from "./components/User/Register";
 import Login from "./components/User/Login";
-import Logged from "./components/User/Logged";
 import Cookies from 'universal-cookie';
-
-import React from "react";
 import Story from "./components/Mains/Story";
 import NewStory from "./components/Mains/NewStory";
 import Users from "./components/Mains/Users";
@@ -43,43 +41,32 @@ export default function App(props) {
     const cookies = new Cookies();
     const [user, setUser] = React.useState(cookies.get("user"));
 
-
     function switchSite() {
-        if (props.type === "news") {
-            return (<News dark={dark} site={props.site} handleSearch={handleSearch} />)
-        }
-        if (props.type === "movies") {
-            return (<Movies dark={dark} />)
-        }
-        if (props.type === "tv-shows") {
-            return (<TvShows dark={dark} />)
-        }
-        if (props.type === "coming-soon") {
-            return (<ComingSoon dark={dark} />)
-        }
-        if (props.type === "youtube") {
-            return (<YouTube dark={dark} />)
-        }
-        if (props.type === "credits") {
-            return (<Credits dark={dark} />)
-        }
-        if (props.type === "error") {
-            return (<Error dark={dark} />)
-        }
-        if (props.type === "login") {
-            return (<Login dark={dark} setUser={setUser} />)
-        }
-        if (props.type === "register") {
-            return (<Register dark={dark} />)
-        }
-        if (props.type === "stories") {
-            return (<Story dark={dark} />)
-        }
-        if (props.type === "new-story") {
-            return (<NewStory dark={dark} />)
-        }
-        if (props.type === "users") {
-            return (<Users dark={dark} />)
+        switch (props.type) {
+            case "news":
+                return (<News dark={dark} site={props.site} handleSearch={handleSearch} />);
+            case "movies":
+                return (<Movies dark={dark} />);
+            case "tv-shows":
+                return (<TvShows dark={dark} />);
+            case "coming-soon":
+                return (<ComingSoon dark={dark} />);
+            case "youtube":
+                return (<YouTube dark={dark} />);
+            case "credits":
+                return (<Credits dark={dark} />);
+            case "error":
+                return (<Error dark={dark} />);
+            case "login":
+                return (<Login dark={dark} setUser={setUser} />);
+            case "register":
+                return (<Register dark={dark} />);
+            case "stories":
+                return (<Story dark={dark} />);
+            case "new-story":
+                return (<NewStory dark={dark} />);
+            case "users":
+                return (<Users dark={dark} />);
         }
     }
 
