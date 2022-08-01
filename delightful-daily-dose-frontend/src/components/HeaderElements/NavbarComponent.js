@@ -21,7 +21,10 @@ export default function Navbar(props) {
     function logout() {
         fetch("/Logout", {
             method: "POST"
-        }).then(() => setUser(null));
+        }).then(() => {
+            setUser(null);
+            localStorage.removeItem('user');
+        });
     }
 
     //function googleLogin() {
