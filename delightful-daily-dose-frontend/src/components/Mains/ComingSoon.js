@@ -1,12 +1,13 @@
 import Card from 'react-bootstrap/Card';
 import React from 'react';
+import authHeader from '../../authHeader';
 
 export default function ComingSoon(props) {
     const dark = props.dark;
     const [comingSoon, setComingSoon] = React.useState([]);
 
     React.useEffect(() => {
-        fetch(`Home/GetComingSoonToBoxOffice`)
+        fetch(`Home/GetComingSoonToBoxOffice`, { headers: authHeader() })
             .then(response => response.json())
             .then(data => setComingSoon(data.items));
     }, [])

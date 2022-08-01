@@ -1,12 +1,13 @@
 import Card from 'react-bootstrap/Card';
 import React from 'react';
+import authHeader from '../../authHeader';
 
 export default function TvShows(props) {
     const [tvshows, setTvshows] = React.useState([]);
     const dark = props.dark;
 
     React.useEffect(() => {
-        fetch(`Home/GetTopImdbTvShows`)
+        fetch(`Home/GetTopImdbTvShows`, { headers: authHeader() })
             .then(response => response.json())
             .then(data => setTvshows(data.items));
     }, [])

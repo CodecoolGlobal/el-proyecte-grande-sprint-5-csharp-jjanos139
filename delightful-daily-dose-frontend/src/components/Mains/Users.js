@@ -1,12 +1,13 @@
 import Card from 'react-bootstrap/Card';
 import React from "react";
+import authHeader from '../../authHeader';
 
 export default function Users(props) {
     const [users, setUsers] = React.useState([]);
     const dark = props.dark;
 
     React.useEffect(() => {
-        fetch(`/Home/users`)
+        fetch(`/Home/users`, { headers: authHeader() })
             .then(response => response.json())
             .then(data => setUsers(data));
     }, [])

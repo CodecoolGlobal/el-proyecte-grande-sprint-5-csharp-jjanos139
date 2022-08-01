@@ -1,12 +1,13 @@
 import Card from 'react-bootstrap/Card';
 import React from 'react';
+import authHeader from '../../authHeader';
 
 export default function YouTube(props) {
     const [youtube, setYoutube] = React.useState([]);
     const dark = props.dark;
 
     React.useEffect(() => {
-        fetch(`Home/GetYoutubeMostViewed`)
+        fetch(`Home/GetYoutubeMostViewed`, { headers: authHeader() })
             .then(response => response.json())
             .then(data => setYoutube(data.items));
     }, [])

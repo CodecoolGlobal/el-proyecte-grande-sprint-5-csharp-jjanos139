@@ -1,12 +1,13 @@
 import Card from 'react-bootstrap/Card';
 import React from 'react';
+import authHeader from '../../authHeader';
 
 export default function Movies(props) {
     const dark = props.dark;
     const [movies, setMovies] = React.useState([]);
 
     React.useEffect(() => {
-        fetch(`/Home/GetTopBoxOffice`)
+        fetch(`/Home/GetTopBoxOffice`, { headers: authHeader() })
             .then(response => response.json())
             .then(data => setMovies(data.items));
     }, [])

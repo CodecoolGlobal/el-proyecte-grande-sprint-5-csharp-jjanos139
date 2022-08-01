@@ -2,7 +2,7 @@ import Card from 'react-bootstrap/Card';
 import React from "react";
 import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
-
+import authHeader from '../../authHeader';
 
 export default function Story(props) {
     const [stories, setStories] = React.useState([]);
@@ -10,7 +10,7 @@ export default function Story(props) {
     const cookies = new Cookies();
     const cookie = cookies.get('user');
     React.useEffect(() => {
-        fetch(`Stories`)
+        fetch(`Stories`, { headers: authHeader() })
             .then(response => response.json())
             .then(data => setStories(data));
     }, [])
