@@ -26,4 +26,4 @@ jobs:
       run: dotnet build
     - name: Test
       working-directory: "./Delightful Daily Dose"
-      run: dotnet test
+      run: dotnet test --filter ClassName=Delightful_Daily_Dose_Test.Tests
