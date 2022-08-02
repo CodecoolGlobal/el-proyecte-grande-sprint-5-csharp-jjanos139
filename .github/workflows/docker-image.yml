@@ -31,8 +31,8 @@ jobs:
         - name: Build and push
           uses: docker/build-push-action@v2
           with:
-            context: ./delightful-daily-dose-frontend
-            file: ./Dockerfile
+            context: ./
+            file: ./delightful-daily-dose-frontend/Dockerfile
             push: true
             tags: delightfuldailydose:latest
 
