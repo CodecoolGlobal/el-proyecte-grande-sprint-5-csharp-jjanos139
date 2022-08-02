@@ -8,9 +8,9 @@ WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 
 # install app dependencies
-COPY package.json ./
-COPY package-lock.json ./
-RUN npm ci
+COPY delightful-daily-dose-frontend/package.json ./
+COPY delightful-daily-dose-frontend/package-lock.json ./
+RUN npm install
 RUN npm install react-scripts -g
 
 # add app
