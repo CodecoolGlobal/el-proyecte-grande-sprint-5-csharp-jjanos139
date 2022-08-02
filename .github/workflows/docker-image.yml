@@ -34,12 +34,12 @@ jobs:
             context: ./
             file: ./delightful-daily-dose-frontend/Dockerfile
             push: true
-            tags: delightfuldailydose:latest
+            tags: ${{ secrets.DOCKERHUB_USERNAME }}/delightfuldailydose:latest
 
         - name: Run the image in a container
           uses: addnab/docker-run-action@v3
           with:
-            image: delightfuldailydose:latest
+            image: ${{ secrets.DOCKERHUB_USERNAME }}/delightfuldailydose:latest
             run: |
               echo "Running the docker image"
               echo "Testing the nodejs app endpoints"
