@@ -27,5 +27,5 @@ jobs:
       working-directory: "./Delightful Daily Dose"
       run: dotnet build
     - name: Test
-      working-directory: "./Delightful Daily Dose"
+      working-directory: "./Delightful Daily Dose Test"
       run: dotnet test
