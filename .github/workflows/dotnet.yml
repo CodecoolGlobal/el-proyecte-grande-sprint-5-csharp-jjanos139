@@ -23,7 +23,7 @@ jobs:
       run: dotnet restore
     - name: Build
       working-directory: "./Delightful Daily Dose"
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build
     - name: Test
       working-directory: "./Delightful Daily Dose"
-      run: dotnet test --no-restore --verbosity normal
+      run: dotnet test
