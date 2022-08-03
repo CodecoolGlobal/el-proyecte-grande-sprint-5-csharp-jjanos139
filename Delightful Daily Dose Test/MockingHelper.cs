@@ -22,7 +22,14 @@ namespace Delightful_Daily_Dose_Test
         {
             context.News.Add(new News()
             {
-                
+                ID = 1,
+                Title = "work please",
+                Link = null,
+                image_url = null,
+                Description = "please work",
+                PubDate = null,
+                Content = "please please work",
+                Language = "en"
             });
             context.User.Add(new User
             {
