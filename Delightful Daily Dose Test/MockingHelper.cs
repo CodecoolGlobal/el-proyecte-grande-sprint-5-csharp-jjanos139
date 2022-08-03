@@ -10,6 +10,7 @@ namespace Delightful_Daily_Dose_Test
     {
         protected DbContextOptions<ApiContext> _options;
         protected ApiContext _context;
+        public DbSet<LoginViewModel> LoginViewModels { get; set; }
 
         [SetUp]
         public void Setup()
@@ -18,6 +19,7 @@ namespace Delightful_Daily_Dose_Test
         .UseInMemoryDatabase(databaseName: "DelightfulDailyDose")
             .Options;
         _options = options;
+        
         using (var context = new ApiContext(options))
         {
             context.News.Add(new News()
@@ -39,8 +41,27 @@ namespace Delightful_Daily_Dose_Test
                 Password = "admin111",
                 Role = "Admin"
             });
+            context.Add(new UserStory
+            {
+                Id = "1",
+                Title = "LemmeOUT",
+                Content = "please",
+                Tag = "environment",
+                Owner = new User
+                {
+                    Id = "64646488",
+                    Username = "admin",
+                    Email = "ddd@bitemyshinymetalass.com",
+                    Password = "admin111",
+                    Role = "Admin"
+                },
+                OwnerId = "admin"
+            });
 
-            context.SaveChanges();
+            
+
+
+        context.SaveChanges();
         }
 
         _context = new ApiContext(options);
