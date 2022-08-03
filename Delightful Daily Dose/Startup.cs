@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System;
 
 namespace Delightful_Daily_Dose
 {
@@ -32,6 +33,14 @@ namespace Delightful_Daily_Dose
             //IConfigurationSection emailSection = Configuration.GetSection("EmailSection");
             //IConfigurationSection googleAuthNSection =
             //    Configuration.GetSection("Authentication:Google");
+
+            Console.WriteLine(Configuration);
+            Console.WriteLine(Configuration["JWTSecretKey"]);
+            Console.WriteLine(Configuration["JWTLifespan"]);
+            Console.WriteLine(Configuration["EmailAddress"]);
+            Console.WriteLine(Configuration["EmailPassword"]);
+
+
             services
                 .AddDbContext<ApiContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
