@@ -3,6 +3,15 @@
 #Depending on the operating system of the host machines(s) that will build or run the containers, the image specified in the FROM statement may need to be changed.
 #For more information, please see https://aka.ms/containercompat
 
+# syntax=docker/dockerfile:1.2
+
+FROM alpine
+
+RUN --mount=type=secret,id=JWTSecretKey cat /run/secrets/JWTSecretKey
+RUN --mount=type=secret,id=JWTLifespan cat /run/secrets/JWTLifespan
+RUN --mount=type=secret,id=EmailAddress cat /run/secrets/EmailAddress
+RUN --mount=type=secret,id=EmailPassword cat /run/secrets/EmailPassword
+
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
 EXPOSE 80
@@ -18,14 +27,6 @@ RUN dotnet build "Delightful Daily Dose.csproj" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "Delightful Daily Dose.csproj" -c Release -o /app/publish
-
-#syntax=docker/dockerfile:1.2
-FROM alpine
-
-RUN --mount=type=secret,id=JWTSecretKey cat /run/secrets/JWTSecretKey
-RUN --mount=type=secret,id=JWTLifespan cat /run/secrets/JWTLifespan
-RUN --mount=type=secret,id=EmailAddress cat /run/secrets/EmailAddress
-RUN --mount=type=secret,id=EmailPassword cat /run/secrets/EmailPassword
 
 FROM base AS final
 WORKDIR /app
