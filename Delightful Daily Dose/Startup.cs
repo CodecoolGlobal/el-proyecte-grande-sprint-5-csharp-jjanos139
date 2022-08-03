@@ -27,9 +27,9 @@ namespace Delightful_Daily_Dose
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            IConfigurationSection jwtAuthSection =
-                Configuration.GetSection("JWTAuthSection");
-            IConfigurationSection emailSection = Configuration.GetSection("EmailSection");
+            //IConfigurationSection jwtAuthSection =
+            //    Configuration.GetSection("JWTAuthSection");
+            //IConfigurationSection emailSection = Configuration.GetSection("EmailSection");
             //IConfigurationSection googleAuthNSection =
             //    Configuration.GetSection("Authentication:Google");
             services
@@ -44,7 +44,7 @@ namespace Delightful_Daily_Dose
             );
             services.AddSingleton(mappingConfig.CreateMapper());
             services.AddSingleton(
-                new EmailSender(emailSection["Email"], emailSection["Password"]));
+                new EmailSender(Configuration["EmailAddress"], Configuration["EmailPassword"]));
 
             //services.AddAuthentication(options =>
             //    {
@@ -79,10 +79,16 @@ namespace Delightful_Daily_Dose
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IStoryRepository, StoryRepository>();
 
+            //services.AddSingleton<IAuthService>(
+            //    new AuthService(
+            //        jwtAuthSection["JWTSecretKey"],
+            //        int.Parse(jwtAuthSection["JWTLifespan"])
+            //    )
+            //);
             services.AddSingleton<IAuthService>(
                 new AuthService(
-                    jwtAuthSection["JWTSecretKey"],
-                    int.Parse(jwtAuthSection["JWTLifespan"])
+                    Configuration["JWTSecretKey"],
+                    int.Parse(Configuration["JWTLifespan"])
                 )
             );
 

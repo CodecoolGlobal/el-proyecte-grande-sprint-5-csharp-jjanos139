@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Delightful_Daily_Dose.Models;
 using Microsoft.Extensions.DependencyInjection;
+using Mcrio.Configuration.Provider.Docker.Secrets;
 
 namespace Delightful_Daily_Dose
 {
@@ -44,7 +45,15 @@ namespace Delightful_Daily_Dose
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder.ConfigureAppConfiguration(configBuilder =>
+                    {
+                        configBuilder.AddDockerSecrets();
+
+                        if (args.Length > 0)
+                        {
+                            configBuilder.AddCommandLine(args);
+                        }
+                    }).UseStartup<Startup>();
                 });
     }
 }
