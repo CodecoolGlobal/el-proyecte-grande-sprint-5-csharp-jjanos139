@@ -11,15 +11,13 @@ namespace Delightful_Daily_Dose.Helpers
     public class AuthService : IAuthService
     {
         private readonly string _jwtSecret;
-        private readonly int _jwtLifespan;
-        public AuthService(string jwtSecret, string jwtLifespan)
+        public AuthService(string jwtSecret)
         {
             this._jwtSecret = jwtSecret;
-            this._jwtLifespan = int.Parse(jwtLifespan);
         }
         public AuthData GetAuthData(string name, string role)
         {
-            var expirationTime = DateTime.UtcNow.AddSeconds(_jwtLifespan);
+            var expirationTime = DateTime.UtcNow.AddSeconds(2592000);
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {

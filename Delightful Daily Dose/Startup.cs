@@ -85,12 +85,7 @@ namespace Delightful_Daily_Dose
             //        int.Parse(jwtAuthSection["JWTLifespan"])
             //    )
             //);
-            services.AddSingleton<IAuthService>(
-                new AuthService(
-                    Configuration["JWTSecretKey"],
-                    Configuration["JWTLifespan"]
-                    )
-                );
+            services.AddSingleton<IAuthService>(new AuthService(Configuration["JWTSecretKey"]));
 
             services.AddControllersWithViews();
             services.AddTransient<ApiHelper>();
