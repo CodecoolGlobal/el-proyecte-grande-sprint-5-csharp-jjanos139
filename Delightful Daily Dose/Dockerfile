@@ -20,10 +20,14 @@ RUN --mount=type=secret,id=JWTSecretKey \
     --mount=type=secret,id=JWTLifespan \
     --mount=type=secret,id=EmailAddress \
     --mount=type=secret,id=EmailPassword \
-    export JWTSecretKey=$(cat /run/secrets/JWTSecretKey) && \
-    export JWTLifespan=$(cat /run/secrets/JWTLifespan) && \
-    export EmailAddress=$(cat /run/secrets/EmailAddress) && \
-    export EmailPassword=$(cat /run/secrets/EmailPassword) && \
+    JWTSecretKey="$(cat /run/secrets/JWTSecretKey)" && \
+    export JWTSecretKey && \
+    JWTLifespan="$(cat /run/secrets/JWTLifespan)" && \
+    export JWTLifespan && \
+    EmailAddress="$(cat /run/secrets/EmailAddress)" && \
+    export EmailAddress && \
+    EmailPassword="$(cat /run/secrets/EmailPassword)" && \
+    export EmailPassword && \
     dotnet build "Delightful Daily Dose.csproj" -c Release -o /app/build
 
 FROM build AS publish
