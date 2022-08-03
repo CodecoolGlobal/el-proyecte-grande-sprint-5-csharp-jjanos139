@@ -10,16 +10,16 @@ namespace Delightful_Daily_Dose.Helpers
 {
     public class AuthService : IAuthService
     {
-        readonly string jwtSecret;
-        readonly int jwtLifespan;
-        public AuthService(string jwtSecret, int jwtLifespan)
+        private readonly string _jwtSecret;
+        private readonly double _jwtLifespan;
+        public AuthService(string jwtSecret, string jwtLifespan)
         {
-            this.jwtSecret = jwtSecret;
-            this.jwtLifespan = jwtLifespan;
+            this._jwtSecret = jwtSecret;
+            this._jwtLifespan = double.Parse(jwtLifespan);
         }
         public AuthData GetAuthData(string name, string role)
         {
-            var expirationTime = DateTime.UtcNow.AddSeconds(jwtLifespan);
+            var expirationTime = DateTime.UtcNow.AddSeconds(_jwtLifespan);
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
@@ -31,7 +31,7 @@ namespace Delightful_Daily_Dose.Helpers
                 Expires = expirationTime,
                 // new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256Signature)
                 SigningCredentials = new SigningCredentials(
-                    new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecret)),
+                    new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSecret)),
                     SecurityAlgorithms.HmacSha256Signature
                 )
             };
