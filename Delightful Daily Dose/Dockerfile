@@ -19,6 +19,11 @@ RUN dotnet build "Delightful Daily Dose.csproj" -c Release -o /app/build
 FROM build AS publish
 RUN dotnet publish "Delightful Daily Dose.csproj" -c Release -o /app/publish
 
+RUN --mount=type=secret,id=JWTSecretKey cat /run/secrets/JWTSecretKey
+RUN --mount=type=secret,id=JWTLifespan cat /run/secrets/JWTLifespan
+RUN --mount=type=secret,id=EmailAddress cat /run/secrets/EmailAddress
+RUN --mount=type=secret,id=EmailPassword cat /run/secrets/EmailPassword
+
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
