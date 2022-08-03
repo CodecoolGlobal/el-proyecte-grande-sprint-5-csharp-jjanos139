@@ -19,6 +19,9 @@ RUN dotnet build "Delightful Daily Dose.csproj" -c Release -o /app/build
 FROM build AS publish
 RUN dotnet publish "Delightful Daily Dose.csproj" -c Release -o /app/publish
 
+#syntax=docker/dockerfile:1.2
+FROM alpine
+
 RUN --mount=type=secret,id=JWTSecretKey cat /run/secrets/JWTSecretKey
 RUN --mount=type=secret,id=JWTLifespan cat /run/secrets/JWTLifespan
 RUN --mount=type=secret,id=EmailAddress cat /run/secrets/EmailAddress
