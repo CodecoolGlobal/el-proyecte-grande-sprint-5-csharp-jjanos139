@@ -5,17 +5,19 @@
 
 # syntax=docker/dockerfile:1.2
 
-FROM alpine
-
-RUN --mount=type=secret,id=JWTSecretKey cat /run/secrets/JWTSecretKey
-RUN --mount=type=secret,id=JWTLifespan cat /run/secrets/JWTLifespan
-RUN --mount=type=secret,id=EmailAddress cat /run/secrets/EmailAddress
-RUN --mount=type=secret,id=EmailPassword cat /run/secrets/EmailPassword
-
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
+
+RUN --mount=type=secret,id=JWTSecretKey \
+    --mount=type=secret,id=JWTLifespan \
+    --mount=type=secret,id=EmailAddress \
+    --mount=type=secret,id=EmailPassword \
+    export JWTSecretKey=$(cat /run/secrets/JWTSecretKey) && \
+    export JWTLifespan=$(cat /run/secrets/JWTLifespan) && \
+    export EmailAddress=$(cat /run/secrets/EmailAddress) && \
+    export EmailPassword=$(cat /run/secrets/EmailPassword)
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
