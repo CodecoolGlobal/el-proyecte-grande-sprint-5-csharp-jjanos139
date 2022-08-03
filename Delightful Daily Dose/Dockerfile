@@ -38,4 +38,19 @@ RUN dotnet publish "Delightful Daily Dose.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+
+RUN --mount=type=secret,id=JWTSecretKey \
+    --mount=type=secret,id=JWTLifespan \
+    --mount=type=secret,id=EmailAddress \
+    --mount=type=secret,id=EmailPassword \
+    JWTSecretKey="$(cat /run/secrets/JWTSecretKey)" && \
+    export JWTSecretKey && \
+    echo $JWTSecretKey && \
+    export JWTLifespan=$(cat /run/secrets/JWTLifespan) && \
+    echo $JWTLifespan && \
+    export EmailAddress="$(cat /run/secrets/EmailAddress)" && \
+    echo $EmailAddress && \
+    EmailPassword="$(cat /run/secrets/EmailPassword)" && \
+    export EmailPassword
+
 ENTRYPOINT ["dotnet", "Delightful Daily Dose.dll"]
