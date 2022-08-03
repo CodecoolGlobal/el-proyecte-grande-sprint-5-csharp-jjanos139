@@ -16,11 +16,11 @@ RUN --mount=type=secret,id=JWTSecretKey \
     --mount=type=secret,id=EmailPassword \
     JWTSecretKey="$(cat /run/secrets/JWTSecretKey)" && \
     export JWTSecretKey && \
-    echo JWTSecretKey && \
+    echo $JWTSecretKey && \
     export JWTLifespan=$(cat /run/secrets/JWTLifespan) && \
-    echo JWTLifespan && \
+    echo $JWTLifespan && \
     export EmailAddress="$(cat /run/secrets/EmailAddress)" && \
-    echo EmailAddress && \
+    echo $EmailAddress && \
     EmailPassword="$(cat /run/secrets/EmailPassword)" && \
     export EmailPassword
 
