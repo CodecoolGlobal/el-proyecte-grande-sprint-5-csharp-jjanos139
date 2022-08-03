@@ -11,11 +11,11 @@ namespace Delightful_Daily_Dose.Helpers
     public class AuthService : IAuthService
     {
         private readonly string _jwtSecret;
-        private readonly double _jwtLifespan;
+        private readonly int _jwtLifespan;
         public AuthService(string jwtSecret, string jwtLifespan)
         {
             this._jwtSecret = jwtSecret;
-            this._jwtLifespan = double.Parse(jwtLifespan);
+            this._jwtLifespan = int.Parse(jwtLifespan);
         }
         public AuthData GetAuthData(string name, string role)
         {
