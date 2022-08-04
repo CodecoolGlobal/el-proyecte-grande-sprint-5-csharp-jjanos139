@@ -12,7 +12,7 @@ const context = [
 
 module.exports = function (app) {
     const appProxy = createProxyMiddleware(context, {
-        target: 'https://delightfuldailydose-backend.herokuapp.com/',
+        target: process.env.BACKEND_URL,
         secure: false,
         changeOrigin: true,
     });
