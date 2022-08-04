@@ -1,0 +1,39 @@
+name: Deploy to Heroku
+
+on:
+  workflow_run:
+    workflows: ["Docker Image CI Backend"]
+    types:
+      - completed
+  workflow_dispatch:
+
+jobs:
+  deploy_backend_to_heroku:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy Backend to Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12 
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY_FRONTEND }}
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME_BACKEND }}
+          heroku_email: ${{ secrets.HEROKU_EMAIL_FRONTEND  }}
+          # build the app docker image using the Dockerfile
+          # and run that image in a container that's pushed to Heroku
+          usedocker: true
+          justlogin: true
+
+      - name: "Login to heroku registry"
+        run: heroku container:login
+
+      - name: "Pull docker container" 
+        run: docker pull ${{ secrets.DOCKERHUB_USERNAME }}/delightfuldailydose-backend:latest
+
+      - name: "push to heroku registry"
+        run: docker tag ${{ secrets.DOCKERHUB_USERNAME }}/delightfuldailydose-backend:latest registry.heroku.com/${{ secrets.HEROKU_APP_NAME_BACKEND }}/web
+
+      - name: "Push the container"
+        run: docker push registry.heroku.com/${{ secrets.HEROKU_APP_NAME_BACKEND }}/web
+
+      - name: "Releases the container"
+        run: heroku container:release web -a ${{ secrets.HEROKU_APP_NAME_BACKEND }}

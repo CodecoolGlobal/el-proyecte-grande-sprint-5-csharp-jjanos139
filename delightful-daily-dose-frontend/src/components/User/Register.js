@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function Register(props) {
+export default function Register() {
     const nav = useNavigate();
 
     const [input, setInput] = useState({
@@ -166,4 +166,4 @@ export default function Register(props) {
             <input type="submit" className="reg-button" value="Submit"></input>
         </form>
     );
-};
+}

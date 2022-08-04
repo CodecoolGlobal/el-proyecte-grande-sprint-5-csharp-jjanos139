@@ -16,15 +16,14 @@ namespace Delightful_Daily_Dose_Test
         AuthController authController;
         private IHttpContextAccessor httpContextAccessor;
         readonly string jwtSecret;
-        readonly int jwtLifespan;
         private readonly string email;
         private readonly string password;
 
         public AuthControllerTests()
         {
-            httpContextAccessor = new HttpContextAccessor();
-            userRepository = Substitute.For<IUserRepository>();
-            authService = Substitute.For<AuthService>(jwtSecret, jwtLifespan);
+            httpContextAccessor = Substitute.For<IHttpContextAccessor>();
+            userRepository = Substitute.For<UserRepository>(_context, httpContextAccessor);
+            authService = new AuthService(jwtSecret);
             _emailSender = new EmailSender(email, password);
 
             userRepository.Configure().GetSingle("1").Returns(new User
@@ -34,7 +33,6 @@ namespace Delightful_Daily_Dose_Test
             });
             authService.Configure().VerifyPassword("randy", "marsh").Returns(false);
             authController = Substitute.For<AuthController>(authService, userRepository, _emailSender);
-            
         }
 
         [SetUp]

@@ -1,0 +1,31 @@
+name: .NET_TESTS
+
+on:
+  push:
+    branches: [ "workflow-test" ]
+  pull_request:
+    branches: [ "workflow-test" ]
+  workflow_dispatch:
+  
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    env:
+      Solution_Name: Delightful Daily Dose.sln
+      Test_Project_Path: Delightful Daily Dose Test\Delightful Daily Dose Test.csproj
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET Core SDK 17.1.x
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '6.0.x'
+    - name: Restore dependencies
+      working-directory: "./Delightful Daily Dose"
+      run: dotnet restore
+    - name: Build
+      working-directory: "./Delightful Daily Dose"
+      run: dotnet build
+    - name: Test
+      working-directory: "./Delightful Daily Dose Test"
+      run: dotnet test

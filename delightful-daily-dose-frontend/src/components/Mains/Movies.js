@@ -24,7 +24,7 @@ export default function Movies(props) {
                                 <div id="article-text">
                                     <a href={href} target="_blank" rel="noreferrer"><h5>#{item.rank} - {item.title}</h5></a>
                                     <p>Weeks in Box Office: {item.weeks}</p>
-                                    <p>Last weekend's gross: {item.weekend}</p>
+                                    <p>Last weekend&lsquo;s gross: {item.weekend}</p>
                                     <p>Total gross: {item.gross}</p>
                                 </div>
                             </Card>)
