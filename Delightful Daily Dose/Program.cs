@@ -53,7 +53,7 @@ namespace Delightful_Daily_Dose
                         {
                             configBuilder.AddCommandLine(args);
                         }
-                    }).UseStartup<Startup>().UseUrls($"http://0.0.0.0/:{Environment.GetEnvironmentVariable("PORT")}");
+                    }).UseStartup<Startup>();
                 });
     }
 }

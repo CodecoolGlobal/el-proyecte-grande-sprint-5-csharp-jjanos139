@@ -15,7 +15,6 @@ namespace Delightful_Daily_Dose_Test
         AuthController authController;
         private IHttpContextAccessor httpContextAccessor;
         readonly string jwtSecret;
-        readonly int jwtLifespan;
         private readonly string email;
         private readonly string password;
 
@@ -23,7 +22,7 @@ namespace Delightful_Daily_Dose_Test
         {
             httpContextAccessor = Substitute.For<IHttpContextAccessor>();
             userRepository = Substitute.For<UserRepository>(_context, httpContextAccessor);
-            authService = new AuthService(jwtSecret, jwtLifespan);
+            authService = new AuthService(jwtSecret);
             _emailSender = new EmailSender(email, password);
             authController = Substitute.For<AuthController>(authService, userRepository, _emailSender);
         }
