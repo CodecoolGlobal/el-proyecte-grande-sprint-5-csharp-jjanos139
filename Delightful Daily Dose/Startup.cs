@@ -105,7 +105,7 @@ namespace Delightful_Daily_Dose
                 
             });
 
-            services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+            services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
             services.AddTransient<ApiHelper>();
         }
 
