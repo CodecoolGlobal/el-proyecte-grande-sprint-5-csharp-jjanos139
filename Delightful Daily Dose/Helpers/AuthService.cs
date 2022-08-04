@@ -15,7 +15,7 @@ namespace Delightful_Daily_Dose.Helpers
         {
             this._jwtSecret = jwtSecret;
         }
-        public AuthData GetAuthData(string name, string role)
+        public virtual AuthData GetAuthData(string name, string role)
         {
             var expirationTime = DateTime.UtcNow.AddSeconds(2592000);
 
@@ -44,12 +44,12 @@ namespace Delightful_Daily_Dose.Helpers
             };
         }
 
-        public string HashPassword(string password)
+        public virtual string HashPassword(string password)
         {
             return Crypto.HashPassword(password);
         }
 
-        public bool VerifyPassword(string actualPassword, string hashedPassword)
+        public virtual bool VerifyPassword(string actualPassword, string hashedPassword)
         {
             return Crypto.VerifyHashedPassword(hashedPassword, actualPassword);
         }

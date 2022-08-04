@@ -18,7 +18,7 @@ namespace Delightful_Daily_Dose.Helpers
             _context = context;
         }
 
-        private async Task<HttpResponseMessage> GetDataFromApi(string apiUrl)
+        public async Task<HttpResponseMessage> GetDataFromApi(string apiUrl)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -35,7 +35,7 @@ namespace Delightful_Daily_Dose.Helpers
             return null;
         }
 
-        private async Task<string> GetDataFromCache(string apiUrl)
+        public async Task<string> GetDataFromCache(string apiUrl)
         {
             return await Cache[apiUrl].Content.ReadAsStringAsync();
         }
