@@ -8,3 +8,5 @@ global using Delightful_Daily_Dose.Models.Entities;
 global using Microsoft.AspNetCore.Http;
 global using Delightful_Daily_Dose.Controllers;
 global using Microsoft.Extensions.Logging;
+global using AutoMapper;
+global using NSubstitute.Extensions;
