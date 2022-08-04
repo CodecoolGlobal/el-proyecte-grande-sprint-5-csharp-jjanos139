@@ -54,7 +54,7 @@ namespace Delightful_Daily_Dose
                             configBuilder.AddCommandLine(args);
                         }
                     }).UseStartup<Startup>();
-                    webBuilder.UseUrls(Environment.GetEnvironmentVariable("ASPNETCORE_URLS") ?? string.Empty);
+                    webBuilder.UseUrls(Environment.GetEnvironmentVariable("ASPNETCORE_URLS") + Environment.GetEnvironmentVariable("PORT"));
                 });
     }
 }
