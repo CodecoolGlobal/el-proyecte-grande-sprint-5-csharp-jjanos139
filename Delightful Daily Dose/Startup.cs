@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System;
+using System.Text.Json.Serialization;
 
 namespace Delightful_Daily_Dose
 {
@@ -96,10 +97,6 @@ namespace Delightful_Daily_Dose
             //);
             services.AddSingleton<IAuthService>(new AuthService(Environment.GetEnvironmentVariable("JWTSecretKey")));
 
-            services.AddControllersWithViews();
-            services.AddTransient<ApiHelper>();
-
-
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
@@ -108,7 +105,7 @@ namespace Delightful_Daily_Dose
                 
             });
 
-            services.AddControllersWithViews();
+            services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
             services.AddTransient<ApiHelper>();
         }
 
