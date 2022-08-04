@@ -43,7 +43,7 @@ namespace Delightful_Daily_Dose
 
             services
                 .AddDbContext<ApiContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlite(Configuration.GetConnectionString("ConnectionSqLite")));
 
             services.AddAuthentication("JwtAuthentication")
                 .AddScheme<AuthenticationSchemeOptions, JwtAuthenticationHandler>("JwtAuthentication", null);
