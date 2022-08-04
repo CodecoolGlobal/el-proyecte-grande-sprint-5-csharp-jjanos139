@@ -119,6 +119,12 @@ namespace Delightful_Daily_Dose
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            if (env.IsProduction())
+            {
+                var port = Environment.GetEnvironmentVariable("PORT");
+                env.
+            }
             else
             {
                 app.UseExceptionHandler("/Home/Error");
