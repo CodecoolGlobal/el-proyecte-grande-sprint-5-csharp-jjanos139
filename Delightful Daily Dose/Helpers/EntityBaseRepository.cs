@@ -22,17 +22,6 @@ namespace Delightful_Daily_Dose.Helpers
             return _context.Set<T>().AsEnumerable();
         }
 
-        public virtual int Count()
-        {
-            return _context.Set<T>().Count();
-        }
-        public virtual IEnumerable<T> AllIncluding(params Expression<Func<T, object>>[] includeProperties)
-        {
-            IQueryable<T> query = _context.Set<T>();
-            query = includeProperties.Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
-            return query.AsEnumerable();
-        }
-
         public T GetSingle(string id)
         {
             return _context.Set<T>().FirstOrDefault(x => x.Id == id);
@@ -49,11 +38,6 @@ namespace Delightful_Daily_Dose.Helpers
             query = includeProperties.Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
 
             return query.Where(predicate).FirstOrDefault();
-        }
-
-        public virtual IEnumerable<T> FindBy(Expression<Func<T, bool>> predicate)
-        {
-            return _context.Set<T>().Where(predicate);
         }
 
         public virtual void Add(T entity)
