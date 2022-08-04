@@ -34,11 +34,11 @@ namespace Delightful_Daily_Dose
             //IConfigurationSection googleAuthNSection =
             //    Configuration.GetSection("Authentication:Google");
 
-            Console.WriteLine(Configuration);
-            Console.WriteLine(Configuration["JWTSecretKey"]);
-            Console.WriteLine(Configuration["JWTLifespan"]);
-            Console.WriteLine(Configuration["EmailAddress"]);
-            Console.WriteLine(Configuration["EmailPassword"]);
+            Console.WriteLine(Environment.GetEnvironmentVariables());
+            Console.WriteLine(Environment.GetEnvironmentVariable("JWTSecretKey"));
+            Console.WriteLine(Environment.GetEnvironmentVariable("JWTLifespan"));
+            Console.WriteLine(Environment.GetEnvironmentVariable("EmailAddress"));
+            Console.WriteLine(Environment.GetEnvironmentVariable("EmailPassword"));
 
 
             services
@@ -53,7 +53,7 @@ namespace Delightful_Daily_Dose
             );
             services.AddSingleton(mappingConfig.CreateMapper());
             services.AddSingleton(
-                new EmailSender(Configuration["EmailAddress"], Configuration["EmailPassword"]));
+                new EmailSender(Environment.GetEnvironmentVariable("EmailAddress"), Environment.GetEnvironmentVariable("EmailPassword")));
 
             //services.AddAuthentication(options =>
             //    {
@@ -94,7 +94,7 @@ namespace Delightful_Daily_Dose
             //        int.Parse(jwtAuthSection["JWTLifespan"])
             //    )
             //);
-            services.AddSingleton<IAuthService>(new AuthService(Configuration["JWTSecretKey"]));
+            services.AddSingleton<IAuthService>(new AuthService(Environment.GetEnvironmentVariable("JWTSecretKey")));
 
             services.AddControllersWithViews();
             services.AddTransient<ApiHelper>();
