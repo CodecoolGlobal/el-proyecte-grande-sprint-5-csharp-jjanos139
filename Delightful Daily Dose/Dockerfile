@@ -21,21 +21,20 @@ RUN --mount=type=secret,id=JWTSecretKey \
     export EmailAddress="$(cat /run/secrets/EmailAddress)" && \
     echo $EmailAddress && \
     EmailPassword="$(cat /run/secrets/EmailPassword)" && \
-    export EmailPassword && \
-    echo | pwd && echo | ls /run/secrets
+    export EmailPassword
 
 WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["Delightful Daily Dose/Delightful Daily Dose.csproj", "Delightful Daily Dose/"]
-RUN echo | ls /run/secrets && dotnet restore "Delightful Daily Dose/Delightful Daily Dose.csproj"
+RUN dotnet restore "Delightful Daily Dose/Delightful Daily Dose.csproj"
 COPY . .
 WORKDIR "/src/Delightful Daily Dose"
-RUN echo | ls /run/secrets && dotnet build "Delightful Daily Dose.csproj" -c Release -o /app/build
+RUN dotnet build "Delightful Daily Dose.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN echo | ls /run/secrets && dotnet publish "Delightful Daily Dose.csproj" -c Release -o /app/publish
+RUN dotnet publish "Delightful Daily Dose.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
