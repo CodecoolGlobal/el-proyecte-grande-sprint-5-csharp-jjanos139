@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Marquee from "react-fast-marquee";
 import React from "react";
 
-export default function Footer(props) {
+export default function Footer() {
     const [joke, setJoke] = React.useState("");
     React.useEffect(() => function loadJoke() {
         window.fetch(`Home/GetJoke`).then((response) => {

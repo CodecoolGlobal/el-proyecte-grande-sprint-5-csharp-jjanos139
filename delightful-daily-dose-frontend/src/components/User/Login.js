@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import Cookies from "universal-cookie";
 
-export default function Login(props) {
+export default function Login() {
     const nav = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -27,7 +27,7 @@ export default function Login(props) {
                 localStorage.setItem("user", JSON.stringify(data.token));
                 nav("/logged", { state: { username: username } });
             });
-    };
+    }
 
     return (
         <form method="post" onSubmit={handleSubmit}>
