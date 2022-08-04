@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Delightful_Daily_Dose.Models;
 using Delightful_Daily_Dose.Models.Entities;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Delightful_Daily_Dose.Helpers
 {
@@ -16,19 +17,19 @@ namespace Delightful_Daily_Dose.Helpers
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public bool IsEmailUniq(string email)
+        public virtual bool IsEmailUniq(string email)
         {
             var user = this.GetSingle(u => u.Email == email);
             return user == null;
         }
 
-        public Task<User> AuthenticateAsync(string userName, string password)
+        public virtual Task<User> AuthenticateAsync(string userName, string password)
         {
             return Task.Run(() => GetAll()
                 .FirstOrDefault(user => user.Username == userName && user.Password == password));
         }
 
-        public User FindCurrentUser()
+        public virtual User FindCurrentUser()
         {
             var authorization = _httpContextAccessor.HttpContext.Request.Headers.Authorization.ToString();
 
@@ -40,13 +41,13 @@ namespace Delightful_Daily_Dose.Helpers
             return user;
         }
 
-        public bool IsUsernameUniq(string username)
+        public virtual bool IsUsernameUniq(string username)
         {
             var user = this.GetSingle(u => u.Username == username);
             return user == null;
         }
 
-        public IEnumerable<User> GetAllUsers()
+        public virtual IEnumerable<User> GetAllUsers()
         {
             return GetAll();
         }
