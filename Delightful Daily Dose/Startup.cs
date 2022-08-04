@@ -126,7 +126,7 @@ namespace Delightful_Daily_Dose
                 app.UseHsts();
             }
             //app.UseHttpsRedirection();
-            app.UsePathBase($"http://0.0.0.0/:{Environment.GetEnvironmentVariable("PORT")}");
+            
             app.UseStaticFiles();
 
             //app.UseCors("ReactPolicy");
