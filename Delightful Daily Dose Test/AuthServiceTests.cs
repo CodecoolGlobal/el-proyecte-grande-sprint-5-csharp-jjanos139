@@ -15,7 +15,7 @@ namespace Delightful_Daily_Dose_Test
         [SetUp]
         public void Setup()
         {
-            authService = new AuthService(jwtSecret, jwtLifespan);
+            authService = new AuthService(jwtSecret);
         }
 
         [Test]
