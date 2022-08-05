@@ -11,6 +11,7 @@ import Credits from "./components/Credits";
 import Error from "./components/Error";
 import Register from "./components/User/Register";
 import Login from "./components/User/Login";
+import Logged from './components/User/Logged';
 import Story from "./components/Mains/Story";
 import NewStory from "./components/Mains/NewStory";
 import Users from "./components/Mains/Users";
@@ -55,6 +56,8 @@ export default function App(props) {
                 return (<Login dark={dark} />);
             case "register":
                 return (<Register dark={dark} />);
+            case "logged":
+                return (<Logged dark={dark} />);
             case "stories":
                 return (<Story dark={dark} />);
             case "new-story":

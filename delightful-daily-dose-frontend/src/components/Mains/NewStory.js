@@ -2,9 +2,10 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import authHeader from '../../authHeader'
 
-export default function NewStory() {
+export default function NewStory(props) {
     const tags = [
-        "domestic", "foreign", "sport", "culinary", "health", "politics", "entertainment", "environment", "technology", "business"
+        "domestic", "foreign", "sport", "culinary", "health", "politics",
+        "entertainment", "environment", "technology", "business"
     ]
 
     const nav = useNavigate();
@@ -34,9 +35,10 @@ export default function NewStory() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={props.dark === "dark" ? "dark" : ""}>
+            <h3 className={props.dark === "dark" ? "login-h3 dark" : "login-h3"}>Add your story</h3>
             <input
-                className="form-input"
+                className={props.dark === "dark" ? "form-input dark" : "form-input"}
                 placeholder="Enter title"
                 name="title"
                 value={input.title}
@@ -46,7 +48,7 @@ export default function NewStory() {
             >
             </input>
             <textarea
-                className="form-input"
+                className={props.dark === "dark" ? "form-input dark" : "form-input"}
                 placeholder="Enter content"
                 name="content"
                 value={input.content}
@@ -55,23 +57,27 @@ export default function NewStory() {
                 spellCheck="false"
             >
             </textarea>
-            <select className="animated fadeInLeft"
-                onChange={onInputChange}
-                name="tag"
-                value={input.tag}
+            <div
+                className={props.dark === "dark" ? "tag-select-div dark" : "tag-select-div"}
             >
-                {tags.map((item) => {
-                    return (
-                        <option
-                            key={item.id}
-                            className="menu-list-item"
-                            value={item}
-                        >{item}
-                        </option>
-                    )
-                })}
-            </select>
-            <input type="submit"></input>
-        </form>
+                <select
+                    className="tag-selector"
+                    onChange={onInputChange}
+                    name="tag"
+                    value={input.tag}
+                >
+                    {tags.map((item, index) => {
+                        return (
+                            <option
+                                key={index}
+                                value={item}
+                            >{item}
+                            </option>
+                        )
+                    })}
+                </select>
+                <input type="submit"></input>
+            </div>
+        </form >
     )
 }

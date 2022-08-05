@@ -8,7 +8,7 @@ export default function News(props) {
     const dark = props.dark;
 
     React.useEffect(() => {
-        fetch(props.site, {headers: authHeader()})
+        fetch(props.site, { headers: authHeader() })
             .then(response => response.json())
             .then(data => {
                 setNews(data);
@@ -19,10 +19,10 @@ export default function News(props) {
     return (
         <div className="container">
             <main role="main" className="pb-3">
-                <div className="search-container">
-                    <input type="text" name="search" placeholder="Search..." className="search-input" spellCheck="false" onChange={(event) => props.handleSearch(event, news, setFilteredNews)}></input>
-                    <div className="search"></div>
-                    <p className="article-numbers">Articles: {filteredNews.length}</p>
+                <div className={props.dark === "dark" ? "search-container dark" : "search-container"}>
+                    <input type="text" name="search" placeholder="Search..." className={props.dark === "dark" ? "search-input dark" : "search-input"} spellCheck="false" onChange={(event) => props.handleSearch(event, news, setFilteredNews)}></input>
+                    <div className={props.dark === "dark" ? "search dark" : "search"}></div>
+                    <p className={props.dark === "dark" ? "article-numbers dark" : "article-numbers"}>Articles: {filteredNews.length}</p>
                 </div>
                 <div id="body">
                     {filteredNews.map((item) => {

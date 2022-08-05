@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function Register() {
+export default function Register(props) {
     const nav = useNavigate();
 
     const [input, setInput] = useState({
@@ -83,11 +83,11 @@ export default function Register() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h3 className="reg-h3">Registration</h3>
-            <label className="reg-label" htmlFor="username">Username</label>
+        <form onSubmit={handleSubmit} className={props.dark === "dark" ? "dark" : ""}>
+            <h3 className={props.dark === "dark" ? "reg-h3 dark" : "reg-h3"}>Registration</h3>
+            <label className={props.dark === "dark" ? "reg-label dark" : "reg-label"} htmlFor="username">Username</label>
             <input
-                className="form-input"
+                className={props.dark === "dark" ? "form-input dark" : "form-input"}
                 type="text"
                 name="username"
                 placeholder='Enter username'
@@ -99,9 +99,9 @@ export default function Register() {
                 pattern="^[a-zA-Z0-9_\\.-]{3,20}"
 
             />
-            <label className="reg-label" htmlFor="email">E-mail</label>
+            <label className={props.dark === "dark" ? "reg-label dark" : "reg-label"} htmlFor="email">E-mail</label>
             <input
-                className="form-input"
+                className={props.dark === "dark" ? "form-input dark" : "form-input"}
                 type="email"
                 name="email"
                 placeholder='Enter E-mail'
@@ -112,9 +112,9 @@ export default function Register() {
                 required="Required"
             />
             {/* {errors.email && errors.email.message} */}
-            <label className="reg-label" htmlFor="password">Password</label>
+            <label className={props.dark === "dark" ? "reg-label dark" : "reg-label"} htmlFor="password">Password</label>
             <input
-                className="form-input"
+                className={props.dark === "dark" ? "form-input dark" : "form-input"}
                 type="password"
                 name="password"
                 placeholder='Enter password'
@@ -131,9 +131,9 @@ export default function Register() {
             // })}
             />
             {/* {errors.password && errors.password.message} */}
-            <label className="reg-label" htmlFor="confirmpassword">Confirm Password</label>
+            <label className={props.dark === "dark" ? "reg-label dark" : "reg-label"} htmlFor="confirmpassword">Confirm Password</label>
             <input
-                className="form-input"
+                className={props.dark === "dark" ? "form-input dark" : "form-input"}
                 type="password"
                 name="confirmpassword"
                 placeholder='Confirm Password'
@@ -152,7 +152,7 @@ export default function Register() {
             />
             {/* {errors.confirmpassword && errors.confirmpassword.message} */}
             <div className="checkbox-div">
-                <label className="reg-checkbox" htmlFor="ispublisher">Are you a publisher?</label>
+                <label className={props.dark === "dark" ? "reg-checkbox dark" : "reg-checkbox"} htmlFor="ispublisher">Are you a publisher?</label>
                 <span className="checkbox-span"><input data-val="true" value="true" className="registration-checkbox"
                     type="checkbox"
                     name="ispublisher"
@@ -163,7 +163,7 @@ export default function Register() {
                 /></span>
                 <div className="clearboth"></div>
             </div>
-            <input type="submit" className="reg-button" value="Submit"></input>
+            <input type="submit" className={props.dark === "dark" ? "reg-button dark" : "reg-button"} value="Submit"></input>
         </form>
     );
 }

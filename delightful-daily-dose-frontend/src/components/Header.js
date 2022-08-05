@@ -100,7 +100,7 @@ export default function Header(props) {
                 <NavbarComponent elements="top" />
             </Navbar>
             <Navbar id="lowerbar" dark={props.dark} className={props.dark === "dark" ? "lowerbar dark navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" : "lowerbar navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3"}>
-                <NavbarComponent elements="lower" />
+                <NavbarComponent elements="lower" dark={props.dark} />
             </Navbar>
         </header>
     )

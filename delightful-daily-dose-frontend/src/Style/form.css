@@ -12,6 +12,19 @@ form {
     border: 2px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 0 40px rgba(14, 103, 180, 0.6);
     padding: 20px 35px;
+    text-decoration: none;
+}
+
+form.dark {
+    box-shadow: 0 0 40px rgba(1, 1, 1, 0.6);
+}
+
+form>a {
+    text-decoration: none;
+}
+
+form>a.dark {
+    color: white;
 }
 
 form * {
@@ -31,13 +44,6 @@ form h3 {
     border-bottom: 3px solid rgba(14, 103, 180, 0.6);
 }
 
-label {
-    display: block;
-    margin-top: 30px;
-    font-size: 16px;
-    font-weight: 500;
-}
-
 .form-input {
     display: block;
     height: 50px;
@@ -51,8 +57,17 @@ label {
     border: 2px solid rgba(14, 103, 180, 0.6);
 }
 
+.form-input.dark {
+    border: 2px solid rgba(38, 40, 38, 0.6);
+    color: white;
+}
+
 ::placeholder {
     color: black;
+}
+
+.dark::placeholder {
+    color: white;
 }
 
 .login-button {
@@ -78,6 +93,10 @@ label {
     text-align: right;
 }
 
+.reg-checkbox.dark {
+    color: white;
+}
+
 .checkbox-span {
     margin-top: 11px;
     float: right;
@@ -101,6 +120,10 @@ label {
     font-weight: 500;
 }
 
+.reg-label.dark {
+    color: white;
+}
+
 .reg-h3 {
     margin-bottom: 5px;
     font-size: 30px;
@@ -108,6 +131,12 @@ label {
     line-height: 42px;
     text-align: center;
     border-bottom: 3px solid rgba(14, 103, 180, 0.6);
+}
+
+.reg-h3.dark,
+.login-h3.dark {
+    color: white;
+    border-bottom: 2px solid rgba(38, 40, 38, 0.6);
 }
 
 .reg-button {
@@ -121,6 +150,12 @@ label {
     border-radius: 5px;
     cursor: pointer;
     text-align: center;
+}
+
+.reg-button.dark,
+.login-button.dark {
+    background-color: #393c3e;
+    color: white;
 }
 
 .reg-topright,
@@ -144,6 +179,12 @@ label {
     touch-action: manipulation;
 }
 
+.reg-topright.dark,
+.login-topright.dark {
+    box-shadow: 0px 0px 14px -7px #8b969b;
+    background-image: linear-gradient(45deg, #011b33 0%, #8b969b 51%, #011b33 100%);
+}
+
 .login-topright {
     margin-left: 5px;
     margin-right: 125px;
@@ -159,4 +200,26 @@ label {
 .reg-topright:active,
 .login-topright:active {
     transform: scale(0.95);
+}
+
+.tag-select-div {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tag-select-div>select {
+    border-radius: 5px;
+    height: 25px;
+}
+
+.tag-select-div>input {
+    background-color: #0E67B4;
+    color: white;
+    border-radius: 5px;
+}
+
+.tag-select-div.dark>input {
+    background-color: #393c3e;
 }

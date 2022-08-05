@@ -300,6 +300,7 @@ h5>a:hover {
     margin-right: 10px;
     margin-top: auto;
     margin-bottom: auto;
+    overflow: hidden;
 }
 
 .box-office-image {
@@ -347,6 +348,7 @@ h5>a:hover {
     #EUR {
         display: none !important;
     }
+
     #weather {
         margin-left: 12.5rem;
     }
@@ -357,9 +359,11 @@ h5>a:hover {
     #menudiv {
         margin-right: 11.25rem;
     }
+
     #datetime {
         margin-left: 3.125rem;
     }
+
     #weather {
         margin-left: 10rem;
     }
@@ -400,6 +404,7 @@ h5>a:hover {
         margin-right: 6.25rem;
         margin-left: 10.125rem;
     }
+
     #weather {
         margin-left: 5rem;
     }
@@ -422,6 +427,7 @@ h5>a:hover {
     .youtube-iframe {
         max-width: 100% !important;
     }
+
     #menudiv {
         margin-right: 1.25rem;
         margin-left: 15.125rem;
@@ -455,12 +461,12 @@ h5>a:hover {
     .credits-name {
         top: 25% ! important;
     }
-    
+
     .card {
         width: 380px;
         margin-left: 8px
     }
-    
+
     #menudiv {
         margin-right: 1.25rem;
         margin-left: 5rem;
@@ -472,6 +478,7 @@ h5>a:hover {
         margin-right: 1.25rem;
         margin-left: 8rem;
     }
+
     #date-and-name {
         margin-left: 3rem;
     }
@@ -486,6 +493,10 @@ h5>a:hover {
 @media screen and (max-width: 425px) {
     #date-and-name {
         display: none !important;
+    }
+
+    #logo {
+        margin-left: 44%;
     }
 }
 

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import Cookies from "universal-cookie";
 
-export default function Login() {
+export default function Login(props) {
     const nav = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -30,11 +30,11 @@ export default function Login() {
     }
 
     return (
-        <form method="post" onSubmit={handleSubmit}>
-            <h3 className="login-h3">Login Here</h3>
-            <label htmlFor="username">Username</label>
+        <form method="post" onSubmit={handleSubmit} className={props.dark === "dark" ? "dark" : ""}>
+            <h3 className={props.dark === "dark" ? "login-h3 dark" : "login-h3"}>Login Here</h3>
+            <label htmlFor="username" className={props.dark === "dark" ? "reg-label dark" : "reg-label"}>Username</label>
             <input
-                className="form-input"
+                className={props.dark === "dark" ? "form-input dark" : "form-input"}
                 type="text"
                 name="username"
                 placeholder='Enter username'
@@ -44,9 +44,9 @@ export default function Login() {
                 value={username}
                 onChange={event => setUsername(event.target.value)}
             />
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password" className={props.dark === "dark" ? "reg-label dark" : "reg-label"}>Password</label>
             <input
-                className="form-input"
+                className={props.dark === "dark" ? "form-input dark" : "form-input"}
                 type="password"
                 name="password"
                 placeholder='Enter password'
@@ -56,7 +56,7 @@ export default function Login() {
                 value={password}
                 onChange={event => setPassword(event.target.value)}
             />
-            <button className="login-button">Login</button>
+            <button className={props.dark === "dark" ? "login-button dark" : "login-button"}>Login</button>
         </form>
     )
 }

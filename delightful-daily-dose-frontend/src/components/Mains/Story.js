@@ -18,7 +18,7 @@ export default function Story(props) {
     return (
         <div className="container">
             <main role="main" className="pb-3">
-                {cookie ? <Link to="/new-story" className="new-story"><i className="fa-solid fa-feather-pointed"></i> Add new story</Link> : ""}
+                {cookie ? <Link to="/new-story" className={dark === "dark" ? "new-story dark" : "new-story"}><i className="fa-solid fa-feather-pointed"></i> Add new story</Link> : ""}
                 <div id="body">
                     {stories.map((item) => {
                         const url = "Stories/" + item.id;

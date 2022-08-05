@@ -5,3 +5,7 @@
     padding: 20px;
     text-decoration: none;
 }
+
+.new-story.dark {
+    color: white;
+}
