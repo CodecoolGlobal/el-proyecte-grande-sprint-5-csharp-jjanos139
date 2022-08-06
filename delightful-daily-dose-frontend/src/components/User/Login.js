@@ -30,11 +30,11 @@ export default function Login(props) {
     }
 
     return (
-        <form method="post" onSubmit={handleSubmit} className={props.dark === "dark" ? "dark" : ""}>
+        <form method="post" onSubmit={handleSubmit}>
             <h3 className={props.dark === "dark" ? "login-h3 dark" : "login-h3"}>Login Here</h3>
-            <label htmlFor="username" className={props.dark === "dark" ? "reg-label dark" : "reg-label"}>Username</label>
+            <label htmlFor="username" className="reg-label">Username</label>
             <input
-                className={props.dark === "dark" ? "form-input dark" : "form-input"}
+                className="form-input"
                 type="text"
                 name="username"
                 placeholder='Enter username'
@@ -44,9 +44,9 @@ export default function Login(props) {
                 value={username}
                 onChange={event => setUsername(event.target.value)}
             />
-            <label htmlFor="password" className={props.dark === "dark" ? "reg-label dark" : "reg-label"}>Password</label>
+            <label htmlFor="password" className="reg-label">Password</label>
             <input
-                className={props.dark === "dark" ? "form-input dark" : "form-input"}
+                className="form-input"
                 type="password"
                 name="password"
                 placeholder='Enter password'
@@ -56,7 +56,7 @@ export default function Login(props) {
                 value={password}
                 onChange={event => setPassword(event.target.value)}
             />
-            <button className={props.dark === "dark" ? "login-button dark" : "login-button"}>Login</button>
+            <button className="login-button">Login</button>
         </form>
     )
 }

@@ -2,9 +2,8 @@ import Card from 'react-bootstrap/Card';
 import React from "react";
 import authHeader from '../../authHeader';
 
-export default function Users(props) {
+export default function Users() {
     const [users, setUsers] = React.useState([]);
-    const dark = props.dark;
 
     React.useEffect(() => {
         fetch(`/Home/users`, { headers: authHeader() })
@@ -18,7 +17,7 @@ export default function Users(props) {
                 <div id="body">
                     {users.map((item) => {
                         return (
-                            <Card key={item.id} className={dark === "dark" ? "dark" : ""}>
+                            <Card key={item.id}>
                                 <div id="article-text" className="users-text">
                                     <p>Username: {item.username}</p>
                                     <p>Email: {item.email}</p>

@@ -2,8 +2,7 @@ import Card from 'react-bootstrap/Card';
 import React from 'react';
 import authHeader from '../../authHeader';
 
-export default function Movies(props) {
-    const dark = props.dark;
+export default function Movies() {
     const [movies, setMovies] = React.useState([]);
 
     React.useEffect(() => {
@@ -19,7 +18,7 @@ export default function Movies(props) {
                     {movies.map((item) => {
                         const href = "https://www.imdb.com/title/" + item.id;
                         return (
-                            <Card key={item.id} className={dark === "dark" ? "dark" : ""}>
+                            <Card key={item.id}>
                                 <img className="box-office-image" src={item.image} alt="" />
                                 <div id="article-text">
                                     <a href={href} target="_blank" rel="noreferrer"><h5>#{item.rank} - {item.title}</h5></a>

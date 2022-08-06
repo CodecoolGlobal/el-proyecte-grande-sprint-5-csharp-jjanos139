@@ -4,9 +4,8 @@ import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import authHeader from '../../authHeader';
 
-export default function Story(props) {
+export default function Story() {
     const [stories, setStories] = React.useState([]);
-    const dark = props.dark;
     const cookies = new Cookies();
     const cookie = cookies.get('user');
     React.useEffect(() => {
@@ -18,7 +17,7 @@ export default function Story(props) {
     return (
         <div className="container">
             <main role="main" className="pb-3">
-                {cookie ? <Link to="/new-story" className={dark === "dark" ? "new-story dark" : "new-story"}><i className="fa-solid fa-feather-pointed"></i> Add new story</Link> : ""}
+                {cookie ? <Link to="/new-story" className="new-story"><i className="fa-solid fa-feather-pointed"></i> Add new story</Link> : ""}
                 <div id="body">
                     {stories.map((item) => {
                         const url = "Stories/" + item.id;
@@ -27,18 +26,18 @@ export default function Story(props) {
                         const day = new Date(item.publishTime).getDate();
                         console.log(year + month + day);
                         return (
-                            <Card key={item.id} className={dark === "dark" ? "dark" : ""}>
+                            <Card key={item.id}>
                                 {/* <img className="box-office-image" src={item.image} alt="" /> */}
                                 <div id="article-text">
-                                    <h5><a className={dark === "dark" ? "dark" : ""} href={url} target="_blank" rel="noreferrer">{item.title}</a></h5>
-                                    <h6 className={dark === "dark" ? "dark" : ""}>{item.content}</h6>
-                                    <h6 className={dark === "dark" ? "dark" : ""}>{item.tag}</h6>
+                                    <h5><a href={url} target="_blank" rel="noreferrer">{item.title}</a></h5>
+                                    <h6>{item.content}</h6>
+                                    <h6>{item.tag}</h6>
                                     <p><i className="fa-solid fa-upload"></i> {year}-{month}-{day} </p>
                                 </div>
                             </Card>)
                     })}
                 </div>
             </main >
-        </div>
+        </div >
     )
 }

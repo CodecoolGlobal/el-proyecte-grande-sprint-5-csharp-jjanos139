@@ -2,9 +2,8 @@ import Card from 'react-bootstrap/Card';
 import React from 'react';
 import authHeader from '../../authHeader';
 
-export default function YouTube(props) {
+export default function YouTube() {
     const [youtube, setYoutube] = React.useState([]);
-    const dark = props.dark;
 
     React.useEffect(() => {
         fetch(`Home/GetYoutubeMostViewed`, { headers: authHeader() })
@@ -20,7 +19,7 @@ export default function YouTube(props) {
                         const href = "https://www.youtube.com/embed/" + item.id;
                         const publishedAt = item.snippet.publishedAt.replace("T", "\n").replace("Z", "");
                         return (
-                            <Card key={item.id} className={dark === "dark" ? "dark" : ""}>
+                            <Card key={item.id}>
                                 <iframe className="youtube-iframe" src={href} title="YouTube video player"></iframe>
                                 <div id="article-text" className="youtube-text">
                                     <p>{item.snippet.title}</p>

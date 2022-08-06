@@ -2,8 +2,7 @@ import Card from 'react-bootstrap/Card';
 import React from 'react';
 import authHeader from '../../authHeader';
 
-export default function ComingSoon(props) {
-    const dark = props.dark;
+export default function ComingSoon() {
     const [comingSoon, setComingSoon] = React.useState([]);
 
     React.useEffect(() => {
@@ -19,7 +18,7 @@ export default function ComingSoon(props) {
                     {comingSoon.map((item) => {
                         const href = "https://www.imdb.com/title/" + item.id;
                         return (
-                            <Card key={item.id} className={dark === "dark" ? "dark" : ""}>
+                            <Card key={item.id}>
                                 <img className="box-office-image" src={item.image} alt="" />
                                 <div id="article-text">
                                     <a href={href} target="_blank" rel="noreferrer"><h5>{item.title}</h5></a>
