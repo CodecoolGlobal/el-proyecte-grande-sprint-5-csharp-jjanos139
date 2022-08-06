@@ -1,4 +1,3 @@
-import React from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Sidebar from "./components/Sidebar";
@@ -11,24 +10,13 @@ import Credits from "./components/Credits";
 import Error from "./components/Error";
 import Register from "./components/User/Register";
 import Login from "./components/User/Login";
+import Registered from "./components/User/Registered";
 import Logged from './components/User/Logged';
 import Story from "./components/Mains/Story";
 import NewStory from "./components/Mains/NewStory";
 import Users from "./components/Mains/Users";
 
 export default function App(props) {
-    const [dark, setDark] = React.useState("");
-
-    function darkMode() {
-        if (dark === "") {
-            setDark("dark");
-            document.body.classList.add('dark');
-        } else {
-            setDark("");
-            document.body.classList.remove('dark');
-        }
-    }
-
     const handleSearch = (event, news, setFilteredNews) => {
         let value = event.target.value.toLowerCase();
         let result = [];
@@ -41,40 +29,42 @@ export default function App(props) {
     function switchSite() {
         switch (props.type) {
             case "movies":
-                return (<Movies dark={dark} />);
+                return (<Movies />);
             case "tv-shows":
-                return (<TvShows dark={dark} />);
+                return (<TvShows />);
             case "coming-soon":
-                return (<ComingSoon dark={dark} />);
+                return (<ComingSoon />);
             case "youtube":
-                return (<YouTube dark={dark} />);
+                return (<YouTube />);
             case "credits":
-                return (<Credits dark={dark} />);
+                return (<Credits />);
             case "error":
-                return (<Error dark={dark} />);
+                return (<Error />);
             case "login":
-                return (<Login dark={dark} />);
+                return (<Login />);
             case "register":
-                return (<Register dark={dark} />);
+                return (<Register />);
+            case "registered":
+                return (<Registered />);
             case "logged":
-                return (<Logged dark={dark} />);
+                return (<Logged />);
             case "stories":
-                return (<Story dark={dark} />);
+                return (<Story />);
             case "new-story":
-                return (<NewStory dark={dark} />);
+                return (<NewStory />);
             case "users":
-                return (<Users dark={dark} />);
+                return (<Users />);
             default:
-                return (<News dark={dark} site={props.site} handleSearch={handleSearch} />);
+                return (<News site={props.site} handleSearch={handleSearch} />);
         }
     }
 
     return (
         <>
-            <Header dark={dark} />
-            <Sidebar dark={dark} darkMode={darkMode} />
+            <Header />
+            <Sidebar />
             {switchSite()}
-            <Footer dark={dark} />
+            <Footer />
         </>
     )
 }
