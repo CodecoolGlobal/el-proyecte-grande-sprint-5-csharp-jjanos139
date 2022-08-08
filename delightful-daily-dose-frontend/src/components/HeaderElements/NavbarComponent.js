@@ -35,10 +35,10 @@ export default function Navbar(props) {
     return (
         <div className="container">
             {props.elements === "top" ? <DateAndName /> : ""}
-            {props.elements === "top" ? <Logo /> : ""}
+            {props.elements === "top" ? <Link to="/"> <Logo /> </Link> : ""}
             {props.elements === "top" ? <WeatherAndExchange /> : ""}
             {props.elements === "lower" ? <Menu /> : ""}
-            {props.elements === "lower" ? <span id="sitename" className="navbar-brand"><img width="150" src={sitenameLogo} alt="" /></span> : ""}
+            {props.elements === "lower" ? <Link to="/" id="sitename" className="navbar-brand"><img width="150" src={sitenameLogo} alt="" /></Link> : ""}
             {props.elements === "lower" && !user ?
                 <div className="user-buttons">
                     <Link to="/register" className="reg-topright">Register</Link>
@@ -48,7 +48,7 @@ export default function Navbar(props) {
             {/*{props.elements === "lower" && !user ? <h5 onClick={googleLogin}>Google</h5> : ""}*/}
             {props.elements === "lower" && user ?
                 <div className="user-buttons">
-                    <h5 className="reg-topright">{user}</h5>
+                    <a className="reg-topright">{user}</a>
                     <Link to="/login" onClick={logout} className="login-topright">Logout</Link>
                 </div>
                 : ""}
