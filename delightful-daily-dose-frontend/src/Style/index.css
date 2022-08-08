@@ -2,8 +2,6 @@
 
 html {
     font-size: 14px;
-    position: relative;
-    min-height: 100%;
 }
 
 body {
@@ -11,6 +9,16 @@ body {
     overflow-x: hidden;
     background-color: #CFD8DC;
     padding-bottom: 45px;
+}
+
+main {
+    margin-top: 20px;
+    padding-bottom: 30px;
+}
+
+#root {
+    position: relative;
+    min-height: 100vh;
 }
 
 span {
@@ -25,10 +33,17 @@ span.navbar-brand {
 
 /* footer style */
 
-.footer {
+footer {
     width: 100%;
-    white-space: nowrap;
+    white-space: wrap;
     position: absolute;
+    bottom: 0;
+    height: 0;
+}
+
+footer .container {
+    display: flex;
+    flex-direction: column;
 }
 
 #joke {
@@ -79,6 +94,10 @@ button.accept-policy {
 
 /* navbar components */
 
+.topbar {
+    background-color: #050859 !important;
+}
+
 .lowerbar {
     background-color: #0E67B4 !important;
 }
@@ -88,75 +107,34 @@ button.accept-policy {
     color: aliceblue !important;
 }
 
-.topbar {
-    background-color: #050859 !important;
-}
-
+#menudiv,
 #date-and-name {
-    margin-left: 3.125rem;
-}
-
-#date-and-name,
-#weather-and-exchange {
-    width: 550px;
-    overflow: hidden;
-}
-
-#datetime {
-    margin-left: 3.125rem;
-}
-
-#datetime,
-#weather {
-    display: inline-block;
-    float: left;
-}
-
-#weather {
-    min-width: 150px;
-    margin-left: 3.25rem;
-}
-
-#menu {
-    margin-left: 25px;
-}
-
-#USD,
-#EUR,
-#nameday,
-#sitename,
-#menudiv {
-    float: left;
-}
-
-#logo {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    margin-left: auto;
     margin-right: auto;
-}
-
-/* .search {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    margin-top: -30px;
 }
 
-#input {
-    border-radius: 25px;
-    text-indent: 10px;
-} */
-
-.container {
-    flex-wrap: unset !important;
-    justify-content: center !important;
+#nameday,
+#EUR,
+#USD {
+    margin-left: 20px;
 }
 
+.user-buttons,
+#weather-and-exchange {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+#logo,
 #sitename {
     margin-left: auto;
     margin-right: auto;
+}
+
+#sitename {
+    margin-left: 20%;
 }
 
 /* sidebar */
@@ -173,12 +151,6 @@ button.accept-policy {
 #color-scheme {
     color: #ddd;
     cursor: pointer;
-}
-
-#menudiv {
-    margin-left: 73px;
-    margin-right: auto;
-    display: flex;
 }
 
 /* dog / nature pic component */
@@ -212,13 +184,12 @@ button.accept-policy {
     border: 5px solid brown;
 }
 
-.photo-light.dark {
-    border: 5px solid rgb(228, 226, 224) !important;
-}
 
 #body {
     width: 80%;
     text-align: justify;
+    overflow: auto;
+    padding-bottom: 100px;
 }
 
 /* dark mode switches */
@@ -227,42 +198,44 @@ body.dark {
     background-color: rgb(79, 74, 74) !important;
 }
 
-.lowerbar.dark {
-    background-color: #575c61 !important;
-}
-
-.topbar.dark {
-    background-color: #101012 !important;
-}
-
-.photo-outer-div.dark {
-    border: 5px solid #575c61 !important;
-}
-
-h5.dark {
-    color: #d9e4f0;
-}
-
-h6.dark {
-    color: #aab0b7;
-}
-
-.photo.dark {
+body.dark .photo-light {
     border: 5px solid rgb(228, 226, 224) !important;
 }
 
-.card.dark {
+body.dark .lowerbar {
+    background-color: #575c61 !important;
+}
+
+body.dark .topbar {
+    background-color: #101012 !important;
+}
+
+body.dark .photo-outer-div {
+    border: 5px solid #575c61 !important;
+}
+
+body.dark h5,
+body.dark h4,
+body.dark .credits-name {
+    color: #d9e4f0;
+}
+
+body.dark h6 {
+    color: #aab0b7;
+}
+
+body.dark .photo {
+    border: 5px solid rgb(228, 226, 224) !important;
+}
+
+body.dark .card {
     background-color: rgb(126, 137, 142) !important;
 }
 
-h5>a.dark,
-h5>a.dark:hover,
-h6.dark {
+body.dark h5>a,
+body.dark h5>a:hover,
+body.dark h6 {
     color: white !important;
-}
-
-body.dark {
-    background-color: lightsalmon;
 }
 
 /* main content card style */
@@ -340,47 +313,28 @@ h5>a:hover {
     }
 }
 
-@media screen and (max-width: 1450px) {
-
-    #naturediv,
-    #dogdiv,
-    #USD,
-    #EUR {
-        display: none !important;
-    }
-
-    #weather {
-        margin-left: 12.5rem;
-    }
-}
-
 @media screen and (max-width: 1400px) {
 
-    #menudiv {
-        margin-right: 11.25rem;
+    #naturediv,
+    #dogdiv {
+        display: none;
     }
 
-    #datetime {
-        margin-left: 3.125rem;
+    .card {
+        margin-left: unset;
     }
 
-    #weather {
-        margin-left: 10rem;
-    }
-}
-
-@media screen and (max-width: 1200px) {
-
-    #weather {
-        margin-left: 7rem;
+    #body {
+        width: 100%;
     }
 }
 
 @media screen and (max-width: 1000px) {
-    #nameday {
-        display: none !important;
-    }
 
+    #nameday,
+    #sitename,
+    #EUR,
+    #USD,
     #article-image {
         display: none !important;
     }
@@ -398,63 +352,29 @@ h5>a:hover {
     }
 }
 
-@media screen and (max-width: 990px) {
-
-    #menudiv {
-        margin-right: 6.25rem;
-        margin-left: 10.125rem;
-    }
-
-    #weather {
-        margin-left: 5rem;
-    }
-
-}
-
 @media screen and (max-width: 770px) {
+    .card {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     .credits-image {
-        width: 100px !important;
+        width: 150px !important;
     }
 
     .credits-name {
-        font-size: 18px !important;
-    }
-
-    .youtube-text {
-        display: none !important;
+        font-size: 20px !important;
     }
 
     .youtube-iframe {
         max-width: 100% !important;
     }
-
-    #menudiv {
-        margin-right: 1.25rem;
-        margin-left: 15.125rem;
-    }
-}
-
-@media screen and (max-width: 575px) {
-    #menudiv {
-        margin-right: 2.25rem;
-        margin-left: 14.9rem;
-    }
 }
 
 @media screen and (max-width: 550px) {
-    #weather {
-        display: none !important;
-    }
 
-    .box-office-image {
-        display: none !important;
-    }
 
     #article-image {
-        display: none !important;
-    }
-
-    #sitename {
         display: none !important;
     }
 
@@ -463,45 +383,7 @@ h5>a:hover {
     }
 
     .card {
-        width: 380px;
-        margin-left: 8px
-    }
-
-    #menudiv {
-        margin-right: 1.25rem;
-        margin-left: 5rem;
-    }
-}
-
-@media screen and (max-width: 501px) {
-    #menudiv {
-        margin-right: 1.25rem;
-        margin-left: 8rem;
-    }
-
-    #date-and-name {
-        margin-left: 3rem;
-    }
-}
-
-@media screen and (max-width: 450px) {
-    .credits-name {
-        display: none !important;
-    }
-}
-
-@media screen and (max-width: 425px) {
-    #date-and-name {
-        display: none !important;
-    }
-
-    #logo {
-        margin-left: 44%;
-    }
-}
-
-@media screen and (max-width: 325px) {
-    .credits-image {
-        display: none !important;
+        margin-left: 8px;
+        margin-right: 8px;
     }
 }

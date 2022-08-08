@@ -6,6 +6,6 @@
     text-decoration: none;
 }
 
-.new-story.dark {
+body.dark .new-story {
     color: white;
 }

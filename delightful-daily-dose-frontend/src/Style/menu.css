@@ -198,10 +198,9 @@ span[href*="#followus"]::before {
     position: relative;
     margin-top: 3px;
     z-index: 999;
-    display: block;
     width: 32px;
     height: 32px;
-    margin-left: -10px;
+    margin-left: 10px;
     background: transparent;
     border: none;
     background-color: inherit;
@@ -282,9 +281,9 @@ span[href*="#followus"]::before {
     background-color: #050859;
 }
 
-.hamburger.is-open .hamb-top.close-button.dark,
-.hamburger.is-open .hamb-middle.close-button.dark,
-.hamburger.is-open .hamb-bottom.close-button.dark {
+body.dark .hamburger.is-open .hamb-top.close-button,
+body.dark .hamburger.is-open .hamb-middle.close-button,
+body.dark .hamburger.is-open .hamb-bottom.close-button {
     background-color: #ababab;
 }
 

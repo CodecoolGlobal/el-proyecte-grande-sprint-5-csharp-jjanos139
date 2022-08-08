@@ -15,7 +15,7 @@ form {
     text-decoration: none;
 }
 
-form.dark {
+body.dark form {
     box-shadow: 0 0 40px rgba(1, 1, 1, 0.6);
 }
 
@@ -23,7 +23,7 @@ form>a {
     text-decoration: none;
 }
 
-form>a.dark {
+body.dark form>a {
     color: white;
 }
 
@@ -57,7 +57,7 @@ form h3 {
     border: 2px solid rgba(14, 103, 180, 0.6);
 }
 
-.form-input.dark {
+body.dark .form-input {
     border: 2px solid rgba(38, 40, 38, 0.6);
     color: white;
 }
@@ -66,7 +66,7 @@ form h3 {
     color: black;
 }
 
-.dark::placeholder {
+body.dark ::placeholder {
     color: white;
 }
 
@@ -93,7 +93,7 @@ form h3 {
     text-align: right;
 }
 
-.reg-checkbox.dark {
+body.dark .reg-checkbox {
     color: white;
 }
 
@@ -120,7 +120,7 @@ form h3 {
     font-weight: 500;
 }
 
-.reg-label.dark {
+body.dark .reg-label {
     color: white;
 }
 
@@ -133,8 +133,8 @@ form h3 {
     border-bottom: 3px solid rgba(14, 103, 180, 0.6);
 }
 
-.reg-h3.dark,
-.login-h3.dark {
+body.dark .reg-h3,
+body.dark .login-h3 {
     color: white;
     border-bottom: 2px solid rgba(38, 40, 38, 0.6);
 }
@@ -152,15 +152,14 @@ form h3 {
     text-align: center;
 }
 
-.reg-button.dark,
-.login-button.dark {
+body.dark .reg-button,
+body.dark .login-button {
     background-color: #393c3e;
     color: white;
 }
 
 .reg-topright,
 .login-topright {
-    margin: 5px;
     padding: 5px 20px;
     text-align: center;
     text-transform: uppercase;
@@ -179,15 +178,14 @@ form h3 {
     touch-action: manipulation;
 }
 
-.reg-topright.dark,
-.login-topright.dark {
-    box-shadow: 0px 0px 14px -7px #8b969b;
-    background-image: linear-gradient(45deg, #011b33 0%, #8b969b 51%, #011b33 100%);
+.login-topright {
+    margin-left: 20px;
 }
 
-.login-topright {
-    margin-left: 5px;
-    margin-right: 125px;
+body.dark .reg-topright,
+body.dark .login-topright {
+    box-shadow: 0px 0px 14px -7px #8b969b;
+    background-image: linear-gradient(45deg, #011b33 0%, #8b969b 51%, #011b33 100%);
 }
 
 .reg-topright:hover,
@@ -220,6 +218,6 @@ form h3 {
     border-radius: 5px;
 }
 
-.tag-select-div.dark>input {
+body.dark .tag-select-div>input {
     background-color: #393c3e;
 }
