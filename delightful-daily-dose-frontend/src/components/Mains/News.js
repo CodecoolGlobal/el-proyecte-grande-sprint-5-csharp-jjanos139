@@ -3,8 +3,8 @@ import React from "react";
 import authHeader from '../../authHeader';
 
 export default function News(props) {
-    const [news, setNews] = React.useState([])
-    const [filteredNews, setFilteredNews] = React.useState(news)
+    const [news, setNews] = React.useState([]);
+    const [filteredNews, setFilteredNews] = React.useState(news);
 
     React.useEffect(() => {
         fetch(props.site, { headers: authHeader() })
@@ -18,7 +18,7 @@ export default function News(props) {
     return (
         <div className="container">
             <main role="main" className="pb-3">
-                {window.location.pathname === "/" || localStorage.getItem("user") ?
+                {localStorage.getItem("user") || window.location.pathname !== "/history" ?
                     <div className="search-container">
                         <input type="text" name="search" placeholder="Search..." className="search-input" spellCheck="false" onChange={(event) => props.handleSearch(event, news, setFilteredNews)}></input>
                         <div className="search"></div>
