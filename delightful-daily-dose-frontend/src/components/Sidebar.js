@@ -56,7 +56,7 @@ export default function Sidebar() {
                 <ul className="nav sidebar-nav">
                     <div className="sidebar-header">
                         <div className="sidebar-brand">
-                            <span id="color-scheme" onClick={darkMode.toggle}>{localStorage.getItem("darkMode") === "false" ? "Light Mode" : "Dark Mode"}</span>
+                            <span id="color-scheme" onClick={darkMode.toggle}>{localStorage.getItem("darkMode") === "true" ? "Light Mode" : "Dark Mode"}</span>
                         </div>
                     </div>
                     <li><Link to="/"><span><i id="fresh" className="fa fa-solid fa-fire"></i> Hot</span></Link></li>

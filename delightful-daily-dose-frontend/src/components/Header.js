@@ -88,12 +88,12 @@ export default function Header() {
         <header>
             <Photo divid="naturediv" title="A soul calmer" imgid="nature-photo" />
             <Photo divid="dogdiv" title="A true friend" imgid="photo" />
-            <Navbar id="topbar" className="topbar">
+            <Navbar className="topbar">
                 <NavbarComponent elements="top" />
             </Navbar>
-            <Navbar id="lowerbar" className="lowerbar navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+            <Navbar className="lowerbar">
                 <NavbarComponent elements="lower" />
             </Navbar>
-        </header>
+        </header >
     )
 }   
