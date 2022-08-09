@@ -109,6 +109,7 @@ button.accept-policy {
 
 #menudiv,
 #date-and-name {
+    margin-left: 120px;
     margin-right: auto;
     display: flex;
     align-items: center;
@@ -127,14 +128,15 @@ button.accept-policy {
     align-items: center;
 }
 
-#logo,
-#sitename {
+#logo {
     margin-left: auto;
     margin-right: auto;
 }
 
 #sitename {
-    margin-left: 20%;
+    margin-left: 16%;
+    margin-right: auto;
+
 }
 
 /* sidebar */
@@ -320,7 +322,9 @@ h5>a:hover {
         display: none;
     }
 
-    .card {
+    .card,
+    #menudiv,
+    #date-and-name {
         margin-left: unset;
     }
 
