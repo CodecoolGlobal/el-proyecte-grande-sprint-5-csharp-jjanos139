@@ -15,6 +15,7 @@ import {
     Routes,
     Route,
 } from "react-router-dom";
+import Logged from './components/User/Logged';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -44,7 +45,7 @@ root.render(
             <Route path="/register" element={<App type="register" />}></Route>
             <Route path="/login" element={<App type="login" />}></Route>
             <Route path="/registered" element={<App type="registered" />}></Route>
-            <Route path="/logged" element={<App type="logged" />}></Route>
+            <Route path="/logged" element={<Logged />}></Route>
             <Route path="/users" element={<App type="users" />}></Route>
             <Route path="/*" element={<App type="error" />}></Route>
         </Routes>

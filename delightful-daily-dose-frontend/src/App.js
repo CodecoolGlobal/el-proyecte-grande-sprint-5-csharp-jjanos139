@@ -11,7 +11,6 @@ import Error from "./components/Error";
 import Register from "./components/User/Register";
 import Login from "./components/User/Login";
 import Registered from "./components/User/Registered";
-import Logged from './components/User/Logged';
 import Story from "./components/Mains/Story";
 import NewStory from "./components/Mains/NewStory";
 import Users from "./components/Mains/Users";
@@ -46,8 +45,6 @@ export default function App(props) {
                 return (<Register />);
             case "registered":
                 return (<Registered />);
-            case "logged":
-                return (<Logged />);
             case "stories":
                 return (<Story />);
             case "new-story":
