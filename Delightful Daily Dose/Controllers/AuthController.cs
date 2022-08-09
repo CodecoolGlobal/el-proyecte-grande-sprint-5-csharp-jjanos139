@@ -22,23 +22,18 @@ namespace Delightful_Daily_Dose.Controllers
         public IActionResult Login([FromBody] LoginViewModel model)
         {
             var user = userRepository.GetSingle(u => u.Username == model.Username);
+            if (user == null) return StatusCode(401);
 
             var isVerified = authService.VerifyPassword(model.Password, user.Password);
 
-            if (isVerified)
-            {
-                HttpContext.Response.Cookies.Append(
-                    "user",
-                    model.Username);
-                //new CookieOptions
-                //{
-                //    HttpOnly = true
-                //});
-            }
-
+            if (!isVerified) return BadRequest();
+            HttpContext.Response.Cookies.Append(
+                "user",
+                model.Username);
             var token = authService.GetAuthData(user.Username, user.Role);
 
             return Ok(token);
+
         }
 
         [HttpPost("/Register")]

@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import Cookies from "universal-cookie";
 
-export default function Login(props) {
+export default function Login() {
     const nav = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -18,20 +17,26 @@ export default function Login(props) {
 
     function handleSubmit(event) {
         event.preventDefault();
-        // const cookies = new Cookies();
-
         fetch("/Login", requestOptions)
-            // .then(() => props.setNewUserData(cookies.get('user')))
-            .then((resp) => resp.json())
+            .then((response) => {
+                if (response.status === 200) {
+                    return response.json();
+                }
+                document.getElementById("failed-login").style.display = "unset";
+                setTimeout(() => {
+                    document.getElementById("failed-login").style.display = "none";
+                }, 3000)
+            })
             .then((data) => {
                 localStorage.setItem("user", JSON.stringify(data.token));
-                nav("/logged", { state: { username: username } });
+                nav("/logged", { state: { message: "Welcome back " + username + "!" } });
             });
     }
 
     return (
         <form method="post" onSubmit={handleSubmit}>
-            <h3 className={props.dark === "dark" ? "login-h3 dark" : "login-h3"}>Login Here</h3>
+            <h3 className="login-h3">Login Here</h3>
+            <p id="failed-login" style={{ color: "red", display: "none" }}>Please enter valid credentials!</p>
             <label htmlFor="username" className="reg-label">Username</label>
             <input
                 className="form-input"
