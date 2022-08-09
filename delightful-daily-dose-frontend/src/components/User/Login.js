@@ -36,7 +36,7 @@ export default function Login() {
     return (
         <form method="post" onSubmit={handleSubmit}>
             <h3 className="login-h3">Login Here</h3>
-            <p id="failed-login" style={{ color: "red", display: "none" }}>Please enter valid credentials!</p>
+            <p id="failed-login">Please enter valid credentials!</p>
             <label htmlFor="username" className="reg-label">Username</label>
             <input
                 className="form-input"

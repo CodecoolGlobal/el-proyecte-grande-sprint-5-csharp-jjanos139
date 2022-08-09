@@ -93,7 +93,7 @@ export default function Register() {
     return (
         <form onSubmit={handleSubmit} style={{ top: "20px" }}>
             <h3 className="reg-h3">Registration</h3>
-            <p id="failed-login" style={{ color: "red", display: "none" }}>Username/Email is already in use!<br />Please try again!</p>
+            <p id="failed-login">Username/Email is already in use!<br />Please try again!</p>
             <label className="reg-label" htmlFor="username">Username</label>
             <input
                 className="form-input"

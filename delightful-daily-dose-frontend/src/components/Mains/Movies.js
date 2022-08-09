@@ -7,12 +7,20 @@ export default function Movies() {
 
     React.useEffect(() => {
         fetch(`/Home/GetTopBoxOffice`, { headers: authHeader() })
-            .then(response => response.json())
-            .then(data => setMovies(data.items));
+            .then((response) => {
+                if (response.status === 401) {
+                    document.getElementById("failed-login").style.display = "unset";
+                    setTimeout(() => {
+                        document.getElementById("failed-login").style.display = "none";
+                    }, 3000)
+                }
+                return response.json();
+            }).then(data => setMovies(data.items));
     }, [])
 
     return (
         <div className="container">
+            <p id="failed-login" style={{ marginLeft: "42%" }}>Please login first to see the list!</p>
             <main role="main" className="pb-3">
                 <div id="body">
                     {movies.map((item) => {

@@ -10,12 +10,20 @@ export default function Story() {
     const cookie = cookies.get('user');
     React.useEffect(() => {
         fetch(`Stories`, { headers: authHeader() })
-            .then(response => response.json())
-            .then(data => setStories(data));
+            .then((response) => {
+                if (response.status === 401) {
+                    document.getElementById("failed-login").style.display = "unset";
+                    setTimeout(() => {
+                        document.getElementById("failed-login").style.display = "none";
+                    }, 3000)
+                }
+                return response.json();
+            }).then(data => setStories(data));
     }, [])
 
     return (
         <div className="container">
+            <p id="failed-login" style={{ marginLeft: "37%" }}>You need to be logged in as a publisher to see this!</p>
             <main role="main" className="pb-3">
                 {cookie ? <Link to="/new-story" className="new-story"><i className="fa-solid fa-feather-pointed"></i> Add new story</Link> : ""}
                 <div id="body">

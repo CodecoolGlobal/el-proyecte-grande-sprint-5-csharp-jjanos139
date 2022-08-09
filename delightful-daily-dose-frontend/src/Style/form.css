@@ -221,3 +221,14 @@ body.dark .login-topright {
 body.dark .tag-select-div>input {
     background-color: #393c3e;
 }
+
+#failed-login {
+    display: none;
+    color: red;
+}
+
+@media screen and (max-width: 550px) {
+    #failed-login {
+        margin-left: 20% !important;
+    }
+}

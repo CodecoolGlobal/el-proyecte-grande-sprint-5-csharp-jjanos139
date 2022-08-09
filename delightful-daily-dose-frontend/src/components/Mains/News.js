@@ -8,8 +8,15 @@ export default function News(props) {
 
     React.useEffect(() => {
         fetch(props.site, { headers: authHeader() })
-            .then(response => response.json())
-            .then(data => {
+            .then((response) => {
+                if (response.status === 401) {
+                    document.getElementById("failed-login").style.display = "unset";
+                    setTimeout(() => {
+                        document.getElementById("failed-login").style.display = "none";
+                    }, 3000)
+                }
+                return response.json();
+            }).then(data => {
                 setNews(data);
                 setFilteredNews(data);
             });
@@ -17,6 +24,7 @@ export default function News(props) {
 
     return (
         <div className="container">
+            <p id="failed-login" style={{ marginLeft: "42%" }}>Please login first to see your news!</p>
             <main role="main" className="pb-3">
                 {localStorage.getItem("user") || window.location.pathname !== "/history" ?
                     <div className="search-container">

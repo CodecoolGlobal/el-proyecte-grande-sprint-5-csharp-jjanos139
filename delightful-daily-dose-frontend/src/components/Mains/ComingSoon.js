@@ -7,12 +7,20 @@ export default function ComingSoon() {
 
     React.useEffect(() => {
         fetch(`Home/GetComingSoonToBoxOffice`, { headers: authHeader() })
-            .then(response => response.json())
-            .then(data => setComingSoon(data.items));
+            .then((response) => {
+                if (response.status === 401) {
+                    document.getElementById("failed-login").style.display = "unset";
+                    setTimeout(() => {
+                        document.getElementById("failed-login").style.display = "none";
+                    }, 3000)
+                }
+                return response.json();
+            }).then(data => setComingSoon(data.items));
     }, [])
 
     return (
         <div className="container">
+            <p id="failed-login" style={{ marginLeft: "42%" }}>Please login first to see the list!</p>
             <main role="main" className="pb-3">
                 <div id="body">
                     {comingSoon.map((item) => {
