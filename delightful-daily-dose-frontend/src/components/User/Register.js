@@ -78,12 +78,22 @@ export default function Register() {
     function handleSubmit(event) {
         event.preventDefault();
         fetch(`Register`, requestOptions)
-            .then(nav("/registered", { state: { username: username } }));
+            .then((response) => {
+                if (response.status === 200) {
+                    (nav("/registered", { state: { username: username } }));
+                } else {
+                    document.getElementById("failed-login").style.display = "unset";
+                    setTimeout(() => {
+                        document.getElementById("failed-login").style.display = "none";
+                    }, 3000)
+                }
+            })
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} style={{ top: "20px" }}>
             <h3 className="reg-h3">Registration</h3>
+            <p id="failed-login" style={{ color: "red", display: "none" }}>Username/Email is already in use!<br />Please try again!</p>
             <label className="reg-label" htmlFor="username">Username</label>
             <input
                 className="form-input"

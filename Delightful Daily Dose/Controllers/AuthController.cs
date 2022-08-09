@@ -8,29 +8,29 @@ namespace Delightful_Daily_Dose.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        IAuthService authService;
-        IUserRepository userRepository;
-        EmailSender _emailSender;
+        private readonly IAuthService _authService;
+        private readonly IUserRepository _userRepository;
+        private readonly EmailSender _emailSender;
         public AuthController(IAuthService authService, IUserRepository userRepository, EmailSender emailSender)
         {
-            this.authService = authService;
-            this.userRepository = userRepository;
+            this._authService = authService;
+            this._userRepository = userRepository;
             _emailSender = emailSender;
         }
 
         [HttpPost("/Login")]
         public IActionResult Login([FromBody] LoginViewModel model)
         {
-            var user = userRepository.GetSingle(u => u.Username == model.Username);
+            var user = _userRepository.GetSingle(u => u.Username == model.Username);
             if (user == null) return StatusCode(401);
 
-            var isVerified = authService.VerifyPassword(model.Password, user.Password);
+            var isVerified = _authService.VerifyPassword(model.Password, user.Password);
 
             if (!isVerified) return BadRequest();
             HttpContext.Response.Cookies.Append(
                 "user",
                 model.Username);
-            var token = authService.GetAuthData(user.Username, user.Role);
+            var token = _authService.GetAuthData(user.Username, user.Role);
 
             return Ok(token);
 
@@ -39,23 +39,24 @@ namespace Delightful_Daily_Dose.Controllers
         [HttpPost("/Register")]
         public IActionResult Register([FromBody] RegisterViewModel model)
         {
-            var emailUniq = userRepository.IsEmailUniq(model.Email);
-            var usernameUniq = userRepository.IsUsernameUniq(model.Username);
+            var emailUniq = _userRepository.IsEmailUniq(model.Email);
+            var usernameUniq = _userRepository.IsUsernameUniq(model.Username);
 
+            if (!emailUniq || !usernameUniq) return BadRequest();
             var id = Guid.NewGuid().ToString();
             var user = new User
             {
                 Id = id,
                 Username = model.Username,
                 Email = model.Email,
-                Password = authService.HashPassword(model.Password),
+                Password = _authService.HashPassword(model.Password),
                 Role = model.IsPublisher ? "Publisher" : "User"
             };
-            userRepository.Add(user);
-            userRepository.Commit();
+            _userRepository.Add(user);
+            _userRepository.Commit();
 
             _emailSender.SendConfirmationEmail(user.Username, user.Email);
-            return NoContent();
+            return Ok();
         }
 
         [HttpPost("/Logout")]
