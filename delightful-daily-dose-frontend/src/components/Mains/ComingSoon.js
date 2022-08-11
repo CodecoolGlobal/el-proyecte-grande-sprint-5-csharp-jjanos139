@@ -2,24 +2,31 @@ import Card from 'react-bootstrap/Card';
 import React from 'react';
 import authHeader from '../../authHeader';
 
-export default function ComingSoon(props) {
-    const dark = props.dark;
+export default function ComingSoon() {
     const [comingSoon, setComingSoon] = React.useState([]);
 
     React.useEffect(() => {
         fetch(`Home/GetComingSoonToBoxOffice`, { headers: authHeader() })
-            .then(response => response.json())
-            .then(data => setComingSoon(data.items));
+            .then((response) => {
+                if (response.status === 401) {
+                    document.getElementById("failed-login").style.display = "unset";
+                    setTimeout(() => {
+                        document.getElementById("failed-login").style.display = "none";
+                    }, 3000)
+                }
+                return response.json();
+            }).then(data => setComingSoon(data.items));
     }, [])
 
     return (
         <div className="container">
+            <p id="failed-login" style={{ marginLeft: "42%" }}>Please login first to see the list!</p>
             <main role="main" className="pb-3">
                 <div id="body">
                     {comingSoon.map((item) => {
                         const href = "https://www.imdb.com/title/" + item.id;
                         return (
-                            <Card key={item.id} className={dark === "dark" ? "dark" : ""}>
+                            <Card key={item.id}>
                                 <img className="box-office-image" src={item.image} alt="" />
                                 <div id="article-text">
                                     <a href={href} target="_blank" rel="noreferrer"><h5>{item.title}</h5></a>

@@ -2,8 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function Register(props) {
+export default function Register() {
     const nav = useNavigate();
+    const [username, setUsername] = useState("");
 
     const [input, setInput] = useState({
         email: '',
@@ -27,6 +28,7 @@ export default function Register(props) {
             ...prev,
             [name]: type === "checkbox" ? checked : value
         }));
+        setUsername(input.username);
         validateInput(e);
     }
 
@@ -34,20 +36,17 @@ export default function Register(props) {
         let { name, value } = e.target;
         setError(prev => {
             const stateObj = { ...prev, [name]: "" };
-
             switch (name) {
                 case "username":
                     if (!value) {
                         stateObj[name] = "Please enter Username.";
                     }
                     break;
-
                 case "email":
                     if (!value) {
                         stateObj[name] = "Please enter Email.";
                     }
                     break;
-
                 case "password":
                     if (!value) {
                         stateObj[name] = "Please enter Password.";
@@ -57,7 +56,6 @@ export default function Register(props) {
                         stateObj["confirmpassword"] = input.confirmpassword ? "" : error.confirmpassword;
                     }
                     break;
-
                 case "confirmpassword":
                     if (!value) {
                         stateObj[name] = "Please enter Confirm Password.";
@@ -65,29 +63,40 @@ export default function Register(props) {
                         stateObj[name] = "Password and Confirm Password does not match.";
                     }
                     break;
-
                 default:
                     break;
             }
-
             return stateObj;
         });
     }
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(input)
+    };
 
-    function handleSubmit() {
-        fetch(`Register`, {
-            method: "POST",
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(input)
-        }).then(nav("/stories"))
+    function handleSubmit(event) {
+        event.preventDefault();
+        fetch(`Register`, requestOptions)
+            .then((response) => {
+                if (response.status === 200) {
+                    (nav("/registered", { state: { username: username } }));
+                } else {
+                    document.getElementById("failed-login").style.display = "unset";
+                    setTimeout(() => {
+                        document.getElementById("failed-login").style.display = "none";
+                    }, 3000)
+                }
+            })
     }
 
     return (
-        <form onSubmit={handleSubmit} className={props.dark === "dark" ? "dark" : ""}>
-            <h3 className={props.dark === "dark" ? "reg-h3 dark" : "reg-h3"}>Registration</h3>
-            <label className={props.dark === "dark" ? "reg-label dark" : "reg-label"} htmlFor="username">Username</label>
+        <form onSubmit={handleSubmit} style={{ top: "20px" }}>
+            <h3 className="reg-h3">Registration</h3>
+            <p id="failed-login">Username/Email is already in use!<br />Please try again!</p>
+            <label className="reg-label" htmlFor="username">Username</label>
             <input
-                className={props.dark === "dark" ? "form-input dark" : "form-input"}
+                className="form-input"
                 type="text"
                 name="username"
                 placeholder='Enter username'
@@ -97,11 +106,10 @@ export default function Register(props) {
                 onBlur={validateInput}
                 required="Required"
                 pattern="^[a-zA-Z0-9_\\.-]{3,20}"
-
             />
-            <label className={props.dark === "dark" ? "reg-label dark" : "reg-label"} htmlFor="email">E-mail</label>
+            <label className="reg-label" htmlFor="email">E-mail</label>
             <input
-                className={props.dark === "dark" ? "form-input dark" : "form-input"}
+                className="form-input"
                 type="email"
                 name="email"
                 placeholder='Enter E-mail'
@@ -111,10 +119,9 @@ export default function Register(props) {
                 onBlur={validateInput}
                 required="Required"
             />
-            {/* {errors.email && errors.email.message} */}
-            <label className={props.dark === "dark" ? "reg-label dark" : "reg-label"} htmlFor="password">Password</label>
+            <label className="reg-label" htmlFor="password">Password</label>
             <input
-                className={props.dark === "dark" ? "form-input dark" : "form-input"}
+                className="form-input"
                 type="password"
                 name="password"
                 placeholder='Enter password'
@@ -123,17 +130,10 @@ export default function Register(props) {
                 onChange={onInputChange}
                 onBlur={validateInput}
                 pattern="^([a-zA-Z0-9@*#]{8,15})$"
-            // {...register("password", {
-            //     required: "Required",
-            //     pattern: {
-            //         value: /^([a-zA-Z0-9@*#]{8,15})$/i,
-            //     }
-            // })}
             />
-            {/* {errors.password && errors.password.message} */}
-            <label className={props.dark === "dark" ? "reg-label dark" : "reg-label"} htmlFor="confirmpassword">Confirm Password</label>
+            <label className="reg-label" htmlFor="confirmpassword">Confirm Password</label>
             <input
-                className={props.dark === "dark" ? "form-input dark" : "form-input"}
+                className="form-input"
                 type="password"
                 name="confirmpassword"
                 placeholder='Confirm Password'
@@ -142,28 +142,18 @@ export default function Register(props) {
                 onChange={onInputChange}
                 onBlur={validateInput}
                 pattern="^([a-zA-Z0-9@*#]{8,15})$"
-            // {...register("confirmpassword", {
-            //     required: "Required",
-            //     pattern: {
-            //         value: /^([a-zA-Z0-9@*#]{8,15})$/i,
-            //         message: "Password must contain: Minimum 8 characters. May contain 1 UpperCase, 1 LowerCase, 1 Number and 1 Special Character!"
-            //     },
-            // })}
             />
-            {/* {errors.confirmpassword && errors.confirmpassword.message} */}
             <div className="checkbox-div">
-                <label className={props.dark === "dark" ? "reg-checkbox dark" : "reg-checkbox"} htmlFor="ispublisher">Are you a publisher?</label>
+                <label className="reg-checkbox" htmlFor="ispublisher">Are you a publisher?</label>
                 <span className="checkbox-span"><input data-val="true" value="true" className="registration-checkbox"
                     type="checkbox"
                     name="ispublisher"
                     checked={input.ispublisher}
                     onChange={onInputChange}
-                // {...register("ispublisher")
-                // }
                 /></span>
                 <div className="clearboth"></div>
             </div>
-            <input type="submit" className={props.dark === "dark" ? "reg-button dark" : "reg-button"} value="Submit"></input>
+            <input type="submit" className="reg-button" value="Submit"></input>
         </form>
     );
 }

@@ -2,24 +2,31 @@ import Card from 'react-bootstrap/Card';
 import React from 'react';
 import authHeader from '../../authHeader';
 
-export default function TvShows(props) {
+export default function TvShows() {
     const [tvshows, setTvshows] = React.useState([]);
-    const dark = props.dark;
 
     React.useEffect(() => {
         fetch(`Home/GetTopImdbTvShows`, { headers: authHeader() })
-            .then(response => response.json())
-            .then(data => setTvshows(data.items));
+            .then((response) => {
+                if (response.status === 401) {
+                    document.getElementById("failed-login").style.display = "unset";
+                    setTimeout(() => {
+                        document.getElementById("failed-login").style.display = "none";
+                    }, 3000)
+                }
+                return response.json();
+            }).then(data => setTvshows(data.items));
     }, [])
 
     return (
         <div className="container">
+            <p id="failed-login" style={{ marginLeft: "42%" }}>Please login first to see the list!</p>
             <main role="main" className="pb-3">
                 <div id="body">
                     {tvshows.map((item) => {
                         const href = "https://www.imdb.com/title/" + item.id;
                         return (
-                            <Card key={item.id} className={dark === "dark" ? "dark" : ""}>
+                            <Card key={item.id}>
                                 <img className="box-office-image" src={item.image} alt="" />
                                 <div id="article-text">
                                     <a href={href} target="_blank" rel="noreferrer"><h5><i style={{ color: "darkslateblue" }} className="fa-solid fa-hashtag"></i> {item.rank} - {item.fullTitle}</h5></a>

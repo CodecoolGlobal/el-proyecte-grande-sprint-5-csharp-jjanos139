@@ -1,7 +1,9 @@
-export default function Logo(props) {
+import logo from "../../images/Delightful Daily Dose-logo.png";
+
+export default function Logo() {
     return (
         <div id="logo">
-            <img width="50" src={props.src} alt="logo" />
+            <img width="50" src={logo} alt="logo" />
         </div>
     )
 }

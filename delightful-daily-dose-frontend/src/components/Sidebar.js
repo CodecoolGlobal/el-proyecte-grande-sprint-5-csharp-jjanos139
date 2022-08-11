@@ -3,8 +3,13 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownMenu from 'react-bootstrap/DropdownMenu';
 import DropdownToggle from 'react-bootstrap/esm/DropdownToggle';
 import { Link } from 'react-router-dom';
+import useDarkMode from 'use-dark-mode';
 
-export default function Sidebar(props) {
+export default function Sidebar() {
+    const darkMode = useDarkMode(false, {
+        classNameDark: "dark",
+    });
+
     React.useEffect(() => {
         var overlay = document.querySelector('.overlay');
         var trigger = document.querySelector('.hamburger');
@@ -51,7 +56,7 @@ export default function Sidebar(props) {
                 <ul className="nav sidebar-nav">
                     <div className="sidebar-header">
                         <div className="sidebar-brand">
-                            <span id="color-scheme" onClick={props.darkMode}>{props.dark === "dark" ? "Light Mode" : "Dark Mode"}</span>
+                            <span id="color-scheme" onClick={darkMode.toggle}>{localStorage.getItem("darkMode") === "true" ? "Light Mode" : "Dark Mode"}</span>
                         </div>
                     </div>
                     <li><Link to="/"><span><i id="fresh" className="fa fa-solid fa-fire"></i> Hot</span></Link></li>

@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import authHeader from '../../authHeader'
 
-export default function NewStory(props) {
+export default function NewStory() {
     const tags = [
         "domestic", "foreign", "sport", "culinary", "health", "politics",
         "entertainment", "environment", "technology", "business"
@@ -35,10 +35,10 @@ export default function NewStory(props) {
     }
 
     return (
-        <form onSubmit={handleSubmit} className={props.dark === "dark" ? "dark" : ""}>
-            <h3 className={props.dark === "dark" ? "login-h3 dark" : "login-h3"}>Add your story</h3>
+        <form onSubmit={handleSubmit}>
+            <h3 className="login-h3">Add your story</h3>
             <input
-                className={props.dark === "dark" ? "form-input dark" : "form-input"}
+                className="form-input"
                 placeholder="Enter title"
                 name="title"
                 value={input.title}
@@ -48,7 +48,7 @@ export default function NewStory(props) {
             >
             </input>
             <textarea
-                className={props.dark === "dark" ? "form-input dark" : "form-input"}
+                className="form-input"
                 placeholder="Enter content"
                 name="content"
                 value={input.content}
@@ -58,7 +58,7 @@ export default function NewStory(props) {
             >
             </textarea>
             <div
-                className={props.dark === "dark" ? "tag-select-div dark" : "tag-select-div"}
+                className="tag-select-div"
             >
                 <select
                     className="tag-selector"
