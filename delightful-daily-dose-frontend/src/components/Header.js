@@ -2,12 +2,8 @@ import { useEffect } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import NavbarComponent from "./HeaderElements/NavbarComponent"
 import Photo from "./HeaderElements/Photo"
-import SiteName from "../images/Delightful Daily Dose-name.png"
-import SiteLogo from "../images/Delightful Daily Dose-logo.png"
-import SiteNameDark from "../images/Delightful Daily Dose-name-dark.png"
-import SiteLogoDark from "../images/Delightful Daily Dose-logo-dark.png"
 
-export default function Header(props) {
+export default function Header() {
     function loadNameDay() {
         window.fetch(`Home/GetNameDay`).then((response) => {
             response.json().then((data) => {
@@ -80,28 +76,24 @@ export default function Header(props) {
     }
 
     useEffect(() => {
-        const logo = document.getElementById("logo").firstElementChild;
-        const siteNameLogo = document.getElementById("sitename").firstElementChild;
-        logo.src = props.dark === "dark" ? SiteLogoDark : SiteLogo;
-        siteNameLogo.src = props.dark === "dark" ? SiteNameDark : SiteName;
         loadNameDay();
         loadWeather();
         loadExchangeRate("EUR");
         loadExchangeRate("USD");
         loadDogPhoto();
         loadNaturePhoto();
-    }, [props.dark]);
+    }, [localStorage.getItem("darkMode")]);
 
     return (
         <header>
-            <Photo divid="naturediv" title="A soul calmer" imgid="nature-photo" dark={props.dark} />
-            <Photo divid="dogdiv" title="A true friend" imgid="photo" dark={props.dark} />
-            <Navbar id="topbar" dark={props.dark} className={props.dark === "dark" ? "topbar dark" : "topbar"}>
+            <Photo divid="naturediv" title="A soul calmer" imgid="nature-photo" />
+            <Photo divid="dogdiv" title="A true friend" imgid="photo" />
+            <Navbar className="topbar">
                 <NavbarComponent elements="top" />
             </Navbar>
-            <Navbar id="lowerbar" dark={props.dark} className={props.dark === "dark" ? "lowerbar dark navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" : "lowerbar navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3"}>
-                <NavbarComponent elements="lower" dark={props.dark} />
+            <Navbar className="lowerbar">
+                <NavbarComponent elements="lower" />
             </Navbar>
-        </header>
+        </header >
     )
 }   

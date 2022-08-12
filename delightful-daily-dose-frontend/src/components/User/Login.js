@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import Cookies from "universal-cookie";
 
-export default function Login(props) {
+export default function Login() {
     const nav = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -18,23 +17,29 @@ export default function Login(props) {
 
     function handleSubmit(event) {
         event.preventDefault();
-        // const cookies = new Cookies();
-
         fetch("/Login", requestOptions)
-            // .then(() => props.setNewUserData(cookies.get('user')))
-            .then((resp) => resp.json())
+            .then((response) => {
+                if (response.status === 200) {
+                    return response.json();
+                }
+                document.getElementById("failed-login").style.display = "unset";
+                setTimeout(() => {
+                    document.getElementById("failed-login").style.display = "none";
+                }, 3000)
+            })
             .then((data) => {
                 localStorage.setItem("user", JSON.stringify(data.token));
-                nav("/logged", { state: { username: username } });
+                nav("/logged", { state: { message: "Welcome back " + username + "!" } });
             });
     }
 
     return (
-        <form method="post" onSubmit={handleSubmit} className={props.dark === "dark" ? "dark" : ""}>
-            <h3 className={props.dark === "dark" ? "login-h3 dark" : "login-h3"}>Login Here</h3>
-            <label htmlFor="username" className={props.dark === "dark" ? "reg-label dark" : "reg-label"}>Username</label>
+        <form method="post" onSubmit={handleSubmit}>
+            <h3 className="login-h3">Login Here</h3>
+            <p id="failed-login">Please enter valid credentials!</p>
+            <label htmlFor="username" className="reg-label">Username</label>
             <input
-                className={props.dark === "dark" ? "form-input dark" : "form-input"}
+                className="form-input"
                 type="text"
                 name="username"
                 placeholder='Enter username'
@@ -44,9 +49,9 @@ export default function Login(props) {
                 value={username}
                 onChange={event => setUsername(event.target.value)}
             />
-            <label htmlFor="password" className={props.dark === "dark" ? "reg-label dark" : "reg-label"}>Password</label>
+            <label htmlFor="password" className="reg-label">Password</label>
             <input
-                className={props.dark === "dark" ? "form-input dark" : "form-input"}
+                className="form-input"
                 type="password"
                 name="password"
                 placeholder='Enter password'
@@ -56,7 +61,7 @@ export default function Login(props) {
                 value={password}
                 onChange={event => setPassword(event.target.value)}
             />
-            <button className={props.dark === "dark" ? "login-button dark" : "login-button"}>Login</button>
+            <button className="login-button">Login</button>
         </form>
     )
 }
